@@ -1946,6 +1946,60 @@ h1, h2, h3, h4, h5, h6 {
    ABOUT PAGE STYLES
    ======================================== */
 
+/* About Section - Simple Layout */
+.about-section h2 {
+    color: #1a365d;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #dc2626;
+    padding-bottom: 0.5rem;
+}
+
+.about-section h3 {
+    color: #1a365d;
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+}
+
+.about-section h4 {
+    color: #1a365d;
+    font-size: 1.2rem;
+    margin: 1.5rem 0 0.75rem 0;
+}
+
+.about-section p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: #374151;
+}
+
+.about-section ul {
+    margin: 1rem 0 1rem 2rem;
+}
+
+.about-section li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.about-section a {
+    color: #dc2626;
+    text-decoration: underline;
+}
+
+.about-section a:hover {
+    color: #b91c1c;
+}
+
+/* Attorney profiles in about section */
+.about-section .attorney {
+    margin: 2rem 0;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f9fafb;
+}
+
 /* About Page Container */
 .about-page {
     background: white;
