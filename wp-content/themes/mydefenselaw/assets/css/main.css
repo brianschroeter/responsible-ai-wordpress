@@ -218,9 +218,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
 }
 
-.nav-link,
-.nav-menu li a,
-.nav-menu > li > a {
+.nav-link {
     color: #374151;
     text-decoration: none;
     padding: 1.25rem 2rem;
@@ -235,10 +233,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-link:hover,
-.nav-link.active,
-.nav-menu li a:hover,
-.nav-menu li.current-menu-item a,
-.nav-menu li.current_page_item a {
+.nav-link.active {
     color: #1a365d;
     border-bottom-color: #dc2626;
     background: white;
@@ -937,7 +932,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     right: 0;
-    padding: 2rem 2rem 4rem 2rem;  /* Extra bottom padding for controls space */
+    padding: 2rem;  /* Match parent padding for proper content positioning */
     transition: opacity 0.5s ease-in-out;
     pointer-events: none;
     transform: translate3d(0, 0, 0);        /* Force GPU layer */
@@ -1345,21 +1340,15 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
 }
 
-.modal-form .form-field {
-    width: 100%;
-}
-
 .modal-form input,
 .modal-form select,
 .modal-form textarea {
-    width: 100%;
     padding: 1rem;
     border: 2px solid #e2e8f0;
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
     font-family: inherit;
-    box-sizing: border-box;
 }
 
 .modal-form input:focus,
@@ -1403,143 +1392,6 @@ h1, h2, h3, h4, h5, h6 {
     .modal-form .form-row {
         grid-template-columns: 1fr;
     }
-}
-
-/* Enhanced Checkbox Styles */
-.modal-checkbox-label {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    cursor: pointer;
-    font-size: 0.9rem;
-    color: #64748b;
-    line-height: 1.5;
-}
-
-.modal-checkbox-label input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-    margin-top: 2px;
-    flex-shrink: 0;
-    accent-color: #dc2626;
-    cursor: pointer;
-}
-
-.modal-checkbox-label .checkmark {
-    display: none; /* Using native checkbox with accent-color */
-}
-
-/* Form Response Messages */
-.form-response {
-    padding: 1rem;
-    border-radius: 6px;
-    margin-top: 1rem;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-.form-response.success {
-    background-color: #d1fae5;
-    color: #065f46;
-    border: 1px solid #10b981;
-}
-
-.form-response.error {
-    background-color: #fee2e2;
-    color: #991b1b;
-    border: 1px solid #dc2626;
-}
-
-.form-response:empty {
-    display: none;
-}
-
-/* Notification Toast */
-.notification-toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    color: white;
-    font-weight: 500;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    z-index: 10001;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: all 0.3s ease;
-    max-width: 400px;
-}
-
-.notification-toast.show {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.notification-toast.success {
-    background-color: #10b981;
-}
-
-.notification-toast.error {
-    background-color: #dc2626;
-}
-
-.notification-toast .notification-close {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.25rem;
-    cursor: pointer;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-    padding: 0;
-    line-height: 1;
-}
-
-.notification-toast .notification-close:hover {
-    opacity: 1;
-}
-
-.notification-toast .notification-content {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.notification-toast .notification-content i {
-    font-size: 1.25rem;
-}
-
-/* Field Validation Errors */
-.form-field.has-error input,
-.form-field.has-error select,
-.form-field.has-error textarea,
-.modal-form input.field-error,
-.modal-form select.field-error,
-.modal-form textarea.field-error {
-    border-color: #dc2626 !important;
-}
-
-.field-error-message {
-    color: #dc2626;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-    display: block;
-}
-
-/* Form Loading State */
-.modal-form button[type="submit"]:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.modal-form button[type="submit"] .fa-spinner {
-    margin-right: 0.5rem;
 }
 
 /* Mobile Sticky Bar */
@@ -1962,119 +1814,26 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* ========================================
-   ABOUT PAGE STYLES
-   ======================================== */
+/* ==========================================================================
+   Resources Page Styles
+   ========================================================================== */
 
-/* About Section - Simple Layout */
-.about-section h2 {
-    color: #1a365d;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #dc2626;
-    padding-bottom: 0.5rem;
+.resources-section {
+    padding: 2rem 0;
+    background: white;
 }
 
-.about-section h3 {
-    color: #1a365d;
-    font-size: 1.5rem;
-    margin: 2rem 0 1rem 0;
-}
-
-.about-section h4 {
-    color: #1a365d;
-    font-size: 1.2rem;
-    margin: 1.5rem 0 0.75rem 0;
-}
-
-.about-section p {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-    color: #374151;
-}
-
-.about-section ul {
-    margin: 1rem 0 1rem 2rem;
-}
-
-.about-section li {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-}
-
-.about-section a {
-    color: #dc2626;
-    text-decoration: underline;
-}
-
-.about-section a:hover {
-    color: #b91c1c;
-}
-
-/* Attorney profiles in about section */
-.about-section .attorney {
-    margin: 2rem 0;
+.resources-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 2rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    background-color: #f9fafb;
-}
-
-/* About Page Container */
-.about-page {
     background: white;
-    padding: 0;
-}
-
-/* About Page Hero with Breadcrumb */
-.about-page-header {
-    background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
-    color: white;
-    padding: 4rem 0 2rem;
-    margin-bottom: 3rem;
-}
-
-.about-page-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: white;
-}
-
-.about-page-header .breadcrumb {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-.about-page-header .breadcrumb a {
-    color: #fbbf24;
-    text-decoration: none;
-}
-
-.about-page-header .breadcrumb a:hover {
-    text-decoration: underline;
-}
-
-/* Two-Column Layout */
-.about-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
-}
-
-.about-main-content {
-    background: white;
-    padding: 2.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-/* Firm Overview Section */
-.firm-overview {
-    margin-bottom: 3rem;
-}
-
-.firm-overview h2 {
+.resources-section h2 {
+    font-family: var(--font-heading);
     color: var(--color-navy);
     font-size: 2rem;
     margin-bottom: 1.5rem;
@@ -2082,808 +1841,114 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 0.5rem;
 }
 
-.lead-paragraph {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #374151;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-}
-
-.firm-overview p {
-    line-height: 1.7;
-    color: #374151;
-    margin-bottom: 1rem;
-}
-
-/* Mission Values Grid */
-.mission-values {
-    margin: 3rem 0;
-    padding: 2.5rem;
-    background: #f8fafc;
-    border-radius: 12px;
-}
-
-.mission-values h3 {
+.resources-section h3 {
+    font-family: var(--font-heading);
     color: var(--color-navy);
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-}
-
-.value-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease;
-}
-
-.value-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border-color: var(--color-gold);
-}
-
-.value-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.5rem;
-    transition: all 0.3s ease;
-}
-
-.value-card:hover .value-icon {
-    transform: scale(1.1);
-}
-
-.value-icon i {
-    font-size: 2rem;
-    color: var(--color-gold);
-}
-
-.value-card h4 {
-    font-size: 1.3rem;
-    color: var(--color-navy);
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.value-card p {
-    color: #64748b;
-    line-height: 1.6;
-    text-align: center;
-    margin: 0;
-}
-
-/* Attorney Cards Section */
-.about-attorneys-section {
-    margin: 3rem 0;
-}
-
-.about-attorneys-section h3 {
-    color: var(--color-navy);
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.about-attorneys-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-}
-
-.about-attorney-card {
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-}
-
-.about-attorney-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-}
-
-.about-attorney-photo {
-    height: 300px;
-    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.about-attorney-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.about-attorney-photo i {
-    font-size: 4rem;
-    color: #94a3b8;
-}
-
-.about-attorney-info {
-    padding: 1.5rem;
-}
-
-.about-attorney-name {
-    font-size: 1.3rem;
-    color: var(--color-navy);
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-}
-
-.about-attorney-title {
-    color: var(--color-red);
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.about-attorney-bio {
-    color: #64748b;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.about-attorney-credentials {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0 0;
-}
-
-.about-attorney-credentials li {
-    color: #374151;
-    font-size: 0.9rem;
-    padding: 0.5rem 0;
-    border-top: 1px solid #e2e8f0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.about-attorney-credentials li:first-child {
-    border-top: none;
-}
-
-.about-attorney-credentials i {
-    color: var(--color-gold);
-    font-size: 0.75rem;
-}
-
-/* Practice Areas Sidebar */
-.about-practice-sidebar {
-    background: var(--color-navy);
-    color: white;
-    padding: 2.5rem;
-    border-radius: 12px;
-    position: sticky;
-    top: 120px;
-    height: fit-content;
-}
-
-.about-practice-sidebar h3 {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--color-gold);
-    text-align: center;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-.practice-areas-list {
+.resources-section .intro-text {
+    color: var(--color-text);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.resources-section ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding-left: 0;
+    margin: 1rem 0 2rem 0;
 }
 
-.practice-areas-list li {
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+.resources-section li {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    position: relative;
 }
 
-.practice-areas-list li:last-child {
-    border-bottom: none;
+.resources-section li::before {
+    content: "\f0da";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--color-red);
+    position: absolute;
+    left: 0;
+    top: 0.1em;
 }
 
-.practice-areas-list i {
-    color: var(--color-gold);
-    font-size: 0.9rem;
-}
-
-.practice-areas-list a {
-    color: rgba(255, 255, 255, 0.9);
+.resources-section li a {
+    color: var(--color-red);
+    font-weight: 600;
     text-decoration: none;
     transition: color 0.3s ease;
-    flex: 1;
+    border-bottom: 1px solid transparent;
 }
 
-.practice-areas-list a:hover {
-    color: white;
-    padding-left: 5px;
+.resources-section li a:hover {
+    color: var(--color-red-dark);
+    border-bottom-color: var(--color-red-dark);
 }
 
-/* Sidebar CTA Section */
-.sidebar-cta {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
+.resources-section li a i {
+    margin-left: 0.25rem;
+    font-size: 0.85em;
+    transition: transform 0.3s ease;
 }
 
-.sidebar-cta h4 {
-    font-size: 1.2rem;
-    color: var(--color-gold);
-    margin-bottom: 1rem;
+.resources-section li a:hover i {
+    transform: translateX(3px);
 }
 
-.sidebar-cta p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-    margin-bottom: 1.5rem;
+.resources-section strong {
+    color: var(--color-navy);
+    font-weight: 600;
 }
 
-.sidebar-cta .btn {
-    width: 100%;
-}
-
-/* Responsive Breakpoints */
-@media (max-width: 1024px) {
-    .about-layout {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .about-practice-sidebar {
-        position: static;
-    }
-
-    .about-attorneys-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
+/* Responsive adjustments for Resources page */
 @media (max-width: 768px) {
-    .about-page-header {
-        padding: 3rem 0 1.5rem;
+    .resources-section {
+        padding: 1.5rem 0;
     }
 
-    .about-page-header h1 {
-        font-size: 2rem;
-    }
-
-    .about-main-content {
+    .resources-section .container {
         padding: 1.5rem;
     }
 
-    .values-grid {
-        grid-template-columns: 1fr;
+    .resources-section h2 {
+        font-size: 1.75rem;
     }
 
-    .about-attorneys-grid {
-        grid-template-columns: 1fr;
+    .resources-section h3 {
+        font-size: 1.3rem;
+        margin-top: 2rem;
     }
 
-    .mission-values {
-        padding: 1.5rem;
-    }
-
-    .about-practice-sidebar {
-        padding: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-main-content {
-        padding: 1.25rem;
-    }
-
-    .firm-overview h2 {
-        font-size: 1.5rem;
-    }
-
-    .lead-paragraph {
+    .resources-section .intro-text {
         font-size: 1rem;
     }
 
-    .mission-values h3,
-    .about-attorneys-section h3 {
-        font-size: 1.5rem;
-    }
-
-    .value-card {
-        padding: 1.5rem;
-    }
-
-    .value-icon {
-        width: 60px;
-        height: 60px;
-    }
-
-    .value-icon i {
-        font-size: 1.5rem;
-    }
-}
-
-/* ========================================
-   PAGE-ABOUT.PHP SPECIFIC STYLES
-   (Extracted from inline styles)
-   ======================================== */
-
-/* About Page Specific Styles */
-.about-page-content {
-    padding: 3rem 0;
-    background: #f8fafc;
-}
-
-.about-main-content {
-    background: white;
-    padding: 3rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-/* Firm Overview */
-.firm-overview {
-    margin-bottom: 3rem;
-}
-
-.firm-overview h2 {
-    color: #1a365d;
-    font-size: 2.25rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 3px solid #dc2626;
-    padding-bottom: 0.75rem;
-}
-
-.firm-overview .lead-text {
-    font-size: 1.15rem;
-    color: #1a365d;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-}
-
-.firm-overview p {
-    color: #374151;
-    line-height: 1.8;
-    margin-bottom: 1rem;
-}
-
-/* Mission Statement */
-.mission-statement {
-    margin-bottom: 3rem;
-}
-
-.mission-statement h2 {
-    color: #1a365d;
-    font-size: 2.25rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 3px solid #dc2626;
-    padding-bottom: 0.75rem;
-}
-
-.mission-statement > p {
-    color: #374151;
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-/* Core Values */
-.core-values {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.value-item {
-    display: flex;
-    gap: 1.5rem;
-    padding: 1.5rem;
-    background: #f8fafc;
-    border-radius: 8px;
-    border-left: 4px solid #2563eb;
-    transition: all 0.3s ease;
-}
-
-.value-item:hover {
-    background: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transform: translateX(5px);
-}
-
-.value-item .value-icon {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.value-item .value-icon i {
-    font-size: 1.5rem;
-    color: white;
-}
-
-.value-content h3 {
-    color: #1a365d;
-    font-size: 1.35rem;
-    margin-bottom: 0.75rem;
-}
-
-.value-content p {
-    color: #374151;
-    line-height: 1.7;
-    margin: 0;
-}
-
-/* Meet Attorneys Section */
-.meet-attorneys {
-    margin-bottom: 3rem;
-}
-
-.meet-attorneys h2 {
-    color: #1a365d;
-    font-size: 2.25rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 3px solid #dc2626;
-    padding-bottom: 0.75rem;
-}
-
-.meet-attorneys > p {
-    color: #374151;
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
-    line-height: 1.8;
-}
-
-.attorney-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.about-page-content .attorney-card {
-    background: #f8fafc;
-    border-radius: 8px;
-    padding: 2rem;
-    border: 2px solid #e2e8f0;
-    transition: all 0.3s ease;
-}
-
-.about-page-content .attorney-card:hover {
-    background: white;
-    border-color: #2563eb;
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
-}
-
-.about-page-content .attorney-info h3 {
-    color: #1a365d;
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.about-page-content .attorney-credentials {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 6px;
-}
-
-.about-page-content .attorney-credentials p {
-    margin: 0;
-    color: #374151;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.95rem;
-}
-
-.about-page-content .attorney-credentials i {
-    color: #dc2626;
-    width: 20px;
-    text-align: center;
-}
-
-.about-page-content .attorney-credentials strong {
-    color: #1a365d;
-    min-width: 120px;
-}
-
-.attorney-bio {
-    color: #374151;
-    line-height: 1.7;
-    margin: 0;
-}
-
-/* About CTA Section */
-.about-cta {
-    background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
-    padding: 3rem;
-    border-radius: 8px;
-    text-align: center;
-    color: white;
-}
-
-.about-cta h2 {
-    color: white;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    border: none;
-    padding: 0;
-}
-
-.about-cta p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-    opacity: 0.95;
-}
-
-.about-page-content .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Sidebar Styles */
-.about-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-.sidebar-widget {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-}
-
-.sidebar-widget h3 {
-    color: #1a365d;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid #dc2626;
-}
-
-/* Practice Areas List in Sidebar */
-.sidebar-widget .practice-areas-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.sidebar-widget .practice-areas-list li {
-    margin-bottom: 0.75rem;
-}
-
-.sidebar-widget .practice-areas-list a {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
-    color: #374151;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-}
-
-.sidebar-widget .practice-areas-list a:hover {
-    background: #f8fafc;
-    color: #dc2626;
-    transform: translateX(5px);
-}
-
-.sidebar-widget .practice-areas-list i {
-    color: #dc2626;
-    font-size: 0.75rem;
-}
-
-/* Contact Widget */
-.contact-widget .contact-info {
-    margin-bottom: 1.5rem;
-}
-
-.contact-widget p {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    color: #374151;
-}
-
-.contact-widget i {
-    color: #dc2626;
-    width: 20px;
-    text-align: center;
-}
-
-.contact-widget a {
-    color: #1a365d;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.contact-widget a:hover {
-    color: #dc2626;
-}
-
-.btn-block {
-    width: 100%;
-}
-
-/* Emergency Widget */
-.emergency-widget {
-    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-    color: white;
-    text-align: center;
-}
-
-.emergency-widget h3 {
-    color: white;
-    border: none;
-}
-
-.emergency-content i {
-    font-size: 2.5rem;
-    color: #fbbf24;
-    margin-bottom: 1rem;
-    animation: pulse-emergency 2s infinite;
-}
-
-@keyframes pulse-emergency {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.6;
-    }
-}
-
-.emergency-content h4 {
-    color: white;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.emergency-content p {
-    margin-bottom: 1rem;
-    opacity: 0.95;
-}
-
-.emergency-phone {
-    display: block;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #fbbf24;
-    text-decoration: none;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.emergency-phone:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-}
-
-/* Responsive Design for page-about.php */
-@media (max-width: 1024px) {
-    .about-page-content .content-columns {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    .about-page-content .about-main-content {
-        padding: 2rem;
-    }
-
-    .about-page-content .about-sidebar {
-        order: 2;
-    }
-}
-
-@media (max-width: 768px) {
-    .about-page-content .about-main-content {
-        padding: 1.5rem;
-    }
-
-    .firm-overview h2,
-    .mission-statement h2,
-    .meet-attorneys h2 {
-        font-size: 1.75rem;
-    }
-
-    .value-item {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .value-item .value-icon {
-        margin: 0 auto;
-    }
-
-    .about-page-content .attorney-credentials {
-        flex-direction: column;
-    }
-
-    .about-page-content .attorney-credentials strong {
-        min-width: auto;
-    }
-
-    .about-page-content .cta-buttons {
-        flex-direction: column;
-    }
-
-    .sidebar-widget {
-        padding: 1.5rem;
-    }
-
-    .about-cta {
-        padding: 2rem 1.5rem;
+    .resources-section li {
+        margin-bottom: 1.25rem;
+        padding-left: 1.25rem;
     }
 }
 
 @media (max-width: 480px) {
-    .about-page-content .page-header {
-        padding: 3rem 0 1.5rem;
+    .resources-section .container {
+        padding: 1rem;
     }
 
-    .about-page-content .page-header-content h1 {
-        font-size: 1.75rem;
-    }
-
-    .about-page-content {
-        padding: 2rem 0;
-    }
-
-    .firm-overview h2,
-    .mission-statement h2,
-    .meet-attorneys h2 {
+    .resources-section h2 {
         font-size: 1.5rem;
     }
 
-    .about-cta h2 {
-        font-size: 1.5rem;
-    }
-
-    .emergency-phone {
-        font-size: 1.5rem;
+    .resources-section h3 {
+        font-size: 1.2rem;
     }
 }
