@@ -90,6 +90,7 @@ $is_homepage = is_front_page();
                 'menu_class'     => 'nav-menu',
                 'container'      => false,
                 'fallback_cb'    => 'mydefenselaw_fallback_menu',
+                'walker'         => new MyDefenseLaw_Nav_Walker(),
             ));
             ?>
         </div>
