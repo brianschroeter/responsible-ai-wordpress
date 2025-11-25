@@ -1340,15 +1340,21 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
 }
 
+.modal-form .form-field {
+    width: 100%;
+}
+
 .modal-form input,
 .modal-form select,
 .modal-form textarea {
+    width: 100%;
     padding: 1rem;
     border: 2px solid #e2e8f0;
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
     font-family: inherit;
+    box-sizing: border-box;
 }
 
 .modal-form input:focus,
