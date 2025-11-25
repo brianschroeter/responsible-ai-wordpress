@@ -154,14 +154,14 @@ function mydefenselaw_acf_options_page() {
 add_action('acf/init', 'mydefenselaw_acf_options_page');
 
 /**
- * Disable Gutenberg for Front Page
+ * Disable Gutenberg for Pages with Custom Templates
  *
  * ACF's hide_on_screen only works with the Classic Editor.
- * Since the homepage is entirely managed via ACF fields, we disable
- * Gutenberg for the front page to enable hide_on_screen functionality.
+ * Since all custom page templates are managed via ACF fields, we disable
+ * Gutenberg for any page using a custom template.
  */
-function mydefenselaw_disable_gutenberg_for_front_page($use_block_editor, $post) {
-    if (!$post) {
+function mydefenselaw_disable_gutenberg_for_custom_templates($use_block_editor, $post) {
+    if (!$post || $post->post_type !== 'page') {
         return $use_block_editor;
     }
 
@@ -170,19 +170,18 @@ function mydefenselaw_disable_gutenberg_for_front_page($use_block_editor, $post)
         return false;
     }
 
-    // Also disable for pages using the front-page.php template
-    if (get_page_template_slug($post->ID) === 'front-page.php') {
-        return false;
-    }
+    // Get the page template slug
+    $template = get_page_template_slug($post->ID);
 
-    // Disable Gutenberg for About The Firm page (content managed via ACF)
-    if (get_page_template_slug($post->ID) === 'page-about.php') {
+    // Disable Gutenberg for any page with a custom template assigned
+    // Custom templates have a non-empty slug (default template has empty slug)
+    if (!empty($template)) {
         return false;
     }
 
     return $use_block_editor;
 }
-add_filter('use_block_editor_for_post', 'mydefenselaw_disable_gutenberg_for_front_page', 100, 2);
+add_filter('use_block_editor_for_post', 'mydefenselaw_disable_gutenberg_for_custom_templates', 100, 2);
 
 /**
  * Remove editor support from front page post type
