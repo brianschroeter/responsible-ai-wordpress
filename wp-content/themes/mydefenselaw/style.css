@@ -1,0 +1,15 @@
+/*
+Theme Name: My Defense Law
+Theme URI: https://mydefenselaw.com
+Author: Defense Lawyers, P.A.
+Description: Custom theme for My Defense Law - pixel-perfect recreation
+Version: 1.0.0
+Text Domain: mydefenselaw
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* Main stylesheet - styles are enqueued via functions.php */

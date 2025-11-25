@@ -1,14 +1,27 @@
-<!-- Top Bar -->
+<?php
+/**
+ * Top Bar Template Part
+ *
+ * @package MyDefenseLaw
+ * @since 1.0.0
+ */
+?>
+
 <div class="top-bar">
     <div class="container">
-        <div class="top-bar-content">
-            <div class="contact-quick">
-                <span><i class="fas fa-phone"></i> <?php echo get_theme_mod('contact_phone', '888.444.0253'); ?></span>
-                <span><i class="fas fa-map-marker-alt"></i> Boca Raton, FL</span>
-                <span><i class="fas fa-clock"></i> Available 24/7</span>
+        <div class="top-bar-inner">
+            <div class="top-bar-left">
+                <span class="top-bar-item">
+                    <i class="fas fa-phone"></i>
+                    <?php mydefenselaw_phone(); ?>
+                </span>
+                <span class="top-bar-item">
+                    <i class="fas fa-envelope"></i>
+                    <?php mydefenselaw_email(); ?>
+                </span>
             </div>
-            <div class="emergency-notice">
-                <strong>Emergency? Call Now for Immediate Help</strong>
+            <div class="top-bar-right">
+                <?php mydefenselaw_social_links(); ?>
             </div>
         </div>
     </div>

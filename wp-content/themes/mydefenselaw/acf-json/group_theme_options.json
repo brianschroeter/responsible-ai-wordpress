@@ -1,0 +1,400 @@
+{
+    "key": "group_theme_options",
+    "title": "Theme Options - Contact & Business Info",
+    "fields": [
+        {
+            "key": "field_contact_tab",
+            "label": "Contact Information",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_phone_primary",
+            "label": "Primary Phone Number",
+            "name": "phone_primary",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main phone number displayed site-wide (e.g., 888.444.0253)",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "888.444.0253",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_phone_secondary",
+            "label": "Secondary Phone",
+            "name": "phone_secondary",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional secondary phone number",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_email_primary",
+            "label": "Primary Email",
+            "name": "email_primary",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Main contact email address",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_address_tab",
+            "label": "Address",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_address_street",
+            "label": "Street Address",
+            "name": "address_street",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Street address",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_address_city",
+            "label": "City",
+            "name": "address_city",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "City",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Boca Raton",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_address_state",
+            "label": "State",
+            "name": "address_state",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "State abbreviation",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "FL",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_address_zip",
+            "label": "ZIP Code",
+            "name": "address_zip",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "ZIP code",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hours_tab",
+            "label": "Business Hours",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hours_display",
+            "label": "Hours Display Text",
+            "name": "hours_display",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text to display for business hours (e.g., 'Available 24\/7')",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Available 24\/7",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_social_tab",
+            "label": "Social Media",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_social_facebook",
+            "label": "Facebook URL",
+            "name": "social_facebook",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Full Facebook page URL",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_social_twitter",
+            "label": "Twitter\/X URL",
+            "name": "social_twitter",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Full Twitter\/X profile URL",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_social_linkedin",
+            "label": "LinkedIn URL",
+            "name": "social_linkedin",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Full LinkedIn page URL",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_social_youtube",
+            "label": "YouTube URL",
+            "name": "social_youtube",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Full YouTube channel URL",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_social_instagram",
+            "label": "Instagram URL",
+            "name": "social_instagram",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Full Instagram profile URL",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_footer_tab",
+            "label": "Footer",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_footer_tagline",
+            "label": "Footer Tagline",
+            "name": "footer_tagline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Tagline displayed under logo in footer",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Protecting your rights and fighting for your future for over 25 years.",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_footer_disclaimer",
+            "label": "Footer Disclaimer",
+            "name": "footer_disclaimer",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Legal disclaimer text in footer",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "default_value": "DISCLOSURES: If you have already retained a lawyer, please disregard this communication. The hiring of a lawyer is an important decision that should not be based solely upon advertisements. Before you choose a law firm, take the time to research them with their state's Bar Association. You should also ask for written information about their experience and qualifications. Past results are not indicative of future performance. The images throughout this website are not the attorneys that work for Defense Lawyers, P.A. Rather, they are hired models.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "theme-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "modified": 1764078871
+}

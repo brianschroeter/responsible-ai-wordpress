@@ -611,6 +611,41 @@
         let autoplayInterval;
         let isTransitioning = false;  // NEW - prevent rapid clicks
 
+        /**
+         * Update container height to match tallest slide
+         * FIX: Prevents content overflow when all slides are absolutely positioned
+         */
+        function updateSliderHeight() {
+            let maxHeight = 0;
+
+            // Temporarily make all slides visible to measure them
+            slides.forEach(slide => {
+                slide.style.position = 'relative';
+                slide.style.opacity = '1';
+            });
+
+            // Find the tallest slide
+            slides.forEach(slide => {
+                const height = slide.offsetHeight;
+                if (height > maxHeight) {
+                    maxHeight = height;
+                }
+            });
+
+            // Reset slides to absolute positioning
+            slides.forEach(slide => {
+                slide.style.position = 'absolute';
+                slide.style.opacity = '0';
+            });
+
+            // Restore active slide opacity
+            slides[currentSlide].style.opacity = '1';
+
+            // Set container height with padding accounted for
+            // Container has 2rem (32px) padding, so add to height
+            slider.style.height = (maxHeight + 64) + 'px';
+        }
+
         // Show specific slide
         function showSlide(index) {
             if (isTransitioning) return; // Guard against rapid clicks
@@ -707,6 +742,16 @@
 
         // Make slider focusable for keyboard navigation
         slider.setAttribute('tabindex', '0');
+
+        // Initialize slider height
+        updateSliderHeight();
+
+        // Update height on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(updateSliderHeight, 250);
+        });
 
         // Start autoplay
         startAutoplay();

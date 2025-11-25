@@ -1,0 +1,215 @@
+{
+    "key": "group_homepage_practice_areas",
+    "title": "Homepage - Practice Areas Section",
+    "fields": [
+        {
+            "key": "field_pa_section_title",
+            "label": "Section Title",
+            "name": "practice_areas_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading for the practice areas section",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Our Practice Areas",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_pa_section_subtitle",
+            "label": "Section Subtitle",
+            "name": "practice_areas_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting text below the section heading",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "default_value": "Comprehensive legal services tailored to protect your rights and interests.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_practice_areas",
+            "label": "Practice Areas",
+            "name": "practice_areas",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add practice areas to display on the homepage",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 12,
+            "layout": "block",
+            "button_label": "Add Practice Area",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_pa_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Name of the practice area",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_practice_areas"
+                },
+                {
+                    "key": "field_pa_icon",
+                    "label": "Icon Class",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Font Awesome icon class (e.g., 'fas fa-balance-scale')",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "fas fa-gavel",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_practice_areas"
+                },
+                {
+                    "key": "field_pa_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Brief description of this practice area",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 3,
+                    "default_value": "",
+                    "new_lines": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_practice_areas"
+                },
+                {
+                    "key": "field_pa_link",
+                    "label": "Link URL",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Link to the practice area detail page (relative path like '\/consumer-protection\/' or full URL)",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "\/practice-area-slug\/",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_practice_areas"
+                },
+                {
+                    "key": "field_pa_link_text",
+                    "label": "Link Text",
+                    "name": "link_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Text for the link button",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Learn More",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_practice_areas"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "front-page.php"
+            }
+        ],
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": true,
+    "display_title": "",
+    "modified": 1764084360
+}

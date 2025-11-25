@@ -36,6 +36,9 @@ RUN echo "account default" > /etc/msmtprc \
 # Set sendmail path to use msmtp
 RUN echo "sendmail_path = /usr/bin/msmtp -t" > /usr/local/etc/php/conf.d/sendmail.ini
 
+# Copy PHP configuration
+COPY php.ini /usr/local/etc/php/conf.d/custom.ini
+
 # Set proper permissions
 RUN chown -R www-data:www-data /var/www/html
 

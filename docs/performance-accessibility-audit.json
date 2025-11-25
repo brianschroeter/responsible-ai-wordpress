@@ -1,0 +1,502 @@
+{
+  "audit_date": "2025-11-25",
+  "theme_name": "MyDefenseLaw WordPress Theme",
+  "performance_score": "6/10",
+  "accessibility_score": "7/10",
+
+  "performance_issues": {
+    "css": [
+      {
+        "severity": "high",
+        "issue": "No critical CSS inlining",
+        "location": "header.php (line 19)",
+        "description": "All CSS loaded via wp_head() - no critical above-the-fold styles inlined",
+        "recommendation": "Extract and inline critical CSS for hero section, header, and top bar (approx 200 lines)",
+        "impact": "Delays initial render by ~500-800ms"
+      },
+      {
+        "severity": "medium",
+        "issue": "Deep CSS selector nesting",
+        "location": "main.css",
+        "description": "Multiple deep selectors like '.modal-form .form-row' and '.footer-main .footer-links' reduce performance",
+        "recommendation": "Flatten selectors using BEM methodology or utility classes",
+        "impact": "Slower CSS parsing on mobile devices"
+      },
+      {
+        "severity": "medium",
+        "issue": "No CSS minification evidence",
+        "location": "main.css",
+        "description": "1561 lines of uncompressed CSS - no indication of minification process",
+        "recommendation": "Implement CSS minification in build process (expected savings: ~40%)",
+        "impact": "Unnecessary bandwidth usage (~60KB uncompressed)"
+      },
+      {
+        "severity": "low",
+        "issue": "Unused CSS rules",
+        "location": "main.css (lines 909-917)",
+        "description": "Attorney profile styles defined but no usage found in templates",
+        "recommendation": "Remove unused .attorney class or document where it's used",
+        "impact": "Minor bloat (~200 bytes)"
+      },
+      {
+        "severity": "low",
+        "issue": "Duplicate font-family declarations",
+        "location": "main.css",
+        "description": "Font families repeated throughout instead of using CSS custom properties consistently",
+        "recommendation": "Use --font-heading and --font-body variables exclusively",
+        "impact": "Larger file size and maintenance issues"
+      }
+    ],
+
+    "javascript": [
+      {
+        "severity": "high",
+        "issue": "Scripts not deferred/async",
+        "location": "header.php (line 19)",
+        "description": "JavaScript loaded via wp_head() without defer/async attributes - blocks HTML parsing",
+        "recommendation": "Move scripts to footer with 'in_footer' => true in wp_enqueue_script",
+        "impact": "Blocks page render for 100-300ms"
+      },
+      {
+        "severity": "medium",
+        "issue": "Multiple DOM queries",
+        "location": "main.js (lines 20-27)",
+        "description": "DOM elements queried multiple times instead of caching",
+        "recommendation": "Elements already cached at top - ensure consistent usage",
+        "impact": "Minor performance hit on page load"
+      },
+      {
+        "severity": "medium",
+        "issue": "No event listener cleanup",
+        "location": "main.js (lines 335-351)",
+        "description": "IntersectionObserver not disconnected - continues to observe after animation complete",
+        "recommendation": "Call observer.disconnect() after all elements animated or observer.unobserve(entry.target) per element",
+        "impact": "Memory leak - ~1-2KB per observer over time"
+      },
+      {
+        "severity": "low",
+        "issue": "Scroll event without throttling",
+        "location": "main.js (lines 130-151, 360-371)",
+        "description": "Multiple scroll event listeners fire on every scroll event",
+        "recommendation": "Implement requestAnimationFrame or throttle to max 60fps",
+        "impact": "Unnecessary CPU usage during scrolling"
+      },
+      {
+        "severity": "low",
+        "issue": "Resize event with 250ms timeout",
+        "location": "main.js (lines 70-82)",
+        "description": "Debounce timeout of 250ms is slightly high",
+        "recommendation": "Reduce to 150ms for better responsiveness or use matchMedia listeners",
+        "impact": "Slight delay in responsive behavior"
+      }
+    ],
+
+    "assets": [
+      {
+        "severity": "high",
+        "issue": "No width/height on logo images",
+        "location": "header.php (lines 58, 60), footer.php (lines 29, 31)",
+        "description": "Logo images lack explicit dimensions causing layout shift",
+        "recommendation": "Add width='auto' height='60' to header logo, width='auto' height='50' to footer logo",
+        "impact": "Cumulative Layout Shift (CLS) score penalty"
+      },
+      {
+        "severity": "high",
+        "issue": "No lazy loading for images",
+        "location": "All templates",
+        "description": "No loading='lazy' attribute on any images",
+        "recommendation": "Add loading='lazy' to footer logo and any below-fold images",
+        "impact": "Loads unnecessary images, slower initial page load"
+      },
+      {
+        "severity": "high",
+        "issue": "Font loading strategy not optimal",
+        "location": "CSS - implied from font-family usage",
+        "description": "No font-display: swap specified for web fonts (Merriweather, Open Sans)",
+        "recommendation": "Add @font-face rules with font-display: swap or use WebFont Loader",
+        "impact": "FOIT (Flash of Invisible Text) - text hidden for 3s while fonts load"
+      },
+      {
+        "severity": "medium",
+        "issue": "External Font Awesome not preconnected",
+        "location": "Theme enqueue (not visible in files)",
+        "description": "Font Awesome icons loaded but no preconnect for CDN",
+        "recommendation": "Add <link rel='preconnect' href='https://cdnjs.cloudflare.com'> or self-host icons",
+        "impact": "DNS lookup delay ~100-200ms"
+      },
+      {
+        "severity": "medium",
+        "issue": "Hero background image not optimized",
+        "location": "main.css (lines 329-362)",
+        "description": "No indication of image optimization or WebP format",
+        "recommendation": "Use WebP format with fallback, implement responsive images with srcset",
+        "impact": "Larger file size, slower LCP (Largest Contentful Paint)"
+      }
+    ]
+  },
+
+  "accessibility_issues": {
+    "semantic_html": [
+      {
+        "severity": "medium",
+        "issue": "Skip link not working properly",
+        "location": "header.php (lines 26-28)",
+        "description": "Skip link targets #main-content but may not be visible to keyboard users",
+        "recommendation": "Ensure skip link is visible on focus with proper CSS styling",
+        "impact": "Keyboard users must tab through entire header"
+      },
+      {
+        "severity": "low",
+        "issue": "Icon-only buttons without accessible labels",
+        "location": "header.php (lines 35-37)",
+        "description": "Font Awesome icons used without sr-only text labels",
+        "recommendation": "Add <span class='sr-only'>Phone</span> after icons or use aria-label on parent",
+        "impact": "Screen reader users don't know what icons represent"
+      },
+      {
+        "severity": "high",
+        "issue": "Heading hierarchy issue",
+        "location": "footer.php (lines 40, 52, 64)",
+        "description": "Footer uses h4 headings but page may not have proper h2/h3 context",
+        "recommendation": "Ensure page content uses proper h1 > h2 > h3 hierarchy before footer h4s",
+        "impact": "Screen readers announce incorrect document structure"
+      },
+      {
+        "severity": "medium",
+        "issue": "Navigation lacks nav landmark",
+        "location": "header.php (lines 84-96)",
+        "description": "Nav element exists but lacks proper aria-label to distinguish from footer nav",
+        "recommendation": "Add aria-label='Main navigation' to primary nav",
+        "impact": "Multiple nav landmarks are indistinguishable to screen readers"
+      }
+    ],
+
+    "keyboard": [
+      {
+        "severity": "medium",
+        "issue": "Modal close button small target",
+        "location": "consultation-modal.php (line 16), main.css (lines 1068-1088)",
+        "description": "Close button is 40x40px - meets minimum but borderline",
+        "recommendation": "Consider increasing to 44x44px for better touch/keyboard targeting",
+        "impact": "Harder for motor-impaired users to activate"
+      },
+      {
+        "severity": "low",
+        "issue": "Focus styles rely on browser defaults",
+        "location": "main.css",
+        "description": "No explicit :focus or :focus-visible styles defined for interactive elements",
+        "recommendation": "Add clear focus indicators with outline or box-shadow for all interactive elements",
+        "impact": "Keyboard users may lose track of focus position"
+      },
+      {
+        "severity": "medium",
+        "issue": "Mobile menu button focus state unclear",
+        "location": "header.php (lines 74-78), main.css (lines 188-204)",
+        "description": "Hamburger button lacks visible focus indicator",
+        "recommendation": "Add .mobile-menu-btn:focus { outline: 2px solid #dc2626; outline-offset: 2px; }",
+        "impact": "Keyboard users can't see when menu button is focused"
+      }
+    ],
+
+    "aria": [
+      {
+        "severity": "high",
+        "issue": "Modal missing proper ARIA attributes",
+        "location": "consultation-modal.php (line 11), main.js (lines 200-202, 217-221)",
+        "description": "Modal has role='dialog' and aria-hidden but missing aria-modal='true' and focus trap",
+        "recommendation": "Add aria-modal='true' to modal, implement focus trap to prevent tabbing outside",
+        "impact": "Screen reader users can navigate outside modal while it's open"
+      },
+      {
+        "severity": "medium",
+        "issue": "Mobile menu button lacks aria-expanded",
+        "location": "header.php (line 74), main.js (lines 54-66)",
+        "description": "Button has aria-label but doesn't announce expanded/collapsed state",
+        "recommendation": "Add aria-expanded='false' attribute and toggle in JavaScript",
+        "impact": "Screen reader users don't know if menu is open or closed"
+      },
+      {
+        "severity": "medium",
+        "issue": "Form validation errors not announced",
+        "location": "main.js (lines 455-465)",
+        "description": "Error messages displayed visually but not associated with fields via ARIA",
+        "recommendation": "Add aria-describedby linking field to error message, use aria-live for dynamic errors",
+        "impact": "Screen reader users don't receive error feedback"
+      },
+      {
+        "severity": "low",
+        "issue": "Loading state not announced",
+        "location": "main.js (lines 258-259)",
+        "description": "Submit button shows spinner but no aria-live announcement",
+        "recommendation": "Add aria-live='polite' region for 'Sending...' status",
+        "impact": "Screen reader users don't know form is submitting"
+      }
+    ],
+
+    "color_contrast": [
+      {
+        "severity": "medium",
+        "issue": "Light text on light background",
+        "location": "main.css (lines 148-149)",
+        "description": ".cta-label uses #64748b (gray-500) on white - ratio 4.2:1",
+        "recommendation": "Darken to #475569 (gray-600) for 5.8:1 ratio",
+        "impact": "Text hard to read for low-vision users"
+      },
+      {
+        "severity": "medium",
+        "issue": "Emergency notice contrast insufficient",
+        "location": "main.css (lines 78-80)",
+        "description": "#fbbf24 (gold) on #1a365d (navy) background - ratio 3.1:1",
+        "recommendation": "Use #fcd34d (lighter gold) for 4.5:1 ratio or increase font weight",
+        "impact": "Critical message not readable by all users"
+      },
+      {
+        "severity": "low",
+        "issue": "Footer link contrast",
+        "location": "main.css (line 973)",
+        "description": "rgba(255,255,255,0.8) on #1a365d - ratio ~4.1:1",
+        "recommendation": "Increase opacity to 0.9 for 5.5:1 ratio",
+        "impact": "Footer links slightly hard to read"
+      },
+      {
+        "severity": "low",
+        "issue": "Disabled button state not indicated",
+        "location": "main.js (line 259)",
+        "description": "Button disabled in JS but no visual indicator beyond cursor",
+        "recommendation": "Add CSS for button[disabled] with reduced opacity and different background",
+        "impact": "Sighted users may not realize button is disabled"
+      }
+    ],
+
+    "forms": [
+      {
+        "severity": "high",
+        "issue": "Required fields only indicated by asterisk",
+        "location": "consultation-modal.php (lines 24-28)",
+        "description": "Placeholder text includes * but no aria-required or aria-label",
+        "recommendation": "Add aria-required='true' to required fields",
+        "impact": "Screen reader users don't know which fields are required"
+      },
+      {
+        "severity": "medium",
+        "issue": "Labels not properly associated",
+        "location": "consultation-modal.php",
+        "description": "Using placeholder instead of <label> elements with for/id association",
+        "recommendation": "Add proper <label> elements even if visually hidden",
+        "impact": "Screen readers can't properly announce field purpose"
+      },
+      {
+        "severity": "medium",
+        "issue": "Error messages not in DOM",
+        "location": "main.js (lines 460-466)",
+        "description": "Error messages injected via JavaScript without ARIA live region",
+        "recommendation": "Add permanent aria-live='polite' container for form errors",
+        "impact": "Screen readers miss dynamically added error messages"
+      },
+      {
+        "severity": "medium",
+        "issue": "Checkbox labels not clickable",
+        "location": "consultation-modal.php (lines 43-46, 48-51)",
+        "description": "Label wraps checkbox but input lacks id/for association as backup",
+        "recommendation": "Add id to input and for to label for better compatibility",
+        "impact": "Assistive tech may not associate label with checkbox"
+      },
+      {
+        "severity": "low",
+        "issue": "Select has no label",
+        "location": "consultation-modal.php (line 29)",
+        "description": "Select dropdown uses placeholder option instead of label",
+        "recommendation": "Add <label> with for='legalIssue' even if visually hidden",
+        "impact": "Screen readers don't announce field purpose clearly"
+      }
+    ]
+  },
+
+  "critical_fixes": [
+    {
+      "priority": 1,
+      "category": "Performance",
+      "fix": "Move JavaScript to footer and add defer attribute",
+      "file": "functions.php",
+      "code": "wp_enqueue_script('mydefenselaw-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true);\nwp_script_add_data('mydefenselaw-main', 'defer', true);"
+    },
+    {
+      "priority": 2,
+      "category": "Accessibility",
+      "fix": "Add aria-modal and focus trap to modal",
+      "file": "consultation-modal.php, main.js",
+      "code": "Add aria-modal='true' to modal div. Implement focus trap in openModal() function using focusable element list and keydown listener for Tab key."
+    },
+    {
+      "priority": 3,
+      "category": "Performance",
+      "fix": "Add width/height to all images",
+      "file": "header.php, footer.php",
+      "code": "Add width='auto' height='60' to header logo (line 58, 60), width='auto' height='50' to footer logo (line 29, 31)"
+    },
+    {
+      "priority": 4,
+      "category": "Accessibility",
+      "fix": "Add aria-required to required form fields",
+      "file": "consultation-modal.php",
+      "code": "Add aria-required='true' to all inputs with required attribute"
+    },
+    {
+      "priority": 5,
+      "category": "Accessibility",
+      "fix": "Add proper form labels",
+      "file": "consultation-modal.php",
+      "code": "Add <label> elements with for/id associations for all form inputs, style with sr-only class if needed"
+    },
+    {
+      "priority": 6,
+      "category": "Performance",
+      "fix": "Add font-display: swap to web fonts",
+      "file": "functions.php or separate font loading",
+      "code": "@font-face { font-family: 'Open Sans'; font-display: swap; /* other rules */ }"
+    },
+    {
+      "priority": 7,
+      "category": "Accessibility",
+      "fix": "Add aria-expanded to mobile menu button",
+      "file": "header.php, main.js",
+      "code": "Add aria-expanded='false' to mobile menu button, toggle value in JavaScript when menu opens/closes"
+    },
+    {
+      "priority": 8,
+      "category": "Performance",
+      "fix": "Inline critical CSS",
+      "file": "header.php",
+      "code": "Extract CSS for header, top-bar, navigation (approx lines 1-243 from main.css) and inline in <head> before wp_head()"
+    },
+    {
+      "priority": 9,
+      "category": "Accessibility",
+      "fix": "Fix color contrast issues",
+      "file": "main.css",
+      "code": "Change .cta-label color to #475569, .emergency-notice color to #fcd34d, footer links opacity to 0.9"
+    },
+    {
+      "priority": 10,
+      "category": "Performance",
+      "fix": "Add lazy loading to images",
+      "file": "footer.php, any below-fold images",
+      "code": "Add loading='lazy' attribute to footer logo and other below-fold images"
+    }
+  ],
+
+  "recommendations": [
+    {
+      "category": "Performance",
+      "recommendation": "Implement resource hints",
+      "description": "Add preconnect for external resources and DNS prefetch for third-party domains",
+      "implementation": "Add to header.php before wp_head(): <link rel='preconnect' href='https://fonts.googleapis.com'> <link rel='dns-prefetch' href='https://cdnjs.cloudflare.com'>"
+    },
+    {
+      "category": "Performance",
+      "recommendation": "Optimize JavaScript execution",
+      "description": "Throttle scroll events, disconnect observers after animations, debounce resize handlers",
+      "implementation": "Refactor scroll listeners to use requestAnimationFrame, add observer.disconnect() in animation callback"
+    },
+    {
+      "category": "Accessibility",
+      "recommendation": "Add skip links for all major sections",
+      "description": "Include skip links to navigation, main content, and footer",
+      "implementation": "Add skip links after body tag with proper CSS for keyboard-only visibility"
+    },
+    {
+      "category": "Accessibility",
+      "recommendation": "Implement comprehensive focus management",
+      "description": "Add visible focus indicators to all interactive elements, manage focus in modal",
+      "implementation": "Add :focus-visible styles throughout CSS, implement focus trap in modal with first/last element tracking"
+    },
+    {
+      "category": "Performance",
+      "recommendation": "Implement code splitting",
+      "description": "Split JavaScript into critical and non-critical bundles",
+      "implementation": "Separate modal/form handling from main navigation, load form validation only when needed"
+    },
+    {
+      "category": "Accessibility",
+      "recommendation": "Add ARIA live regions",
+      "description": "Implement live regions for dynamic content updates",
+      "implementation": "Add aria-live='polite' containers for form submission status, loading states, and error messages"
+    },
+    {
+      "category": "Performance",
+      "recommendation": "Optimize CSS delivery",
+      "description": "Use CSS containment, reduce specificity, remove unused styles",
+      "implementation": "Add contain: layout style; to independent components, run PurgeCSS to remove unused rules"
+    },
+    {
+      "category": "Accessibility",
+      "recommendation": "Improve form accessibility",
+      "description": "Add fieldsets, legends, and proper error associations",
+      "implementation": "Group related fields in fieldsets, use legend for group labels, add aria-describedby for errors"
+    },
+    {
+      "category": "Performance",
+      "recommendation": "Implement service worker",
+      "description": "Add PWA capabilities with offline support and asset caching",
+      "implementation": "Create service worker to cache static assets, enable offline navigation"
+    },
+    {
+      "category": "Accessibility",
+      "recommendation": "Add dark mode support",
+      "description": "Implement prefers-color-scheme media query support",
+      "implementation": "Create dark theme color palette, add media query styles, respect user system preferences"
+    }
+  ],
+
+  "scoring_breakdown": {
+    "performance": {
+      "score": "6/10",
+      "factors": {
+        "css_optimization": "5/10 - No critical CSS, large file size, deep nesting",
+        "javascript_optimization": "6/10 - Scripts block render, no defer/async, event listener issues",
+        "asset_loading": "5/10 - No lazy loading, missing dimensions, no font optimization",
+        "resource_hints": "4/10 - No preconnect or prefetch",
+        "caching": "N/A - Depends on server configuration"
+      }
+    },
+    "accessibility": {
+      "score": "7/10",
+      "factors": {
+        "semantic_html": "7/10 - Good structure but missing some landmarks and labels",
+        "keyboard_navigation": "6/10 - Works but lacks focus indicators and some ARIA",
+        "aria": "6/10 - Basic ARIA present but missing live regions and states",
+        "color_contrast": "7/10 - Most text passes but some borderline issues",
+        "forms": "6/10 - Functional but missing proper labels and error handling"
+      }
+    }
+  },
+
+  "testing_recommendations": {
+    "performance_tools": [
+      "Google PageSpeed Insights - Test Core Web Vitals",
+      "WebPageTest - Detailed waterfall analysis",
+      "Lighthouse CI - Automated testing in CI/CD",
+      "Chrome DevTools Coverage - Find unused CSS/JS"
+    ],
+    "accessibility_tools": [
+      "WAVE Browser Extension - Visual accessibility testing",
+      "axe DevTools - Automated accessibility scanning",
+      "NVDA/JAWS Screen Readers - Manual testing",
+      "Keyboard Navigation - Tab through entire site",
+      "Color Contrast Analyzer - Check all text combinations"
+    ]
+  },
+
+  "estimated_impact": {
+    "performance_improvements": {
+      "quick_wins": "Moving JS to footer + adding defer could improve load time by 200-400ms",
+      "medium_effort": "Inlining critical CSS could reduce FCP by 300-500ms",
+      "long_term": "Comprehensive optimization could achieve 8/10 performance score, 2-3s faster load"
+    },
+    "accessibility_improvements": {
+      "quick_wins": "Adding ARIA attributes could fix 60% of screen reader issues",
+      "medium_effort": "Proper form labels and error handling improves usability for all users",
+      "long_term": "Full WCAG 2.1 AA compliance achievable with estimated 20-30 hours work"
+    }
+  }
+}

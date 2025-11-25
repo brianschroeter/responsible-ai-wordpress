@@ -921,6 +921,8 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 12px;
     position: relative;
     min-height: 250px;
+    overflow: hidden;  /* Prevent any content overflow */
+    transition: height 0.3s ease;  /* Smooth height transitions */
 }
 
 .testimonial-slide {

@@ -1,0 +1,302 @@
+{
+    "key": "group_homepage_hero",
+    "title": "Homepage - Hero Section",
+    "fields": [
+        {
+            "key": "field_hero_title",
+            "label": "Hero Title",
+            "name": "hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main headline displayed in the hero section",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Protecting Your Rights. Fighting for Your Future.",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_title_highlight",
+            "label": "Highlighted Text",
+            "name": "hero_title_highlight",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text within the title to highlight in yellow (e.g., 'Experience Matters'). Must match exactly as it appears in the title.",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., Experience Matters",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "hero_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting text below the headline",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "default_value": "Trusted legal representation in South Florida for over 25 years. Our experienced attorneys are ready to defend your case.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_hero_background",
+            "label": "Hero Background Image",
+            "name": "hero_background",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Background image for the hero section (recommended: 1920x1080px)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_hero_cta_text",
+            "label": "Primary CTA Button Text",
+            "name": "hero_cta_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the main call-to-action button",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Free Consultation",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_cta_phone_text",
+            "label": "Phone CTA Text",
+            "name": "hero_cta_phone_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the phone call button",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Call Now",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_hero_stats",
+            "label": "Hero Statistics",
+            "name": "hero_stats",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Statistics displayed in the hero section",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "rows_per_page": 20,
+            "button_label": "Add Row",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_stat_number",
+                    "label": "Number",
+                    "name": "number",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g., '25+', '$50M+', '10,000+'",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hero_stats"
+                },
+                {
+                    "key": "field_stat_label",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g., 'Years Experience', 'Recovered'",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hero_stats"
+                }
+            ]
+        },
+        {
+            "key": "field_hero_guarantees",
+            "label": "Trust Badges\/Guarantees",
+            "name": "hero_guarantees",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Trust badges shown below hero stats",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 4,
+            "layout": "table",
+            "rows_per_page": 20,
+            "button_label": "Add Row",
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_guarantee_icon",
+                    "label": "Icon Class",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Font Awesome class (e.g., 'fas fa-check-circle')",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hero_guarantees"
+                },
+                {
+                    "key": "field_guarantee_text",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "e.g., 'Free Consultation', 'No Win, No Fee'",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hero_guarantees"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "front-page.php"
+            }
+        ],
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": true,
+    "display_title": "",
+    "modified": 1764083608
+}

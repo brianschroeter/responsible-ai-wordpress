@@ -1,0 +1,221 @@
+{
+    "key": "group_homepage_attorneys",
+    "title": "Homepage - Meet the Attorneys",
+    "fields": [
+        {
+            "key": "field_attorneys_section_title",
+            "label": "Section Title",
+            "name": "attorneys_section_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading for the attorneys section",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Meet Our Attorneys",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_attorneys_section_subtitle",
+            "label": "Section Subtitle",
+            "name": "attorneys_section_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting text below the section heading",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "default_value": "Our team of experienced attorneys is dedicated to protecting your rights and achieving the best possible outcome for your case.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_attorneys_display_mode",
+            "label": "Display Mode",
+            "name": "attorneys_display_mode",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Choose how to select attorneys for display",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "all": "Show All Attorneys",
+                "select": "Select Specific Attorneys",
+                "limit": "Show Latest (Limited)"
+            },
+            "default_value": "all",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
+        },
+        {
+            "key": "field_attorneys_limit",
+            "label": "Number to Display",
+            "name": "attorneys_limit",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Maximum attorneys to display (for 'Show Latest' mode)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_attorneys_display_mode",
+                        "operator": "==",
+                        "value": "limit"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": 1,
+            "max": 10,
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_attorneys_selected",
+            "label": "Select Attorneys",
+            "name": "attorneys_selected",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Choose specific attorneys to display on the homepage",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_attorneys_display_mode",
+                        "operator": "==",
+                        "value": "select"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "attorney"
+            ],
+            "filters": [
+                "search"
+            ],
+            "return_format": "object",
+            "min": 0,
+            "max": 10,
+            "taxonomy": [],
+            "elements": [],
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_attorneys_cta_text",
+            "label": "CTA Button Text",
+            "name": "attorneys_cta_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the 'View All' button",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Meet The Team",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_attorneys_cta_link",
+            "label": "CTA Button Link",
+            "name": "attorneys_cta_link",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Link for the CTA button (relative path or full URL, leave empty to hide)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "\/about\/#attorneys",
+            "maxlength": "",
+            "placeholder": "\/about\/",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "front-page.php"
+            }
+        ],
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 3,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": true,
+    "display_title": "",
+    "modified": 1764084360
+}
