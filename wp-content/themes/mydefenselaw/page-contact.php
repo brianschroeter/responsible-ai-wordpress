@@ -16,48 +16,29 @@ get_header();
 $contact = mydefenselaw_get_contact_page_fields();
 
 // Section visibility toggles (default to showing if field not set)
-$show_hero = get_field('enable_contact_hero') !== false;
 $show_info = get_field('enable_contact_info') !== false;
 $show_why = get_field('enable_contact_why') !== false;
 $show_form = get_field('enable_contact_form') !== false;
 $show_process = get_field('enable_contact_process') !== false;
 ?>
 
-<?php if ($show_hero) : ?>
-<!-- Contact Hero Section -->
-<section class="contact-hero">
-    <div class="contact-hero-overlay"></div>
-    <div class="container">
-        <div class="contact-hero-content">
-            <?php if (!empty($contact['hero_badge'])) : ?>
-            <div class="contact-hero-badge">
-                <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
-                <span><?php echo esc_html($contact['hero_badge']); ?></span>
-            </div>
-            <?php endif; ?>
-            <h1><?php echo esc_html($contact['hero_title']); ?></h1>
-            <p class="hero-subtitle"><?php echo esc_html($contact['hero_subtitle']); ?></p>
-            <div class="contact-hero-cta">
-                <a href="tel:<?php echo esc_attr($contact['phone_raw']); ?>" class="btn btn-primary btn-lg">
-                    <i class="fas fa-phone" aria-hidden="true"></i> <?php echo esc_html($contact['phone']); ?>
-                </a>
-                <span class="hero-availability">
-                    <i class="fas fa-clock" aria-hidden="true"></i> <?php echo esc_html($contact['hours_label']); ?>
-                </span>
-            </div>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-
-<!-- Page Header / Breadcrumb -->
-<section class="page-header page-header-slim">
+<!-- Page Header -->
+<section class="page-header">
     <div class="container">
         <div class="page-header-content">
+            <h1><?php echo esc_html(get_the_title()); ?></h1>
             <nav class="breadcrumb" aria-label="Breadcrumb">
                 <a href="<?php echo esc_url(home_url('/')); ?>">Home</a> / <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
             </nav>
         </div>
+    </div>
+</section>
+
+<!-- Consultation Intro Section -->
+<section class="contact-intro-section">
+    <div class="container">
+        <h2><?php echo esc_html($contact['hero_title']); ?></h2>
+        <p><?php echo esc_html($contact['hero_subtitle']); ?></p>
     </div>
 </section>
 
@@ -142,30 +123,8 @@ $show_process = get_field('enable_contact_process') !== false;
                             <input type="text" name="website_url" id="website_url" tabindex="-1" autocomplete="off">
                         </div>
 
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="firstName">First Name <span class="required">*</span></label>
-                                <input type="text" id="firstName" name="firstName" required placeholder="Your first name">
-                            </div>
-                            <div class="form-field">
-                                <label for="lastName">Last Name <span class="required">*</span></label>
-                                <input type="text" id="lastName" name="lastName" required placeholder="Your last name">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-field">
-                                <label for="phone">Phone <span class="required">*</span></label>
-                                <input type="tel" id="phone" name="phone" required placeholder="(555) 555-5555">
-                            </div>
-                            <div class="form-field">
-                                <label for="email">Email <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required placeholder="your@email.com">
-                            </div>
-                        </div>
-
                         <div class="form-field">
-                            <label for="legalIssue">Legal Issue Type <span class="required">*</span></label>
+                            <label for="legalIssue">What type of legal issue do you have? <span class="required">*</span></label>
                             <select id="legalIssue" name="legalIssue" required>
                                 <option value="">Select your legal issue...</option>
                                 <option value="Civil Defense Litigation">Civil Defense Litigation</option>
@@ -174,26 +133,21 @@ $show_process = get_field('enable_contact_process') !== false;
                                 <option value="Bankruptcy">Bankruptcy</option>
                                 <option value="Contract Law">Contract Law</option>
                                 <option value="Real Estate Law">Real Estate Law</option>
-                                <option value="Landlord/Tenant">Landlord/Tenant</option>
+                                <option value="Landlord/Tenant Issues">Landlord/Tenant Issues</option>
                                 <option value="Intellectual Property">Intellectual Property</option>
                                 <option value="Traffic Tickets">Traffic Tickets</option>
-                                <option value="Other">Other Legal Matter</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
                         <div class="form-field">
-                            <label for="urgency">How Soon Do You Need Help?</label>
+                            <label for="urgency">How urgent is your matter?</label>
                             <select id="urgency" name="urgency">
-                                <option value="Immediate">Immediately (within 24 hours)</option>
+                                <option value="Immediate">Immediate (within 24 hours)</option>
                                 <option value="Urgent">Urgent (within 1 week)</option>
                                 <option value="Normal" selected>Normal (within 2 weeks)</option>
-                                <option value="Planning">Planning Ahead (no rush)</option>
+                                <option value="Planning">Planning ahead</option>
                             </select>
-                        </div>
-
-                        <div class="form-field">
-                            <label for="message">Brief Description of Your Case</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Please provide a brief description of your legal matter..."></textarea>
                         </div>
 
                         <div class="form-field checkbox-field">
@@ -208,7 +162,7 @@ $show_process = get_field('enable_contact_process') !== false;
                             <label class="checkbox-label">
                                 <input type="checkbox" name="agreement" id="agreement" required>
                                 <span class="checkmark"></span>
-                                <span class="label-text">I understand that submitting this form does not create an attorney-client relationship. <span class="required">*</span></span>
+                                <span class="label-text">I understand that submitting this form does not create an attorney-client relationship and that my information will be reviewed by an attorney to determine if we can assist with my matter. <span class="required">*</span></span>
                             </label>
                         </div>
 
@@ -217,10 +171,6 @@ $show_process = get_field('enable_contact_process') !== false;
                         <button type="submit" class="btn btn-primary btn-full btn-lg">
                             <i class="fas fa-paper-plane" aria-hidden="true"></i> <?php echo esc_html($contact['form_button']); ?>
                         </button>
-
-                        <p class="form-disclaimer">
-                            <i class="fas fa-lock" aria-hidden="true"></i> <?php echo esc_html($contact['form_disclaimer']); ?>
-                        </p>
                     </form>
                 </div>
             </div>
@@ -253,24 +203,6 @@ $show_process = get_field('enable_contact_process') !== false;
     </div>
 </section>
 <?php endif; ?>
-
-<!-- CTA Section -->
-<section class="contact-cta-section">
-    <div class="container">
-        <div class="contact-cta-content">
-            <h2>Ready to Get Started?</h2>
-            <p>Contact us today for your free consultation and take the first step toward resolving your legal matter.</p>
-            <div class="cta-buttons">
-                <a href="tel:<?php echo esc_attr($contact['phone_raw']); ?>" class="btn btn-primary btn-lg">
-                    <i class="fas fa-phone" aria-hidden="true"></i> Call <?php echo esc_html($contact['phone']); ?>
-                </a>
-                <button class="btn btn-secondary btn-lg consultation-trigger" aria-label="Request a free legal consultation">
-                    <i class="fas fa-calendar-check" aria-hidden="true"></i> Schedule Consultation
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
