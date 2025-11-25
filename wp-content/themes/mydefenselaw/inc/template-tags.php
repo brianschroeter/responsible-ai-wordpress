@@ -855,3 +855,171 @@ function mydefenselaw_get_about_attorneys_from_cpt($limit = -1) {
 
     return $attorneys;
 }
+
+/**
+ * Get Legal Resources page fields
+ *
+ * Returns all ACF fields for the Resources page with fallback defaults.
+ * Includes section visibility toggles and resource categories.
+ *
+ * @return array Resources page data
+ */
+function mydefenselaw_get_resources_fields() {
+    $phone = mydefenselaw_get_primary_phone();
+    $phone_raw = preg_replace('/[^0-9]/', '', $phone);
+
+    // Default resource categories with links
+    $default_categories = array(
+        array(
+            'category_title' => 'Civil Defense Litigation Resources',
+            'category_icon' => 'fas fa-balance-scale',
+            'category_links' => array(
+                array(
+                    'link_title' => 'Federal Rules of Civil Procedure',
+                    'link_url' => 'https://www.law.cornell.edu/rules/frcp',
+                    'link_description' => 'The process of resolving disputes by filing or answering a complaint through the public court system is regulated by the Federal Rules of Civil Procedure (along with state versions). The nature of this complaint (including the probable outcome for each side) becomes the basis for any settlement negotiations.',
+                ),
+                array(
+                    'link_title' => 'Federal Rules of Evidence',
+                    'link_url' => 'https://www.law.cornell.edu/rules/fre',
+                    'link_description' => 'If a case is brought to trial, the Federal Rules of Evidence (along with state versions) govern the introduction of all evidence into the trial.',
+                ),
+            ),
+        ),
+        array(
+            'category_title' => 'Debt Collection Resources',
+            'category_icon' => 'fas fa-file-invoice-dollar',
+            'category_links' => array(
+                array(
+                    'link_title' => 'Bureau of the Public Debt',
+                    'link_url' => 'https://www.treasurydirect.gov/',
+                    'link_description' => 'The Bureau of the Public Debt Provides Monthly Updates on the Ever Increasing United States Public Debt Figures.',
+                ),
+                array(
+                    'link_title' => 'The Fair Debt Collection Practices Act',
+                    'link_url' => 'https://www.ftc.gov/legal-library/browse/rules/fair-debt-collection-practices-act-text',
+                    'link_description' => 'The United States has enacted laws to protect consumers and to prohibit abusive practices by debt collectors.',
+                ),
+                array(
+                    'link_title' => 'Credit and Your Consumer Rights',
+                    'link_url' => 'https://www.ftc.gov/news-events/topics/consumer-finance/credit',
+                    'link_description' => 'Learn about credit ratings and your rights.',
+                ),
+                array(
+                    'link_title' => 'The Truth in Lending Act',
+                    'link_url' => 'https://www.fdic.gov/regulations/laws/rules/6500-200.html',
+                    'link_description' => 'The FDIC has created laws, regulations, and related acts in order to protect consumers.',
+                ),
+                array(
+                    'link_title' => 'The Federal Reserve System',
+                    'link_url' => 'https://www.federalreserve.gov/',
+                    'link_description' => 'Helpful information regarding the Federal Reserve System.',
+                ),
+                array(
+                    'link_title' => 'Free Credit Report',
+                    'link_url' => 'https://www.annualcreditreport.com/',
+                    'link_description' => 'A recent amendment to the federal Fair Credit Reporting Act requires each of the nationwide consumer reporting companies – Equifax, Experian, and TransUnion – to provide you with a free copy of your credit report, at your request, once every 12 months.',
+                ),
+            ),
+        ),
+        array(
+            'category_title' => 'Consumer Protection Resources',
+            'category_icon' => 'fas fa-shield-alt',
+            'category_links' => array(
+                array(
+                    'link_title' => 'Class Action Litigation Information',
+                    'link_url' => 'https://www.classaction.org/',
+                    'link_description' => 'A free service to assist consumers in understanding class action lawsuits, government, consumer issues and the legal system.',
+                ),
+                array(
+                    'link_title' => 'Lemon Law America',
+                    'link_url' => 'https://www.lemonlawamerica.com/',
+                    'link_description' => 'Site is resource for consumers with defective vehicles or products. A visit to this site familiarizes you with the lemon statutes in your state and offers tips on how to proceed if you think you\'ve got a "lemon".',
+                ),
+            ),
+        ),
+        array(
+            'category_title' => 'Bankruptcy Resources',
+            'category_icon' => 'fas fa-landmark',
+            'category_links' => array(
+                array(
+                    'link_title' => 'History of Bankruptcy in the United States',
+                    'link_url' => 'https://www.uscourts.gov/services-forms/bankruptcy',
+                    'link_description' => 'Bankruptcy laws in the United States have varied greatly over time. Learn more about the interesting history of bankruptcy.',
+                ),
+                array(
+                    'link_title' => 'The Bankruptcy Process',
+                    'link_url' => 'https://www.uscourts.gov/services-forms/bankruptcy/bankruptcy-basics',
+                    'link_description' => 'The procedural aspects of the bankruptcy process are governed by the Federal Rules of Bankruptcy Procedure (often called the "Bankruptcy Rules") and local rules of each bankruptcy court.',
+                ),
+            ),
+        ),
+        array(
+            'category_title' => 'Contract Law Resources',
+            'category_icon' => 'fas fa-file-contract',
+            'category_links' => array(
+                array(
+                    'link_title' => 'Uniform Commercial Code',
+                    'link_url' => 'https://www.law.cornell.edu/ucc',
+                    'link_description' => 'Contract law includes the concepts of formation, offer, acceptance, and consideration; performance and excuse for nonperformance; breach and damages; third party beneficiaries; assignment of rights and delegation of duties; statute of frauds; contract integration rule; illegal contracts and public policy; unconscionability; and discharge. One major portion of this area of law is in the Uniform Commercial Code (UCC).',
+                ),
+            ),
+        ),
+        array(
+            'category_title' => 'Family Law Resources',
+            'category_icon' => 'fas fa-users',
+            'category_links' => array(
+                array(
+                    'link_title' => 'Family Law in the Fifty States',
+                    'link_url' => 'https://www.americanbar.org/groups/family_law/',
+                    'link_description' => 'Tables providing a quick view of various aspects of family law for the fifty states in the areas of alimony/spousal support factors, custody criteria, child support guidelines, grounds for divorce and residency requirements, property division, and third-party visitation.',
+                ),
+            ),
+        ),
+        array(
+            'category_title' => 'Real Estate Law Resources',
+            'category_icon' => 'fas fa-home',
+            'category_links' => array(
+                array(
+                    'link_title' => 'Problems When Purchasing Residential Real Estate',
+                    'link_url' => 'https://www.lawyers.com/legal-info/real-estate/',
+                    'link_description' => 'The purchase of residential real estate usually involves three parties: the buyer, the seller, and the lender. This can make things complex. Plus, the law that governs real estate transactions is different from the law governing other kinds of purchases.',
+                ),
+                array(
+                    'link_title' => 'Buying and Selling Commercial Real Estate',
+                    'link_url' => 'https://www.lawyers.com/legal-info/real-estate/commercial-real-estate/',
+                    'link_description' => 'Commercial real estate transactions are typically more complex than residential transactions. Usually, they involve large sums of money and increased liability for both parties.',
+                ),
+            ),
+        ),
+    );
+
+    $defaults = array(
+        'intro_title' => __('Legal Resources', 'mydefenselaw'),
+        'intro_content' => '<p>Defense Lawyers, P.A. provides these legal resources to help our clients and the public understand various areas of law. Please note that this information is for educational purposes only and does not constitute legal advice.</p>',
+        'categories' => $default_categories,
+        'cta_title' => __('Need Legal Guidance?', 'mydefenselaw'),
+        'cta_content' => __('While these resources provide helpful information, every legal situation is unique. Contact us for personalized legal advice.', 'mydefenselaw'),
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+
+    // Return defaults if ACF not available
+    if (!function_exists('get_field')) {
+        return $defaults;
+    }
+
+    // Get ACF fields
+    $acf_categories = get_field('resources_categories');
+    $categories = (!empty($acf_categories) && is_array($acf_categories)) ? $acf_categories : $default_categories;
+
+    return array(
+        'intro_title' => get_field('resources_intro_title') ?: $defaults['intro_title'],
+        'intro_content' => get_field('resources_intro_content') ?: $defaults['intro_content'],
+        'categories' => $categories,
+        'cta_title' => get_field('resources_cta_title') ?: $defaults['cta_title'],
+        'cta_content' => get_field('resources_cta_content') ?: $defaults['cta_content'],
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+}

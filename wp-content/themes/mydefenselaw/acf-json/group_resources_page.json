@@ -1,0 +1,256 @@
+{
+    "key": "group_resources_page",
+    "title": "Legal Resources Page",
+    "fields": [
+        {
+            "key": "field_resources_tab_visibility",
+            "label": "Section Visibility",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_enable_resources_intro",
+            "label": "Show Intro Section",
+            "name": "enable_resources_intro",
+            "type": "true_false",
+            "instructions": "Toggle the introduction section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_resources_categories",
+            "label": "Show Resource Categories",
+            "name": "enable_resources_categories",
+            "type": "true_false",
+            "instructions": "Toggle the resource categories section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_resources_cta",
+            "label": "Show CTA Section",
+            "name": "enable_resources_cta",
+            "type": "true_false",
+            "instructions": "Toggle the call-to-action section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_resources_tab_intro",
+            "label": "Intro Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_resources_intro_title",
+            "label": "Intro Title",
+            "name": "resources_intro_title",
+            "type": "text",
+            "instructions": "Main heading for the resources section",
+            "default_value": "Legal Resources",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_resources_intro_content",
+            "label": "Intro Content",
+            "name": "resources_intro_content",
+            "type": "wysiwyg",
+            "instructions": "Introductory paragraph about the legal resources. Supports links and basic formatting.",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "default_value": "Defense Lawyers, P.A. provides these legal resources to help our clients and the public understand various areas of law. Please note that this information is for educational purposes only and does not constitute legal advice.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_resources_tab_categories",
+            "label": "Resource Categories",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_resources_categories",
+            "label": "Resource Categories",
+            "name": "resources_categories",
+            "type": "repeater",
+            "instructions": "Add categories of legal resources. Each category can have multiple resource links.",
+            "min": 0,
+            "max": 20,
+            "layout": "block",
+            "button_label": "Add Resource Category",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_category_title",
+                    "label": "Category Title",
+                    "name": "category_title",
+                    "type": "text",
+                    "instructions": "Title for this resource category (e.g., 'Civil Defense Litigation Resources')",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_category_icon",
+                    "label": "Category Icon",
+                    "name": "category_icon",
+                    "type": "text",
+                    "instructions": "Font Awesome icon class (e.g., 'fas fa-gavel'). Leave empty for default bullet style.",
+                    "default_value": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_category_links",
+                    "label": "Resource Links",
+                    "name": "category_links",
+                    "type": "repeater",
+                    "instructions": "Add links for this category",
+                    "min": 1,
+                    "max": 20,
+                    "layout": "table",
+                    "button_label": "Add Resource Link",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "sub_fields": [
+                        {
+                            "key": "field_link_title",
+                            "label": "Link Title",
+                            "name": "link_title",
+                            "type": "text",
+                            "instructions": "Bold title for the link",
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_link_url",
+                            "label": "URL",
+                            "name": "link_url",
+                            "type": "url",
+                            "instructions": "External URL for the resource",
+                            "wrapper": {
+                                "width": "25",
+                                "class": "",
+                                "id": ""
+                            }
+                        },
+                        {
+                            "key": "field_link_description",
+                            "label": "Description",
+                            "name": "link_description",
+                            "type": "textarea",
+                            "instructions": "Brief description of the resource",
+                            "rows": 2,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_resources_tab_cta",
+            "label": "CTA Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_resources_cta_title",
+            "label": "CTA Title",
+            "name": "resources_cta_title",
+            "type": "text",
+            "instructions": "Heading for the call-to-action section",
+            "default_value": "Need Legal Guidance?",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_resources_cta_content",
+            "label": "CTA Content",
+            "name": "resources_cta_content",
+            "type": "textarea",
+            "instructions": "Content text for the call-to-action section",
+            "rows": 2,
+            "default_value": "While these resources provide helpful information, every legal situation is unique. Contact us for personalized legal advice.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-resources.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Content fields for the Legal Resources page. All content can be edited here including section visibility, intro, resource categories, and CTA.",
+    "show_in_rest": 0,
+    "modified": 1732567409
+}
