@@ -41,8 +41,10 @@ function mydefenselaw_add_language_menu_item($items, $args) {
     }
 
     // Build menu item
+    // NOTE: Using esc_attr() instead of esc_url() because TranslatePress
+    // hooks into esc_url() and adds the current language prefix to ALL URLs
     $language_item = '<li class="menu-item menu-item-language-switcher">';
-    $language_item .= '<a href="' . esc_url($target_url) . '" class="nav-link language-link" hreflang="' . esc_attr($hreflang) . '">';
+    $language_item .= '<a href="' . esc_attr($target_url) . '" class="nav-link language-link" hreflang="' . esc_attr($hreflang) . '">';
     $language_item .= esc_html($link_text);
     $language_item .= '</a></li>';
 

@@ -38,12 +38,15 @@ if (!$main_menu_items) {
 // ============================================================================
 // DYNAMIC DATA: Practice Areas from Custom Post Type
 // ============================================================================
+// Use suppress_filters to prevent TranslatePress from translating titles
+// This ensures English titles display in the English Practice Areas section
 $practice_areas = get_posts(array(
-    'post_type'      => 'practice_area',
-    'posts_per_page' => -1,
-    'post_status'    => 'publish',
-    'orderby'        => 'menu_order title',
-    'order'          => 'ASC',
+    'post_type'        => 'practice_area',
+    'posts_per_page'   => -1,
+    'post_status'      => 'publish',
+    'orderby'          => 'menu_order title',
+    'order'            => 'ASC',
+    'suppress_filters' => true,
 ));
 
 // ============================================================================
@@ -100,6 +103,12 @@ if ($main_menu_items) {
 $spanish_pages[] = array(
     'title' => 'Áreas de Práctica',
     'url'   => home_url('/es/practice-areas/'),
+);
+
+// Add Free Consultation link for Spanish
+$spanish_pages[] = array(
+    'title' => 'Consulta Gratuita',
+    'url'   => home_url('/es/free-consultation/'),
 );
 ?>
 
