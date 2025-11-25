@@ -1394,10 +1394,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Custom Checkbox Styles */
+/* Enhanced Checkbox Styles */
 .modal-checkbox-label {
     position: relative;
-    padding-left: 0;
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
@@ -1418,7 +1417,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-checkbox-label .checkmark {
-    display: none; /* Using native checkbox with accent-color instead */
+    display: none; /* Using native checkbox with accent-color */
 }
 
 /* Form Response Messages */
@@ -1493,6 +1492,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .notification-toast .notification-close:hover {
     opacity: 1;
+}
+
+.notification-toast .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notification-toast .notification-content i {
+    font-size: 1.25rem;
 }
 
 /* Field Validation Errors */
