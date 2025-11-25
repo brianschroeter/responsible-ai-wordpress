@@ -353,8 +353,14 @@ function mydefenselaw_portal_security_headers() {
     // Referrer policy
     header('Referrer-Policy: strict-origin-when-cross-origin');
 
-    // Content Security Policy (adjust as needed)
-    $csp = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:;";
+    // Content Security Policy - more permissive for compatibility
+    $csp = "default-src 'self' https:; " .
+           "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: blob:; " .
+           "style-src 'self' 'unsafe-inline' https:; " .
+           "font-src 'self' https: data:; " .
+           "img-src 'self' data: https: blob:; " .
+           "worker-src 'self' blob:; " .
+           "connect-src 'self' https:;";
     header('Content-Security-Policy: ' . $csp);
 }
 add_action('send_headers', 'mydefenselaw_portal_security_headers');
