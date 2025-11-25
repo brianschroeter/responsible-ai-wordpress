@@ -23,7 +23,7 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
             <h1><?php echo esc_html(get_the_title()); ?></h1>
             <nav class="breadcrumb" aria-label="Breadcrumb">
                 <a href="<?php echo esc_url(home_url('/')); ?>">Home</a>
-                <span> / </span>
+                <span aria-hidden="true"> / </span>
                 <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
             </nav>
         </div>
@@ -61,7 +61,7 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
 
                     <div class="core-values">
                         <div class="value-item">
-                            <div class="value-icon">
+                            <div class="value-icon" aria-hidden="true">
                                 <i class="fas fa-balance-scale"></i>
                             </div>
                             <div class="value-content">
@@ -75,7 +75,7 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
                         </div>
 
                         <div class="value-item">
-                            <div class="value-icon">
+                            <div class="value-icon" aria-hidden="true">
                                 <i class="fas fa-rocket"></i>
                             </div>
                             <div class="value-content">
@@ -88,7 +88,7 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
                         </div>
 
                         <div class="value-item">
-                            <div class="value-icon">
+                            <div class="value-icon" aria-hidden="true">
                                 <i class="fas fa-handshake"></i>
                             </div>
                             <div class="value-content">
@@ -102,7 +102,7 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
                         </div>
 
                         <div class="value-item">
-                            <div class="value-icon">
+                            <div class="value-icon" aria-hidden="true">
                                 <i class="fas fa-users"></i>
                             </div>
                             <div class="value-content">
@@ -115,7 +115,7 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
                         </div>
 
                         <div class="value-item">
-                            <div class="value-icon">
+                            <div class="value-icon" aria-hidden="true">
                                 <i class="fas fa-trophy"></i>
                             </div>
                             <div class="value-content">
@@ -231,8 +231,8 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
                             <a href="tel:<?php echo esc_attr($phone_raw); ?>" class="btn btn-primary">
                                 <i class="fas fa-phone"></i> Call <?php echo esc_html($phone); ?>
                             </a>
-                            <button class="btn btn-outline consultation-trigger" id="modalTriggerAbout">
-                                <i class="fas fa-calendar-check"></i> Free Consultation
+                            <button class="btn btn-outline consultation-trigger" id="modalTriggerAbout" aria-label="Request a free legal consultation">
+                                <i class="fas fa-calendar-check" aria-hidden="true"></i> Free Consultation
                             </button>
                         </div>
                     </div>
@@ -309,7 +309,7 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
                             Available 24/7
                         </p>
                     </div>
-                    <button class="btn btn-primary btn-block consultation-trigger">
+                    <button class="btn btn-primary btn-block consultation-trigger" aria-label="Request a free legal consultation">
                         Free Consultation
                     </button>
                 </div>
