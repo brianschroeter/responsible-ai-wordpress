@@ -4,6 +4,7 @@
  *
  * Custom page template for the Site Map page
  * Displays all site pages, practice areas, and resources in an organized grid layout
+ * Uses official WordPress menus and dynamic queries for all links
  * Matches the live site at mydefenselaw.com/site_map.php
  *
  * @package MyDefenseLaw
@@ -22,17 +23,84 @@ $address_state = get_field('contact_state', 'option') ?: 'Florida';
 $office_hours = get_field('office_hours', 'option') ?: 'Mon - Fri: 9:00 AM - 5:00 PM';
 $service_area = get_field('service_area', 'option') ?: 'Serving All of South Florida';
 
-// Get practice areas dynamically
+// ============================================================================
+// DYNAMIC DATA: Main Pages from Primary Menu
+// ============================================================================
+$main_menu_items = wp_get_nav_menu_items('primary-menu');
+if (!$main_menu_items) {
+    // Fallback: Get menu by location if menu name doesn't work
+    $menu_locations = get_nav_menu_locations();
+    if (isset($menu_locations['primary'])) {
+        $main_menu_items = wp_get_nav_menu_items($menu_locations['primary']);
+    }
+}
+
+// ============================================================================
+// DYNAMIC DATA: Practice Areas from Custom Post Type
+// ============================================================================
 $practice_areas = get_posts(array(
     'post_type'      => 'practice_area',
     'posts_per_page' => -1,
     'post_status'    => 'publish',
-    'orderby'        => 'title',
+    'orderby'        => 'menu_order title',
     'order'          => 'ASC',
 ));
 
-// Get WordPress privacy policy page
-$privacy_policy_page = get_privacy_policy_url();
+// ============================================================================
+// DYNAMIC DATA: Privacy Policy (WordPress Settings > Privacy)
+// ============================================================================
+// Get WordPress privacy policy page (may be set in Settings > Privacy)
+$privacy_policy_page_id = get_option('wp_page_for_privacy_policy');
+$privacy_policy_url = $privacy_policy_page_id ? get_permalink($privacy_policy_page_id) : '';
+
+// ============================================================================
+// DYNAMIC DATA: Spanish Pages (TranslatePress integration)
+// ============================================================================
+// Build Spanish URLs dynamically from main menu items
+$spanish_pages = array();
+if ($main_menu_items) {
+    foreach ($main_menu_items as $item) {
+        // Skip Client Portal from Spanish menu (usually not translated)
+        if (stripos($item->title, 'portal') !== false) {
+            continue;
+        }
+
+        // Get the page URL and create Spanish version
+        $url = $item->url;
+        $parsed = parse_url($url);
+        $path = isset($parsed['path']) ? $parsed['path'] : '/';
+
+        // Build Spanish URL using TranslatePress pattern
+        $spanish_url = home_url('/es' . $path);
+
+        // Spanish translations for common page titles
+        $spanish_titles = array(
+            'Home'             => 'Página Principal',
+            'About The Firm'   => 'Sobre Nosotros',
+            'About'            => 'Sobre Nosotros',
+            'Latest Legal News'=> 'Noticias Legales',
+            'News'             => 'Noticias',
+            'Resources'        => 'Recursos Legales',
+            'Legal Resources'  => 'Recursos Legales',
+            'Contact Us'       => 'Contáctenos',
+            'Contact'          => 'Contáctenos',
+            'Practice Areas'   => 'Áreas de Práctica',
+        );
+
+        $spanish_title = isset($spanish_titles[$item->title]) ? $spanish_titles[$item->title] : $item->title;
+
+        $spanish_pages[] = array(
+            'title' => $spanish_title,
+            'url'   => $spanish_url,
+        );
+    }
+}
+
+// Add Practice Areas link for Spanish
+$spanish_pages[] = array(
+    'title' => 'Áreas de Práctica',
+    'url'   => home_url('/es/practice-areas/'),
+);
 ?>
 
 <!-- Page Header -->
@@ -54,20 +122,31 @@ $privacy_policy_page = get_privacy_policy_url();
         <!-- Sitemap Grid -->
         <div class="sitemap-grid">
 
-            <!-- Main Pages -->
+            <!-- Main Pages (from WordPress Primary Menu) -->
             <div class="sitemap-section">
                 <h2>Main Pages</h2>
                 <ul class="sitemap-links">
-                    <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-                    <li><a href="<?php echo esc_url(mydefenselaw_get_page_url_by_slug('about-the-firm')); ?>">About The Firm</a></li>
-                    <li><a href="<?php echo esc_url(mydefenselaw_get_page_url_by_slug('latest-legal-news')); ?>">Latest News</a></li>
-                    <li><a href="<?php echo esc_url(mydefenselaw_get_page_url_by_slug('resources')); ?>">Legal Resources</a></li>
-                    <li><a href="<?php echo esc_url(mydefenselaw_get_page_url_by_slug('contact-us')); ?>">Contact Us</a></li>
+                    <?php if ($main_menu_items && !is_wp_error($main_menu_items)) : ?>
+                        <?php foreach ($main_menu_items as $item) : ?>
+                            <?php
+                            // Skip portal pages - they go in Client Services
+                            if (stripos($item->title, 'portal') !== false) continue;
+                            ?>
+                            <li><a href="<?php echo esc_url($item->url); ?>"><?php echo esc_html($item->title); ?></a></li>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <!-- Fallback if no menu exists -->
+                        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/about-the-firm/')); ?>">About The Firm</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/latest-legal-news/')); ?>">Latest News</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/resources/')); ?>">Legal Resources</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/contact-us/')); ?>">Contact Us</a></li>
+                    <?php endif; ?>
                     <li><a href="#" class="consultation-trigger">Free Consultation</a></li>
                 </ul>
             </div>
 
-            <!-- Practice Areas -->
+            <!-- Practice Areas (from Custom Post Type) -->
             <div class="sitemap-section">
                 <h2>Practice Areas</h2>
                 <ul class="sitemap-links">
@@ -76,58 +155,112 @@ $privacy_policy_page = get_privacy_policy_url();
                             <li><a href="<?php echo esc_url(get_permalink($area->ID)); ?>"><?php echo esc_html($area->post_title); ?></a></li>
                         <?php endforeach; ?>
                     <?php else : ?>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/civil-defense-litigation/')); ?>">Civil Defense Litigation</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/consumer-protection/')); ?>">Consumer Protection</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/bankruptcy-law/')); ?>">Bankruptcy Law</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/contract-law/')); ?>">Contract Law</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/family-law/')); ?>">Family Law</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/real-estate-law/')); ?>">Real Estate Law</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/landlord-tenant-issues/')); ?>">Landlord / Tenant Issues</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/intellectual-property/')); ?>">Intellectual Property</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/practice-area/traffic-tickets/')); ?>">Traffic Tickets</a></li>
+                        <li><em>No practice areas found.</em></li>
                     <?php endif; ?>
                 </ul>
             </div>
 
-            <!-- En Espanol -->
+            <!-- En Español (dynamically generated from main pages) -->
             <div class="sitemap-section">
-                <h2>En Espa&ntilde;ol</h2>
+                <h2>En Español</h2>
                 <ul class="sitemap-links">
-                    <li><a href="<?php echo esc_url(home_url('/es/')); ?>">P&aacute;gina Principal</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/es/sobre-nosotros/')); ?>">Sobre Nosotros</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/es/areas-de-practica/')); ?>">&Aacute;reas de Pr&aacute;ctica</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/es/contacto/')); ?>">Cont&aacute;ctenos</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/es/recursos/')); ?>">Recursos Legales</a></li>
+                    <?php if (!empty($spanish_pages)) : ?>
+                        <?php foreach ($spanish_pages as $page) : ?>
+                            <li><a href="<?php echo esc_url($page['url']); ?>"><?php echo esc_html($page['title']); ?></a></li>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <!-- Fallback Spanish links -->
+                        <li><a href="<?php echo esc_url(home_url('/es/')); ?>">Página Principal</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/about-the-firm/')); ?>">Sobre Nosotros</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/practice-areas/')); ?>">Áreas de Práctica</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/contact-us/')); ?>">Contáctenos</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/resources/')); ?>">Recursos Legales</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
 
-            <!-- Legal Information -->
+            <!-- Legal Information (from page queries) -->
             <div class="sitemap-section">
                 <h2>Legal Information</h2>
                 <ul class="sitemap-links">
-                    <?php if ($privacy_policy_page) : ?>
-                        <li><a href="<?php echo esc_url($privacy_policy_page); ?>">Privacy Policy</a></li>
-                    <?php else : ?>
-                        <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a></li>
+                    <?php
+                    // Track which pages we've output to avoid duplicates
+                    $output_slugs = array();
+
+                    // Privacy Policy - use WordPress setting if available, otherwise check query
+                    if ($privacy_policy_url) : ?>
+                        <li><a href="<?php echo esc_url($privacy_policy_url); ?>">Privacy Policy</a></li>
+                        <?php $output_slugs[] = 'privacy-policy'; ?>
+                    <?php else :
+                        $privacy_page = get_page_by_path('privacy-policy');
+                        if ($privacy_page) : ?>
+                            <li><a href="<?php echo esc_url(get_permalink($privacy_page->ID)); ?>"><?php echo esc_html($privacy_page->post_title); ?></a></li>
+                            <?php $output_slugs[] = 'privacy-policy'; ?>
+                        <?php else : ?>
+                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a></li>
+                            <?php $output_slugs[] = 'privacy-policy'; ?>
+                        <?php endif; ?>
                     <?php endif; ?>
-                    <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>">Terms of Service</a></li>
+
+                    <?php
+                    // Terms of Service
+                    $terms_page = get_page_by_path('terms-of-service');
+                    if ($terms_page) : ?>
+                        <li><a href="<?php echo esc_url(get_permalink($terms_page->ID)); ?>"><?php echo esc_html($terms_page->post_title); ?></a></li>
+                    <?php else : ?>
+                        <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>">Terms of Service</a></li>
+                    <?php endif; ?>
+
+                    <!-- Site Map (current page) -->
                     <li><a href="<?php echo esc_url(get_permalink()); ?>">Site Map</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/accessibility/')); ?>">Accessibility</a></li>
+
+                    <?php
+                    // Accessibility
+                    $accessibility_page = get_page_by_path('accessibility');
+                    if ($accessibility_page) : ?>
+                        <li><a href="<?php echo esc_url(get_permalink($accessibility_page->ID)); ?>"><?php echo esc_html($accessibility_page->post_title); ?></a></li>
+                    <?php else : ?>
+                        <li><a href="<?php echo esc_url(home_url('/accessibility/')); ?>">Accessibility</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
 
-            <!-- Client Services -->
+            <!-- Client Services (from Portal pages query + contact) -->
             <div class="sitemap-section">
                 <h2>Client Services</h2>
                 <ul class="sitemap-links">
-                    <li><a href="<?php echo esc_url(mydefenselaw_get_page_url_by_slug('portal-login')); ?>">Client Portal Login</a></li>
-                    <li><a href="#" class="consultation-trigger">Schedule Consultation</a></li>
-                    <li><a href="<?php echo esc_url(mydefenselaw_get_page_url_by_slug('contact-us')); ?>">Contact Form</a></li>
+                    <?php
+                    // Check if portal login page exists
+                    $portal_login = get_page_by_path('portal-login');
+                    if ($portal_login) : ?>
+                        <li><a href="<?php echo esc_url(get_permalink($portal_login->ID)); ?>">Client Portal Login</a></li>
+                    <?php else : ?>
+                        <li><a href="<?php echo esc_url(home_url('/portal-login/')); ?>">Client Portal Login</a></li>
+                    <?php endif; ?>
+
+                    <?php
+                    // Free Consultation page if exists
+                    $consultation_page = get_page_by_path('free-consultation');
+                    if ($consultation_page) : ?>
+                        <li><a href="<?php echo esc_url(get_permalink($consultation_page->ID)); ?>">Schedule Consultation</a></li>
+                    <?php else : ?>
+                        <li><a href="#" class="consultation-trigger">Schedule Consultation</a></li>
+                    <?php endif; ?>
+
+                    <?php
+                    // Contact page
+                    $contact_page = get_page_by_path('contact-us');
+                    if ($contact_page) : ?>
+                        <li><a href="<?php echo esc_url(get_permalink($contact_page->ID)); ?>">Contact Form</a></li>
+                    <?php else : ?>
+                        <li><a href="<?php echo esc_url(home_url('/contact-us/')); ?>">Contact Form</a></li>
+                    <?php endif; ?>
+
                     <li><a href="tel:<?php echo esc_attr($phone_raw); ?>">Call Us: <?php echo esc_html($phone); ?></a></li>
                 </ul>
             </div>
 
-            <!-- Contact Information -->
+            <!-- Contact Information (from ACF Theme Options) -->
             <div class="sitemap-section">
                 <h2>Contact Information</h2>
                 <ul class="sitemap-links contact-info-list">
@@ -161,12 +294,24 @@ $privacy_policy_page = get_privacy_policy_url();
             <a href="tel:<?php echo esc_attr($phone_raw); ?>" class="btn btn-primary">
                 <i class="fas fa-phone" aria-hidden="true"></i> Call <?php echo esc_html($phone); ?>
             </a>
-            <button class="btn btn-outline consultation-trigger">
-                <i class="fas fa-calendar-check" aria-hidden="true"></i> Free Consultation
-            </button>
-            <a href="<?php echo esc_url(mydefenselaw_get_page_url_by_slug('contact-us')); ?>" class="btn btn-outline">
-                <i class="fas fa-envelope" aria-hidden="true"></i> Contact Form
-            </a>
+            <?php if ($consultation_page) : ?>
+                <a href="<?php echo esc_url(get_permalink($consultation_page->ID)); ?>" class="btn btn-outline">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i> Free Consultation
+                </a>
+            <?php else : ?>
+                <button class="btn btn-outline consultation-trigger">
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i> Free Consultation
+                </button>
+            <?php endif; ?>
+            <?php if ($contact_page) : ?>
+                <a href="<?php echo esc_url(get_permalink($contact_page->ID)); ?>" class="btn btn-outline">
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Contact Form
+                </a>
+            <?php else : ?>
+                <a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="btn btn-outline">
+                    <i class="fas fa-envelope" aria-hidden="true"></i> Contact Form
+                </a>
+            <?php endif; ?>
         </div>
 
         <!-- Legal Notice -->
