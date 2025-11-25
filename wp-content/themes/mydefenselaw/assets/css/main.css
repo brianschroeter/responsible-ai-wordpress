@@ -218,7 +218,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
 }
 
-.nav-link {
+.nav-link,
+.nav-menu li a,
+.nav-menu > li > a {
     color: #374151;
     text-decoration: none;
     padding: 1.25rem 2rem;
@@ -233,7 +235,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-link:hover,
-.nav-link.active {
+.nav-link.active,
+.nav-menu li a:hover,
+.nav-menu li.current-menu-item a,
+.nav-menu li.current_page_item a {
     color: #1a365d;
     border-bottom-color: #dc2626;
     background: white;
