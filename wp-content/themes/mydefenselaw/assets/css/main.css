@@ -245,7 +245,6 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, #1a365d 0%, #2563eb 100%);
     color: white;
     padding: 4rem 0 2rem;
-    margin-bottom: 3rem;
 }
 
 .page-header-content h1 {
@@ -3082,5 +3081,412 @@ h1, h2, h3, h4, h5, h6 {
 
     .news-item h3 {
         font-size: 1.15rem;
+    }
+}
+
+/* ==========================================================================
+   Practice Area Single Page Styles
+   ========================================================================== */
+
+/* Page Header */
+.practice-area-header {
+    background: linear-gradient(135deg, #1a365d 0%, #2d4a7c 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.practice-area-header .page-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.practice-area-header .page-subtitle {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Content Section */
+.practice-area-content-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+}
+
+/* Two-Column Layout */
+.practice-area-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Main Content Column */
+.practice-area-main {
+    background: white;
+    border-radius: 8px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.practice-area-article {
+    color: #333;
+}
+
+/* Main Content Typography */
+.practice-area-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.practice-area-content p {
+    margin-bottom: 1.25rem;
+}
+
+.practice-area-content h2 {
+    font-size: 1.75rem;
+    color: #1a365d;
+    margin: 2rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.practice-area-content h3 {
+    font-size: 1.35rem;
+    color: #1a365d;
+    margin: 1.75rem 0 1rem;
+}
+
+.practice-area-content ul,
+.practice-area-content ol {
+    margin: 1.25rem 0 1.5rem 1.5rem;
+}
+
+.practice-area-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+.practice-area-content a {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.practice-area-content a:hover {
+    text-decoration: underline;
+}
+
+/* Services Section */
+.practice-area-services {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.practice-area-services h3 {
+    font-size: 1.5rem;
+    color: #1a365d;
+    margin-bottom: 1.5rem;
+}
+
+.services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.services-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.services-list li:last-child {
+    border-bottom: none;
+}
+
+.services-list strong {
+    display: block;
+    color: #1a365d;
+    margin-bottom: 0.25rem;
+}
+
+.services-list p {
+    color: #666;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* FAQs Section */
+.practice-area-faqs {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.practice-area-faqs h3 {
+    font-size: 1.5rem;
+    color: #1a365d;
+    margin-bottom: 1.5rem;
+}
+
+.faq-item {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.faq-question {
+    font-size: 1.1rem;
+    color: #1a365d;
+    margin-bottom: 0.75rem;
+}
+
+.faq-answer {
+    color: #555;
+    line-height: 1.7;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+/* CTA Section */
+.practice-area-cta {
+    margin-top: 2.5rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1a365d 0%, #2d4a7c 100%);
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+}
+
+.practice-area-cta h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.practice-area-cta p {
+    opacity: 0.9;
+    margin-bottom: 1.5rem;
+}
+
+.practice-area-cta .btn-primary {
+    background: #dc2626;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+.practice-area-cta .btn-primary:hover {
+    background: #b91c1c;
+}
+
+/* Sidebar */
+.practice-area-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.sidebar-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-card h3 {
+    font-size: 1.25rem;
+    color: #1a365d;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #fbbf24;
+}
+
+/* Contact Card */
+.contact-card p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+.contact-card .btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.875rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.contact-card .btn-block:last-child {
+    margin-bottom: 0;
+}
+
+.contact-card .btn-primary {
+    background: #dc2626;
+    color: white;
+}
+
+.contact-card .btn-primary:hover {
+    background: #b91c1c;
+}
+
+.contact-card .btn-outline {
+    border: 2px solid #1a365d;
+    color: #1a365d;
+    background: transparent;
+}
+
+.contact-card .btn-outline:hover {
+    background: #1a365d;
+    color: white;
+}
+
+/* Practice Areas Navigation */
+.practice-areas-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.practice-areas-list li {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.practice-areas-list li:last-child {
+    border-bottom: none;
+}
+
+.practice-areas-list a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 0;
+    color: #444;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.practice-areas-list a:hover {
+    color: #dc2626;
+}
+
+.practice-areas-list a i {
+    color: #1a365d;
+    width: 20px;
+    text-align: center;
+}
+
+.practice-areas-list li.current a {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.practice-areas-list li.current a i {
+    color: #dc2626;
+}
+
+/* Why Choose Us Card */
+.why-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.why-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+.why-list i {
+    color: #22c55e;
+    font-size: 0.9rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .practice-area-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .practice-area-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-card {
+        flex: 1 1 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .practice-area-header {
+        padding: 3rem 0;
+    }
+
+    .practice-area-header .page-title {
+        font-size: 2rem;
+    }
+
+    .practice-area-content-section {
+        padding: 2.5rem 0;
+    }
+
+    .practice-area-main {
+        padding: 1.5rem;
+    }
+
+    .practice-area-sidebar {
+        flex-direction: column;
+    }
+
+    .sidebar-card {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .practice-area-header .page-title {
+        font-size: 1.75rem;
+    }
+
+    .practice-area-header .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .practice-area-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .practice-area-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .practice-area-cta {
+        padding: 1.5rem;
     }
 }

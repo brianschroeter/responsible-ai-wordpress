@@ -1,20 +1,30 @@
 {
   "name": "mydefenselaw-wordpress",
   "version": "1.0.0",
-  "description": "",
+  "description": "MyDefenseLaw WordPress Development Environment",
   "main": "index.js",
   "directories": {
     "doc": "docs",
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx playwright test",
+    "test:forms": "npx playwright test tests/forms.spec.js",
+    "test:forms:ui": "npx playwright test tests/forms.spec.js --ui",
+    "test:forms:headed": "npx playwright test tests/forms.spec.js --headed",
+    "test:forms:debug": "npx playwright test tests/forms.spec.js --debug",
+    "test:report": "npx playwright show-report"
   },
-  "keywords": [],
+  "keywords": [
+    "wordpress",
+    "law-firm",
+    "mydefenselaw"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@playwright/test": "^1.57.0",
     "playwright": "^1.57.0"
   }
 }

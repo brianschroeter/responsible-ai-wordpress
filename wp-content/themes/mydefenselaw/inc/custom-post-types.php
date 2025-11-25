@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
  * Register Custom Post Types
  */
 function mydefenselaw_register_post_types() {
-    // Practice Areas CPT
+    // Practice Areas CPT - Gutenberg disabled, uses ACF for all content
     register_post_type('practice_area', array(
         'labels' => array(
             'name'                  => __('Practice Areas', 'mydefenselaw'),
@@ -37,7 +37,7 @@ function mydefenselaw_register_post_types() {
         'show_ui'             => true,
         'show_in_menu'        => true,
         'show_in_nav_menus'   => true,
-        'show_in_rest'        => true,
+        'show_in_rest'        => false,  // Disabled to use Classic Editor with ACF
         'query_var'           => true,
         'rewrite'             => array('slug' => 'practice-areas', 'with_front' => false),
         'capability_type'     => 'post',
@@ -45,7 +45,7 @@ function mydefenselaw_register_post_types() {
         'hierarchical'        => false,
         'menu_position'       => 5,
         'menu_icon'           => 'dashicons-portfolio',
-        'supports'            => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
+        'supports'            => array('title', 'thumbnail', 'revisions'),  // Editor removed - ACF handles content
     ));
 
     // Attorneys CPT

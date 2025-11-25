@@ -1150,6 +1150,58 @@ function mydefenselaw_get_contact_page_fields() {
 }
 
 /**
+ * Get Practice Area single page fields
+ *
+ * Returns all ACF fields for a single practice area page with fallback defaults.
+ * Used by single-practice_area.php template.
+ *
+ * @param int|null $post_id Post ID (optional, defaults to current post)
+ * @return array Practice area page data
+ */
+function mydefenselaw_get_practice_area_fields($post_id = null) {
+    $post_id = $post_id ?: get_the_ID();
+    $phone = mydefenselaw_get_primary_phone();
+    $phone_raw = preg_replace('/[^0-9]/', '', $phone);
+
+    $defaults = array(
+        'title' => get_the_title($post_id),
+        'short_description' => '',
+        'hero_image' => '',
+        'page_content' => '',
+        'services' => array(),
+        'faqs' => array(),
+        'cta_title' => __('Ready to Discuss Your Case?', 'mydefenselaw'),
+        'cta_text' => __('Contact our experienced attorneys today for a free consultation.', 'mydefenselaw'),
+        'cta_button_text' => __('Schedule Free Consultation', 'mydefenselaw'),
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+
+    // Return defaults if ACF not available
+    if (!function_exists('get_field')) {
+        return $defaults;
+    }
+
+    // Get ACF fields
+    $services = get_field('services', $post_id);
+    $faqs = get_field('faqs', $post_id);
+
+    return array(
+        'title' => get_the_title($post_id),
+        'short_description' => get_field('short_description', $post_id) ?: $defaults['short_description'],
+        'hero_image' => get_field('hero_image', $post_id) ?: $defaults['hero_image'],
+        'page_content' => get_field('page_content', $post_id) ?: $defaults['page_content'],
+        'services' => (!empty($services) && is_array($services)) ? $services : $defaults['services'],
+        'faqs' => (!empty($faqs) && is_array($faqs)) ? $faqs : $defaults['faqs'],
+        'cta_title' => get_field('cta_title', $post_id) ?: $defaults['cta_title'],
+        'cta_text' => get_field('cta_text', $post_id) ?: $defaults['cta_text'],
+        'cta_button_text' => get_field('cta_button_text', $post_id) ?: $defaults['cta_button_text'],
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+}
+
+/**
  * Get Latest Legal News page fields
  *
  * Returns all ACF fields for the Latest Legal News page with fallback defaults.

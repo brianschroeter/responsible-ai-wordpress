@@ -53,6 +53,7 @@ $contact = mydefenselaw_get_contact_section_fields();
                 <form class="contact-form" id="contactForm" method="post">
                     <?php wp_nonce_field('mydefenselaw_contact', 'contact_nonce'); ?>
                     <input type="hidden" name="action" value="mydefenselaw_contact_form">
+                    <input type="hidden" name="form_source" value="homepage">
 
                     <div class="form-row">
                         <input type="text" name="firstName" placeholder="First Name *" required>

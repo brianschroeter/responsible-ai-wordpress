@@ -1,0 +1,1248 @@
+/**
+ * MyDefenseLaw Custom Admin Styles
+ * Matches the frontend theme design system
+ *
+ * Colors:
+ * - Navy (Primary): #1a365d
+ * - Red (Accent): #dc2626
+ * - Gold: #fbbf24
+ * - Blue: #2563eb
+ * - Text: #333
+ * - Text Light: #64748b
+ * - Border: #e2e8f0
+ * - BG Light: #f8fafc
+ *
+ * Fonts:
+ * - Headings: Merriweather, serif
+ * - Body: Open Sans, sans-serif
+ */
+
+/* ==========================================================================
+   CSS Variables for Admin
+   ========================================================================== */
+:root {
+    --admin-navy: #1a365d;
+    --admin-navy-light: #2d4a7c;
+    --admin-red: #dc2626;
+    --admin-red-dark: #b91c1c;
+    --admin-gold: #fbbf24;
+    --admin-blue: #2563eb;
+    --admin-text: #333;
+    --admin-text-light: #64748b;
+    --admin-border: #e2e8f0;
+    --admin-bg-light: #f8fafc;
+    --admin-white: #ffffff;
+    --admin-font-heading: 'Merriweather', Georgia, serif;
+    --admin-font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   Global Typography
+   ========================================================================== */
+body,
+#wpcontent,
+#wpbody-content,
+.wrap,
+#adminmenu,
+#adminmenu .wp-submenu,
+.wp-core-ui {
+    font-family: var(--admin-font-body);
+}
+
+h1, h2, h3, h4, h5, h6,
+.wrap h1,
+.wrap h2,
+.wrap h3 {
+    font-family: var(--admin-font-heading);
+    color: var(--admin-navy);
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Admin Bar Styling
+   ========================================================================== */
+#wpadminbar {
+    background: linear-gradient(135deg, var(--admin-navy) 0%, var(--admin-navy-light) 100%);
+}
+
+#wpadminbar .ab-empty-item,
+#wpadminbar a.ab-item,
+#wpadminbar > #wp-toolbar span.ab-label,
+#wpadminbar > #wp-toolbar span.noticon {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#wpadminbar .ab-top-menu > li:hover > .ab-item,
+#wpadminbar .ab-top-menu > li.hover > .ab-item,
+#wpadminbar .ab-top-menu > li > .ab-item:focus,
+#wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus {
+    background: var(--admin-red);
+    color: var(--admin-white);
+}
+
+#wpadminbar .ab-submenu,
+#wpadminbar .ab-sub-wrapper {
+    background: var(--admin-navy);
+}
+
+#wpadminbar .quicklinks .ab-sub-wrapper .menupop.hover > a,
+#wpadminbar .quicklinks .ab-sub-wrapper .menupop > a:hover {
+    background: var(--admin-red);
+    color: var(--admin-white);
+}
+
+/* Admin bar icons */
+#wpadminbar #wp-admin-bar-wp-logo > .ab-item .ab-icon:before {
+    color: var(--admin-white);
+}
+
+/* ==========================================================================
+   Admin Menu Sidebar
+   ========================================================================== */
+#adminmenuback,
+#adminmenuwrap,
+#adminmenu {
+    background: var(--admin-navy);
+}
+
+/* Menu items */
+#adminmenu a {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+#adminmenu div.wp-menu-image:before {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Hover state */
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub > a.menu-top,
+#adminmenu li > a.menu-top:focus {
+    background: var(--admin-navy-light);
+    color: var(--admin-white);
+}
+
+#adminmenu li.menu-top:hover div.wp-menu-image:before,
+#adminmenu li.opensub > a.menu-top div.wp-menu-image:before {
+    color: var(--admin-white);
+}
+
+/* Current/Active menu item */
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow,
+#adminmenu .wp-menu-arrow div,
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.wp-has-current-submenu .wp-submenu-head,
+.folded #adminmenu li.current.menu-top,
+.folded #adminmenu li.wp-has-current-submenu {
+    background: var(--admin-red);
+    color: var(--admin-white);
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow,
+#adminmenu .wp-menu-arrow div,
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+    border-left-color: var(--admin-white);
+}
+
+#adminmenu li.wp-has-current-submenu div.wp-menu-image:before,
+#adminmenu li.current div.wp-menu-image:before {
+    color: var(--admin-white);
+}
+
+/* Submenu */
+#adminmenu .wp-submenu,
+#adminmenu .wp-has-current-submenu .wp-submenu,
+#adminmenu .wp-has-current-submenu.opensub .wp-submenu,
+.folded #adminmenu .wp-has-current-submenu .wp-submenu {
+    background: #152a4a;
+}
+
+#adminmenu .wp-submenu a {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+#adminmenu .wp-submenu a:hover,
+#adminmenu .wp-submenu a:focus,
+#adminmenu .wp-has-current-submenu .wp-submenu a:hover,
+#adminmenu .wp-has-current-submenu .wp-submenu a:focus {
+    color: var(--admin-white);
+    background: transparent;
+}
+
+#adminmenu .wp-submenu li.current a,
+#adminmenu .wp-has-current-submenu .wp-submenu li.current a {
+    color: var(--admin-white);
+}
+
+/* Collapse button */
+#collapse-button {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#collapse-button:hover,
+#collapse-button:focus {
+    color: var(--admin-white);
+}
+
+/* Menu separator */
+#adminmenu li.wp-menu-separator {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   Main Content Area
+   ========================================================================== */
+#wpcontent,
+#wpbody-content {
+    background: var(--admin-bg-light);
+}
+
+.wrap {
+    padding: 20px;
+}
+
+/* Page titles */
+.wrap > h1,
+.wrap > h2 {
+    color: var(--admin-navy);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--admin-red);
+}
+
+/* Inline page titles (with "Add New" button) */
+h1.wp-heading-inline {
+    margin-right: 30px !important;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+    background: var(--admin-white);
+    border-color: var(--admin-border);
+    color: var(--admin-navy);
+    font-family: var(--admin-font-body);
+    border-radius: 6px;
+    padding: 6px 16px;
+    height: auto;
+    line-height: 1.5;
+    transition: all 0.2s ease;
+}
+
+.wp-core-ui .button:hover,
+.wp-core-ui .button-secondary:hover {
+    background: var(--admin-bg-light);
+    border-color: var(--admin-navy);
+    color: var(--admin-navy);
+}
+
+.wp-core-ui .button-primary {
+    background: var(--admin-red);
+    border-color: var(--admin-red);
+    color: var(--admin-white);
+    text-shadow: none;
+    box-shadow: none;
+    border-radius: 6px;
+    padding: 6px 20px;
+    height: auto;
+    line-height: 1.5;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.wp-core-ui .button-primary:hover,
+.wp-core-ui .button-primary:focus {
+    background: var(--admin-red-dark);
+    border-color: var(--admin-red-dark);
+    color: var(--admin-white);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+}
+
+.wp-core-ui .button-primary:active {
+    background: var(--admin-red-dark);
+    border-color: var(--admin-red-dark);
+}
+
+.wp-core-ui .button-primary.disabled,
+.wp-core-ui .button-primary:disabled {
+    background: #ccc !important;
+    border-color: #ccc !important;
+    color: #666 !important;
+}
+
+/* Link buttons */
+.wp-core-ui .button-link {
+    color: var(--admin-red);
+}
+
+.wp-core-ui .button-link:hover {
+    color: var(--admin-red-dark);
+}
+
+/* ==========================================================================
+   Form Elements
+   ========================================================================== */
+input[type="text"],
+input[type="password"],
+input[type="checkbox"],
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select,
+textarea {
+    border-color: var(--admin-border);
+    border-radius: 6px;
+    font-family: var(--admin-font-body);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="color"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--admin-blue);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    outline: none;
+}
+
+/* Checkboxes and Radio buttons */
+input[type="checkbox"]:checked::before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23dc2626' d='M14.83 4.89l1.34.94-7.37 10.57-5.02-4.3 1.3-1.51 3.46 2.96z'/%3E%3C/svg%3E");
+}
+
+input[type="radio"]:checked::before {
+    background: var(--admin-red);
+}
+
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+    border-color: var(--admin-red);
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+.wp-list-table {
+    background: var(--admin-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.wp-list-table thead th,
+.wp-list-table thead td {
+    background: var(--admin-navy);
+    color: var(--admin-white);
+    font-weight: 600;
+    border-bottom: none;
+}
+
+.wp-list-table thead th a,
+.wp-list-table thead th a:visited {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.wp-list-table thead th a:hover {
+    color: var(--admin-white);
+}
+
+.wp-list-table th.sorted a,
+.wp-list-table th.sorted a:visited {
+    color: var(--admin-white);
+}
+
+.wp-list-table tbody tr:nth-child(even) {
+    background: var(--admin-bg-light);
+}
+
+.wp-list-table tbody tr:hover {
+    background: #f0f4f8;
+}
+
+.wp-list-table .row-actions a {
+    color: var(--admin-navy);
+}
+
+.wp-list-table .row-actions a:hover {
+    color: var(--admin-red);
+}
+
+.wp-list-table .row-actions .delete a,
+.wp-list-table .row-actions .trash a {
+    color: var(--admin-red);
+}
+
+/* ==========================================================================
+   Notices & Messages
+   ========================================================================== */
+.notice,
+.updated,
+.update-nag,
+.error,
+div.error,
+div.updated {
+    border-radius: 6px;
+    border-left-width: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.notice-success,
+.updated {
+    border-left-color: #22c55e;
+    background: #f0fdf4;
+}
+
+.notice-error,
+.error,
+div.error {
+    border-left-color: var(--admin-red);
+    background: #fef2f2;
+}
+
+.notice-warning {
+    border-left-color: #d97706;
+    background: #fffbeb;
+}
+
+.notice-info {
+    border-left-color: var(--admin-blue);
+    background: #eff6ff;
+}
+
+/* ==========================================================================
+   Dashboard Widgets
+   ========================================================================== */
+#dashboard-widgets .postbox,
+.postbox {
+    border-radius: 8px;
+    border-color: var(--admin-border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.postbox .hndle,
+.postbox h2,
+.stuffbox .hndle,
+.stuffbox h2 {
+    border-bottom: 1px solid var(--admin-border);
+    font-family: var(--admin-font-heading);
+    color: var(--admin-navy);
+    font-weight: 600;
+}
+
+#dashboard-widgets .postbox .inside {
+    font-family: var(--admin-font-body);
+}
+
+/* Welcome panel */
+.welcome-panel {
+    background: linear-gradient(135deg, var(--admin-navy) 0%, var(--admin-navy-light) 100%);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(26, 54, 93, 0.25);
+}
+
+.welcome-panel h2,
+.welcome-panel p,
+.welcome-panel .welcome-panel-column-content {
+    color: var(--admin-white);
+}
+
+.welcome-panel h2 {
+    font-family: var(--admin-font-heading);
+}
+
+.welcome-panel .welcome-panel-close {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.welcome-panel .welcome-panel-close:hover {
+    color: var(--admin-white);
+}
+
+.welcome-panel a {
+    color: var(--admin-white);
+    text-decoration: underline;
+}
+
+.welcome-panel a:hover {
+    color: var(--admin-white);
+}
+
+/* ==========================================================================
+   ACF Styling
+   ========================================================================== */
+.acf-fields > .acf-field {
+    border-color: var(--admin-border);
+}
+
+.acf-label label {
+    font-weight: 600;
+    color: var(--admin-navy);
+}
+
+.acf-field .acf-label {
+    margin-bottom: 8px;
+}
+
+.acf-tab-wrap .acf-tab-group li a {
+    background: var(--admin-bg-light);
+    border-color: var(--admin-border);
+    color: var(--admin-text);
+    border-radius: 6px 6px 0 0;
+}
+
+.acf-tab-wrap .acf-tab-group li.active a {
+    background: var(--admin-white);
+    border-bottom-color: var(--admin-white);
+    color: var(--admin-navy);
+}
+
+.acf-repeater .acf-row-handle {
+    background: var(--admin-bg-light);
+}
+
+.acf-repeater .acf-row-handle .acf-icon {
+    background: var(--admin-navy);
+}
+
+.acf-repeater.-row > table > tbody > tr > td,
+.acf-repeater.-block > table > tbody > tr > td {
+    border-color: var(--admin-border);
+}
+
+/* ACF buttons */
+.acf-button {
+    border-radius: 6px !important;
+}
+
+/* ==========================================================================
+   Login Page Styling
+   ========================================================================== */
+body.login {
+    background: var(--admin-bg-light);
+}
+
+body.login #login h1 a {
+    background-size: contain;
+    width: 100%;
+}
+
+body.login form {
+    background: var(--admin-white);
+    border: 1px solid var(--admin-border);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+body.login #nav a,
+body.login #backtoblog a {
+    color: var(--admin-navy);
+}
+
+body.login #nav a:hover,
+body.login #backtoblog a:hover {
+    color: var(--admin-red);
+}
+
+body.login .button-primary {
+    background: var(--admin-red);
+    border-color: var(--admin-red);
+    text-shadow: none;
+    box-shadow: none;
+}
+
+body.login .button-primary:hover {
+    background: var(--admin-red-dark);
+    border-color: var(--admin-red-dark);
+}
+
+body.login input[type="text"]:focus,
+body.login input[type="password"]:focus {
+    border-color: var(--admin-blue);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+a {
+    color: var(--admin-red);
+}
+
+a:hover,
+a:focus {
+    color: var(--admin-red-dark);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+#wpfooter {
+    color: var(--admin-text-light);
+}
+
+#wpfooter a {
+    color: var(--admin-navy);
+}
+
+#wpfooter a:hover {
+    color: var(--admin-red);
+}
+
+/* ==========================================================================
+   Simplified Admin - Hide Unnecessary Elements
+   ========================================================================== */
+
+/* Hide WordPress logo in admin bar (optional - uncomment if desired) */
+/* #wp-admin-bar-wp-logo { display: none !important; } */
+
+/* Hide "Thank you for creating with WordPress" in footer */
+#wpfooter #footer-left {
+    display: none;
+}
+
+/* Cleaner footer */
+#wpfooter {
+    padding: 15px 20px;
+    border-top: 1px solid var(--admin-border);
+    background: var(--admin-white);
+}
+
+/* Hide Screen Options and Help tabs for cleaner look */
+/* Uncomment if desired
+#screen-meta-links { display: none; }
+*/
+
+/* Simplify dashboard - hide unused widgets */
+#dashboard_primary,
+#dashboard_quick_press {
+    /* display: none; */
+}
+
+/* ==========================================================================
+   Media Library
+   ========================================================================== */
+.media-frame-content .attachments-browser .attachments {
+    background: var(--admin-bg-light);
+}
+
+.attachment.selected {
+    box-shadow: inset 0 0 0 3px var(--admin-red), inset 0 0 0 7px var(--admin-white);
+}
+
+.attachment.selected .check {
+    background: var(--admin-red);
+}
+
+.attachment .check:before {
+    color: var(--admin-white);
+}
+
+/* ==========================================================================
+   Editor Styles
+   ========================================================================== */
+.edit-post-header {
+    background: var(--admin-white);
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.edit-post-sidebar {
+    background: var(--admin-bg-light);
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+@media screen and (max-width: 782px) {
+    #wpadminbar {
+        background: var(--admin-navy);
+    }
+
+    .auto-fold #adminmenu a.menu-top {
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .auto-fold #adminmenu li.menu-top:hover,
+    .auto-fold #adminmenu li.opensub > a.menu-top {
+        background: var(--admin-navy-light);
+    }
+}
+
+/* ==========================================================================
+   Custom Dashboard Widget Header
+   ========================================================================== */
+.mydefenselaw-admin-header {
+    background: linear-gradient(135deg, var(--admin-navy) 0%, var(--admin-navy-light) 100%);
+    color: var(--admin-white);
+    padding: 20px 25px;
+    margin: -10px -10px 20px -10px;
+    border-radius: 8px 8px 0 0;
+}
+
+.mydefenselaw-admin-header h2 {
+    color: var(--admin-white);
+    margin: 0 0 5px 0;
+    font-size: 1.25rem;
+}
+
+.mydefenselaw-admin-header p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Quick Actions Panel
+   ========================================================================== */
+.mydefenselaw-quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    background: var(--admin-bg-light);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.mydefenselaw-quick-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    background: var(--admin-white);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--admin-navy);
+    border: 1px solid var(--admin-border);
+    transition: all 0.2s ease;
+}
+
+.mydefenselaw-quick-action:hover {
+    border-color: var(--admin-red);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+    transform: translateY(-2px);
+}
+
+.mydefenselaw-quick-action .dashicons {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 8px;
+    color: var(--admin-red);
+}
+
+.mydefenselaw-quick-action span:last-child {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Custom Dashboard Styles - MyDefenseLaw
+   ========================================================================== */
+
+/* Dashboard Page Layout */
+#dashboard-widgets .postbox-container {
+    width: 100%;
+}
+
+#dashboard-widgets #postbox-container-1 {
+    width: 100%;
+}
+
+/* Welcome Widget - Full Width Hero */
+#mydefenselaw_welcome_widget {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+#mydefenselaw_welcome_widget .postbox-header {
+    display: none;
+}
+
+#mydefenselaw_welcome_widget .inside {
+    padding: 0;
+    margin: 0;
+}
+
+.mdl-dashboard-welcome {
+    background: var(--admin-white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Welcome Hero Section */
+.mdl-welcome-hero {
+    background: linear-gradient(135deg, var(--admin-navy) 0%, var(--admin-navy-light) 100%);
+    padding: 30px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.mdl-welcome-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.mdl-welcome-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mdl-welcome-icon .dashicons {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    color: var(--admin-white);
+}
+
+.mdl-welcome-text h2 {
+    color: var(--admin-white);
+    font-size: 1.75rem;
+    margin: 0 0 5px 0;
+    font-family: var(--admin-font-heading);
+}
+
+.mdl-welcome-text p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.mdl-welcome-date {
+    text-align: right;
+}
+
+.mdl-date-day {
+    display: block;
+    color: var(--admin-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.mdl-date-full {
+    display: block;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Quick Actions Grid */
+.mdl-quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 30px;
+}
+
+.mdl-action-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--admin-bg-light);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--admin-text);
+    transition: all 0.25s ease;
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.mdl-action-card:hover {
+    background: var(--admin-white);
+    border-color: var(--admin-red);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+    transform: translateY(-3px);
+}
+
+.mdl-action-card.mdl-action-primary {
+    background: linear-gradient(135deg, var(--admin-red) 0%, var(--admin-red-dark) 100%);
+    color: var(--admin-white);
+}
+
+.mdl-action-card.mdl-action-primary:hover {
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.35);
+    border-color: transparent;
+}
+
+.mdl-action-card.mdl-action-primary .mdl-action-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mdl-action-card.mdl-action-primary .mdl-action-icon .dashicons {
+    color: var(--admin-white);
+}
+
+.mdl-action-card.mdl-action-primary h3,
+.mdl-action-card.mdl-action-primary p {
+    color: var(--admin-white);
+}
+
+.mdl-action-card.mdl-action-primary p {
+    opacity: 0.85;
+}
+
+.mdl-action-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    background: var(--admin-white);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.mdl-action-icon .dashicons {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: var(--admin-navy);
+}
+
+.mdl-action-content h3 {
+    margin: 0 0 2px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--admin-navy);
+    font-family: var(--admin-font-body);
+}
+
+.mdl-action-content p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--admin-text-light);
+}
+
+.mdl-action-arrow {
+    position: absolute;
+    right: 15px;
+    color: var(--admin-text-light);
+    opacity: 0;
+    transform: translateX(-5px);
+    transition: all 0.25s ease;
+}
+
+.mdl-action-card:hover .mdl-action-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.mdl-action-card.mdl-action-primary .mdl-action-arrow {
+    color: var(--admin-white);
+}
+
+/* Stats Widget */
+#mydefenselaw_stats_widget .postbox-header h2 .dashicons,
+#mydefenselaw_submissions_widget .postbox-header h2 .dashicons,
+#mydefenselaw_links_widget .postbox-header h2 .dashicons {
+    margin-right: 8px;
+    color: var(--admin-red);
+}
+
+.mdl-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 5px;
+}
+
+.mdl-stat-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--admin-bg-light);
+    border-radius: 10px;
+}
+
+.mdl-stat-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mdl-stat-icon .dashicons {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: var(--admin-white);
+}
+
+.mdl-stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.mdl-stat-number {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--admin-navy);
+    line-height: 1;
+}
+
+.mdl-stat-label {
+    font-size: 0.8rem;
+    color: var(--admin-text-light);
+    margin-top: 4px;
+}
+
+/* Submissions Widget */
+.mdl-submissions-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.mdl-submission-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 5px;
+    text-decoration: none;
+    border-bottom: 1px solid var(--admin-border);
+    transition: background 0.2s ease;
+}
+
+.mdl-submission-item:last-child {
+    border-bottom: none;
+}
+
+.mdl-submission-item:hover {
+    background: var(--admin-bg-light);
+}
+
+.mdl-submission-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, var(--admin-navy) 0%, var(--admin-navy-light) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--admin-white);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.mdl-submission-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.mdl-submission-name {
+    font-weight: 600;
+    color: var(--admin-navy);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mdl-submission-email {
+    font-size: 0.85rem;
+    color: var(--admin-text-light);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mdl-submission-date {
+    font-size: 0.8rem;
+    color: var(--admin-text-light);
+    white-space: nowrap;
+}
+
+.mdl-empty-state {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--admin-text-light);
+}
+
+.mdl-empty-state .dashicons {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: var(--admin-border);
+    margin-bottom: 10px;
+}
+
+.mdl-empty-state p {
+    margin: 0;
+}
+
+.mdl-widget-footer {
+    border-top: 1px solid var(--admin-border);
+    padding: 12px 5px 0;
+    margin-top: 10px;
+}
+
+.mdl-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--admin-red);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.mdl-view-all:hover {
+    color: var(--admin-red-dark);
+}
+
+.mdl-view-all .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+/* Links Widget */
+.mdl-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.mdl-link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: var(--admin-bg-light);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--admin-navy);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.mdl-link-item:hover {
+    background: var(--admin-navy);
+    color: var(--admin-white);
+}
+
+.mdl-link-item .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--admin-red);
+    transition: color 0.2s ease;
+}
+
+.mdl-link-item:hover .dashicons {
+    color: var(--admin-white);
+}
+
+.mdl-support-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 10px;
+    border-left: 4px solid #d97706;
+}
+
+.mdl-support-box > .dashicons {
+    font-size: 28px;
+    width: 28px;
+    height: 28px;
+    color: #d97706;
+}
+
+.mdl-support-text strong {
+    display: block;
+    color: #92400e;
+    margin-bottom: 2px;
+}
+
+.mdl-support-text p {
+    margin: 0;
+    color: #a16207;
+    font-size: 0.85rem;
+}
+
+/* Responsive Dashboard */
+@media screen and (max-width: 1200px) {
+    .mdl-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .mdl-welcome-hero {
+        padding: 20px;
+    }
+
+    .mdl-welcome-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .mdl-welcome-date {
+        text-align: center;
+        width: 100%;
+    }
+
+    .mdl-quick-actions-grid {
+        padding: 20px;
+        grid-template-columns: 1fr;
+    }
+
+    .mdl-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mdl-links-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -87,6 +87,7 @@ $contact = mydefenselaw_get_contact_page_fields();
                 </div>
                 <form class="contact-form" id="contactForm" method="post">
                     <input type="hidden" name="action" value="mydefenselaw_contact_form">
+                    <input type="hidden" name="form_source" value="contact_page">
                     <?php wp_nonce_field('mydefenselaw_contact', 'contact_nonce'); ?>
 
                     <!-- Honeypot field for spam protection -->

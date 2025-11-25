@@ -19,6 +19,7 @@
             <form class="modal-form" id="modalContactForm" method="post" action="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
                 <?php wp_nonce_field('mydefenselaw_contact', 'contact_nonce'); ?>
                 <input type="hidden" name="action" value="mydefenselaw_contact_form">
+                <input type="hidden" name="form_source" value="modal">
                 <!-- Honeypot for spam protection -->
                 <input type="text" name="website_url" class="screen-reader-text" tabindex="-1" autocomplete="off" aria-hidden="true">
 

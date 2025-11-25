@@ -38,9 +38,11 @@ function mydefenselaw_handle_contact_form() {
     $phone = sanitize_text_field($_POST['phone'] ?? '');
     $email = sanitize_email($_POST['email'] ?? '');
     $legal_issue = sanitize_text_field($_POST['legalIssue'] ?? '');
+    $urgency = sanitize_text_field($_POST['urgency'] ?? '');
     $message = sanitize_textarea_field($_POST['message'] ?? '');
     $is_urgent = isset($_POST['urgent']) && $_POST['urgent'] === 'on';
     $agreement = isset($_POST['agreement']) && $_POST['agreement'] === 'on';
+    $form_source = sanitize_text_field($_POST['form_source'] ?? 'unknown');
 
     // Validation
     $errors = array();
@@ -113,6 +115,31 @@ IP Address: " . sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? '')) .
 
     // Send email
     $sent = wp_mail($admin_email, $subject, $email_body, $headers);
+
+    // Save submission to CPT regardless of email status
+    $submission_data = array(
+        'first_name'  => $first_name,
+        'last_name'   => $last_name,
+        'email'       => $email,
+        'phone'       => $phone,
+        'legal_issue' => $legal_issue,
+        'urgency'     => $urgency,
+        'message'     => $message,
+        'is_urgent'   => $is_urgent,
+        'form_source' => $form_source,
+        'ip_address'  => sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? '')),
+        'user_agent'  => sanitize_text_field(wp_unslash($_SERVER['HTTP_USER_AGENT'] ?? '')),
+        'page_url'    => wp_get_referer(),
+    );
+
+    // Create the form submission CPT entry
+    if (function_exists('mydefenselaw_create_form_submission')) {
+        $submission_id = mydefenselaw_create_form_submission($submission_data);
+
+        if (is_wp_error($submission_id)) {
+            error_log('Failed to save form submission: ' . $submission_id->get_error_message());
+        }
+    }
 
     if ($sent) {
         // Optionally send confirmation to user
