@@ -14,7 +14,7 @@
 get_header();
 
 // Get phone from theme options
-$phone = get_field('contact_phone', 'option') ?: '(954) 523-9200';
+$phone = get_field('contact_phone', 'option') ?: '888.444.0253';
 $phone_raw = preg_replace('/[^0-9]/', '', $phone);
 
 // Get address from theme options
