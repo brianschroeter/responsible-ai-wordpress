@@ -621,6 +621,9 @@ function mydefenselaw_get_contact_section_fields() {
     $defaults = array(
         'title' => __('Get Your Free Consultation Today', 'mydefenselaw'),
         'subtitle' => __('Don\'t face your legal challenges alone. Contact us now for expert guidance.', 'mydefenselaw'),
+        'form_heading' => __('Request Your Free Consultation', 'mydefenselaw'),
+        'form_subheading' => __('All information is confidential and protected by attorney-client privilege.', 'mydefenselaw'),
+        'button_text' => __('Request Free Consultation', 'mydefenselaw'),
         'company_name' => __('Defense Lawyers, P.A.', 'mydefenselaw'),
         'location' => $location,
         'serving' => __('Serving All of Florida', 'mydefenselaw'),
@@ -639,6 +642,9 @@ function mydefenselaw_get_contact_section_fields() {
     return array(
         'title' => get_field('contact_section_title', $front_page_id) ?: $defaults['title'],
         'subtitle' => get_field('contact_section_subtitle', $front_page_id) ?: $defaults['subtitle'],
+        'form_heading' => get_field('contact_form_heading', $front_page_id) ?: $defaults['form_heading'],
+        'form_subheading' => get_field('contact_form_subheading', $front_page_id) ?: $defaults['form_subheading'],
+        'button_text' => get_field('contact_button_text', $front_page_id) ?: $defaults['button_text'],
         'company_name' => $defaults['company_name'],
         'location' => $location,
         'serving' => $defaults['serving'],
