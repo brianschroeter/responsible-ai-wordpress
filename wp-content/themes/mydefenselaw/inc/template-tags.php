@@ -1040,22 +1040,22 @@ function mydefenselaw_get_contact_page_fields() {
     // Default why choose features
     $default_features = array(
         array(
-            'feature_icon' => 'fas fa-trophy',
+            'feature_icon' => 'fas fa-check-circle',
             'feature_title' => '25+ Years of Experience',
             'feature_description' => 'Proven track record in complex legal matters',
         ),
         array(
-            'feature_icon' => 'fas fa-clock',
+            'feature_icon' => 'fas fa-check-circle',
             'feature_title' => 'Available 24/7',
             'feature_description' => 'Legal emergencies don\'t wait, neither do we',
         ),
         array(
-            'feature_icon' => 'fas fa-comments',
+            'feature_icon' => 'fas fa-check-circle',
             'feature_title' => 'Free Consultation',
             'feature_description' => 'Understand your options without cost',
         ),
         array(
-            'feature_icon' => 'fas fa-user-shield',
+            'feature_icon' => 'fas fa-check-circle',
             'feature_title' => 'Dedicated Service',
             'feature_description' => 'Personalized attention to your case',
         ),
@@ -1064,19 +1064,19 @@ function mydefenselaw_get_contact_page_fields() {
     // Default process steps
     $default_process_steps = array(
         array(
-            'step_icon' => 'fas fa-comments',
+            'step_icon' => 'fas fa-calendar-check',
             'step_title' => 'Consultation',
-            'step_description' => 'We\'ll discuss your case and legal options during a free, confidential consultation.',
+            'step_description' => 'We\'ll review your case and discuss your legal options during a free, confidential consultation.',
         ),
         array(
-            'step_icon' => 'fas fa-search',
+            'step_icon' => 'fas fa-file-alt',
             'step_title' => 'Case Review',
-            'step_description' => 'Our attorneys will analyze your situation and develop a strategic approach.',
+            'step_description' => 'Our experienced attorneys will thoroughly analyze your situation and develop a strategic approach.',
         ),
         array(
             'step_icon' => 'fas fa-gavel',
             'step_title' => 'Representation',
-            'step_description' => 'We\'ll vigorously defend your rights and pursue the best possible outcome.',
+            'step_description' => 'We\'ll vigorously defend your rights and work tirelessly to achieve the best possible outcome.',
         ),
     );
 
@@ -1106,12 +1106,26 @@ function mydefenselaw_get_contact_page_fields() {
         return $defaults;
     }
 
-    // Get ACF fields
+    // Get ACF fields - validate that repeater has actual content
     $acf_features = get_field('contact_why_features');
-    $features = (!empty($acf_features) && is_array($acf_features)) ? $acf_features : $default_features;
+    $features = $default_features;
+    if (!empty($acf_features) && is_array($acf_features)) {
+        // Validate first item has required fields
+        $first_feature = reset($acf_features);
+        if (!empty($first_feature['feature_title'])) {
+            $features = $acf_features;
+        }
+    }
 
     $acf_steps = get_field('contact_process_steps');
-    $process_steps = (!empty($acf_steps) && is_array($acf_steps)) ? $acf_steps : $default_process_steps;
+    $process_steps = $default_process_steps;
+    if (!empty($acf_steps) && is_array($acf_steps)) {
+        // Validate first item has required fields
+        $first_step = reset($acf_steps);
+        if (!empty($first_step['step_title'])) {
+            $process_steps = $acf_steps;
+        }
+    }
 
     return array(
         'hero_title' => get_field('contact_hero_title') ?: $defaults['hero_title'],

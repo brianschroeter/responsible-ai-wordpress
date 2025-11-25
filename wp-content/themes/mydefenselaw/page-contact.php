@@ -59,15 +59,15 @@ $show_process = get_field('enable_contact_process') !== false;
                         <div class="contact-info-item">
                             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             <div>
-                                <strong><?php echo esc_html($contact['location']); ?></strong>
-                                <p><?php echo esc_html($contact['serving']); ?></p>
+                                <strong>Office Location</strong>
+                                <p><?php echo esc_html($contact['location']); ?><br><?php echo esc_html($contact['serving']); ?></p>
                             </div>
                         </div>
 
                         <div class="contact-info-item">
                             <i class="fas fa-phone" aria-hidden="true"></i>
                             <div>
-                                <strong>Call Us</strong>
+                                <strong>Phone</strong>
                                 <p><a href="tel:<?php echo esc_attr($contact['phone_raw']); ?>"><?php echo esc_html($contact['phone']); ?></a></p>
                             </div>
                         </div>
@@ -75,8 +75,16 @@ $show_process = get_field('enable_contact_process') !== false;
                         <div class="contact-info-item">
                             <i class="fas fa-clock" aria-hidden="true"></i>
                             <div>
-                                <strong><?php echo esc_html($contact['hours_label']); ?></strong>
-                                <p><?php echo esc_html($contact['office_hours']); ?></p>
+                                <strong>Availability</strong>
+                                <p><?php echo esc_html($contact['hours_label']); ?><br><?php echo esc_html($contact['office_hours']); ?></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <div>
+                                <strong>Get Started</strong>
+                                <p><a href="#contactPageForm" class="scroll-to-form">Request Free Consultation</a></p>
                             </div>
                         </div>
                     </div>
@@ -123,10 +131,26 @@ $show_process = get_field('enable_contact_process') !== false;
                             <input type="text" name="website_url" id="website_url" tabindex="-1" autocomplete="off">
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-field">
+                                <input type="text" name="firstName" id="firstName" placeholder="First Name *" required>
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="lastName" id="lastName" placeholder="Last Name *" required>
+                            </div>
+                        </div>
+
                         <div class="form-field">
-                            <label for="legalIssue">What type of legal issue do you have? <span class="required">*</span></label>
+                            <input type="tel" name="phone" id="phone" placeholder="Phone Number *" required>
+                        </div>
+
+                        <div class="form-field">
+                            <input type="email" name="email" id="email" placeholder="Email Address *" required>
+                        </div>
+
+                        <div class="form-field">
                             <select id="legalIssue" name="legalIssue" required>
-                                <option value="">Select your legal issue...</option>
+                                <option value="">What type of legal issue? *</option>
                                 <option value="Civil Defense Litigation">Civil Defense Litigation</option>
                                 <option value="Consumer Protection">Consumer Protection</option>
                                 <option value="Family Law">Family Law</option>
@@ -141,13 +165,17 @@ $show_process = get_field('enable_contact_process') !== false;
                         </div>
 
                         <div class="form-field">
-                            <label for="urgency">How urgent is your matter?</label>
                             <select id="urgency" name="urgency">
+                                <option value="">How urgent is your matter?</option>
                                 <option value="Immediate">Immediate (within 24 hours)</option>
                                 <option value="Urgent">Urgent (within 1 week)</option>
-                                <option value="Normal" selected>Normal (within 2 weeks)</option>
+                                <option value="Normal">Normal (within 2 weeks)</option>
                                 <option value="Planning">Planning ahead</option>
                             </select>
+                        </div>
+
+                        <div class="form-field">
+                            <textarea name="message" id="message" placeholder="Briefly describe your situation..." rows="4"></textarea>
                         </div>
 
                         <div class="form-field checkbox-field">
@@ -162,7 +190,7 @@ $show_process = get_field('enable_contact_process') !== false;
                             <label class="checkbox-label">
                                 <input type="checkbox" name="agreement" id="agreement" required>
                                 <span class="checkmark"></span>
-                                <span class="label-text">I understand that submitting this form does not create an attorney-client relationship and that my information will be reviewed by an attorney to determine if we can assist with my matter. <span class="required">*</span></span>
+                                <span class="label-text">I understand that Defense Lawyers, P.A. has not yet agreed to represent me, and that submitting this form does not constitute a contract. <span class="required">*</span></span>
                             </label>
                         </div>
 
