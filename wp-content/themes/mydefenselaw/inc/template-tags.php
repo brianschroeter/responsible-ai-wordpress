@@ -1323,3 +1323,145 @@ function mydefenselaw_get_latest_news_fields() {
         'phone_raw' => $phone_raw,
     );
 }
+
+/**
+ * Get page URL by slug
+ *
+ * Returns the permalink for a page by its slug, with fallback to constructed URL.
+ * Used by sitemap and other templates that need to link to pages by slug.
+ *
+ * @param string $slug The page slug to look up
+ * @return string The page URL (permalink if page exists, constructed URL otherwise)
+ */
+function mydefenselaw_get_page_url_by_slug($slug) {
+    $page = get_page_by_path($slug);
+    return $page ? get_permalink($page) : home_url('/' . $slug . '/');
+}
+
+/**
+ * Get Free Legal Consultation page fields
+ *
+ * Returns all ACF fields for the Free Legal Consultation page with fallback defaults.
+ * Includes form settings, what to expect section, why choose us features, and practice areas.
+ *
+ * @return array Free Consultation page data
+ */
+function mydefenselaw_get_free_consultation_fields() {
+    $phone = mydefenselaw_get_primary_phone();
+    $phone_raw = preg_replace('/[^0-9]/', '', $phone);
+
+    // Default "What to Expect" items
+    $default_expect_items = array(
+        array('item_text' => 'A confidential discussion of your legal situation'),
+        array('item_text' => 'Initial assessment of your case strengths and challenges'),
+        array('item_text' => 'Overview of your legal options and potential strategies'),
+        array('item_text' => 'Clear explanation of our services and fee structures'),
+        array('item_text' => 'No obligation - you decide if we\'re the right fit'),
+    );
+
+    // Default "Why Choose" features
+    $default_why_features = array(
+        array(
+            'feature_icon' => 'fas fa-shield-alt',
+            'feature_title' => 'Attorney-Client Privilege',
+            'feature_description' => 'Your information is protected and confidential',
+        ),
+        array(
+            'feature_icon' => 'fas fa-clock',
+            'feature_title' => 'Available 24/7',
+            'feature_description' => 'Legal emergencies don\'t wait - neither do we',
+        ),
+        array(
+            'feature_icon' => 'fas fa-user-tie',
+            'feature_title' => '25+ Years Experience',
+            'feature_description' => 'Seasoned attorneys ready to fight for you',
+        ),
+        array(
+            'feature_icon' => 'fas fa-hand-holding-usd',
+            'feature_title' => 'No Cost, No Obligation',
+            'feature_description' => 'Free consultation to understand your options',
+        ),
+    );
+
+    // Default practice areas
+    $default_practice_areas = array(
+        array('area_icon' => 'fas fa-balance-scale', 'area_title' => 'Civil Litigation', 'area_link' => home_url('/practice-areas/civil-defense-litigation/')),
+        array('area_icon' => 'fas fa-shield-alt', 'area_title' => 'Consumer Protection', 'area_link' => home_url('/practice-areas/consumer-protection/')),
+        array('area_icon' => 'fas fa-landmark', 'area_title' => 'Bankruptcy', 'area_link' => home_url('/practice-areas/bankruptcy/')),
+        array('area_icon' => 'fas fa-file-contract', 'area_title' => 'Contract Law', 'area_link' => home_url('/practice-areas/contract-law/')),
+        array('area_icon' => 'fas fa-users', 'area_title' => 'Family Law', 'area_link' => home_url('/practice-areas/family-law/')),
+        array('area_icon' => 'fas fa-home', 'area_title' => 'Real Estate', 'area_link' => home_url('/practice-areas/real-estate/')),
+        array('area_icon' => 'fas fa-building', 'area_title' => 'Landlord/Tenant', 'area_link' => home_url('/practice-areas/landlord-tenant/')),
+        array('area_icon' => 'fas fa-lightbulb', 'area_title' => 'Intellectual Property', 'area_link' => home_url('/practice-areas/intellectual-property/')),
+        array('area_icon' => 'fas fa-car', 'area_title' => 'Traffic Tickets', 'area_link' => home_url('/practice-areas/traffic-tickets/')),
+    );
+
+    $defaults = array(
+        'emergency_text' => __('Emergency? Call Now for Immediate Help', 'mydefenselaw'),
+        'intro_title' => __('Request Your Free Legal Consultation', 'mydefenselaw'),
+        'intro_text' => __('Take the first step toward resolving your legal matter. Our experienced attorneys are ready to listen to your case and provide guidance on your best options. All consultations are completely confidential and carry no obligation.', 'mydefenselaw'),
+        'expect_title' => __('What to Expect During Your Consultation', 'mydefenselaw'),
+        'expect_items' => $default_expect_items,
+        'why_title' => __('Why Choose Our Free Consultation', 'mydefenselaw'),
+        'why_features' => $default_why_features,
+        'practice_areas_title' => __('Practice Areas We Serve', 'mydefenselaw'),
+        'practice_areas' => $default_practice_areas,
+        'form_title' => __('Request Free Consultation', 'mydefenselaw'),
+        'form_subtitle' => __('Fill out the form below and we\'ll contact you within 24 hours.', 'mydefenselaw'),
+        'form_button' => __('Request Free Consultation', 'mydefenselaw'),
+        'form_disclaimer' => __('I understand that Defense Lawyers, P.A. has not yet agreed to represent me, that submitting this form does not constitute a contract, and that the firm will not advise me on any legal deadlines based solely on this submission.', 'mydefenselaw'),
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+
+    // Return defaults if ACF not available
+    if (!function_exists('get_field')) {
+        return $defaults;
+    }
+
+    // Get ACF fields with fallbacks
+    $acf_expect_items = get_field('consultation_expect_items');
+    $expect_items = $default_expect_items;
+    if (!empty($acf_expect_items) && is_array($acf_expect_items)) {
+        $first_item = reset($acf_expect_items);
+        if (!empty($first_item['item_text'])) {
+            $expect_items = $acf_expect_items;
+        }
+    }
+
+    $acf_why_features = get_field('consultation_why_features');
+    $why_features = $default_why_features;
+    if (!empty($acf_why_features) && is_array($acf_why_features)) {
+        $first_feature = reset($acf_why_features);
+        if (!empty($first_feature['feature_title'])) {
+            $why_features = $acf_why_features;
+        }
+    }
+
+    $acf_practice_areas = get_field('consultation_practice_areas');
+    $practice_areas = $default_practice_areas;
+    if (!empty($acf_practice_areas) && is_array($acf_practice_areas)) {
+        $first_area = reset($acf_practice_areas);
+        if (!empty($first_area['area_title'])) {
+            $practice_areas = $acf_practice_areas;
+        }
+    }
+
+    return array(
+        'emergency_text' => get_field('consultation_emergency_text') ?: $defaults['emergency_text'],
+        'intro_title' => get_field('consultation_intro_title') ?: $defaults['intro_title'],
+        'intro_text' => get_field('consultation_intro_text') ?: $defaults['intro_text'],
+        'expect_title' => get_field('consultation_expect_title') ?: $defaults['expect_title'],
+        'expect_items' => $expect_items,
+        'why_title' => get_field('consultation_why_title') ?: $defaults['why_title'],
+        'why_features' => $why_features,
+        'practice_areas_title' => get_field('consultation_practice_areas_title') ?: $defaults['practice_areas_title'],
+        'practice_areas' => $practice_areas,
+        'form_title' => get_field('consultation_form_title') ?: $defaults['form_title'],
+        'form_subtitle' => get_field('consultation_form_subtitle') ?: $defaults['form_subtitle'],
+        'form_button' => get_field('consultation_form_button') ?: $defaults['form_button'],
+        'form_disclaimer' => get_field('consultation_form_disclaimer') ?: $defaults['form_disclaimer'],
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+}
