@@ -1,0 +1,349 @@
+{
+    "key": "group_latest_news_page",
+    "title": "Latest Legal News Page",
+    "fields": [
+        {
+            "key": "field_news_tab_visibility",
+            "label": "Section Visibility",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_enable_news_intro",
+            "label": "Show Intro Section",
+            "name": "enable_news_intro",
+            "type": "true_false",
+            "instructions": "Toggle the introduction section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_news_items",
+            "label": "Show News Items",
+            "name": "enable_news_items",
+            "type": "true_false",
+            "instructions": "Toggle the news items grid on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_news_cta",
+            "label": "Show CTA Banner",
+            "name": "enable_news_cta",
+            "type": "true_false",
+            "instructions": "Toggle the call-to-action banner on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_news_reasons",
+            "label": "Show Why News Matters",
+            "name": "enable_news_reasons",
+            "type": "true_false",
+            "instructions": "Toggle the 'Why Legal News Matters' section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_news_final_cta",
+            "label": "Show Final CTA",
+            "name": "enable_news_final_cta",
+            "type": "true_false",
+            "instructions": "Toggle the final call-to-action section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_news_tab_intro",
+            "label": "Intro Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_news_intro_title",
+            "label": "Intro Title",
+            "name": "news_intro_title",
+            "type": "text",
+            "instructions": "Main heading for the news section",
+            "default_value": "Latest Legal News",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_news_intro_content",
+            "label": "Intro Content",
+            "name": "news_intro_content",
+            "type": "wysiwyg",
+            "instructions": "Introductory paragraph about the legal news section. Supports links and basic formatting.",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "default_value": "Stay informed with the latest legal developments, court decisions, and regulatory changes that may affect your legal matters. Defense Lawyers, P.A. keeps you updated on important legal news and trends.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_news_tab_items",
+            "label": "News Items",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_news_items",
+            "label": "News Items",
+            "name": "news_items",
+            "type": "repeater",
+            "instructions": "Add news items to display in the grid. Each item has a category, title, and description.",
+            "min": 0,
+            "max": 20,
+            "layout": "block",
+            "button_label": "Add News Item",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_news_item_category",
+                    "label": "Category",
+                    "name": "news_category",
+                    "type": "text",
+                    "instructions": "Category label (e.g., 'Recent Legal Updates', 'Bankruptcy Law Changes')",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_news_item_title",
+                    "label": "Title",
+                    "name": "news_title",
+                    "type": "text",
+                    "instructions": "News item headline",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_news_item_content",
+                    "label": "Content",
+                    "name": "news_content",
+                    "type": "textarea",
+                    "instructions": "Brief description of the news item",
+                    "rows": 3,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_news_tab_cta",
+            "label": "CTA Banner",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_news_cta_title",
+            "label": "CTA Banner Title",
+            "name": "news_cta_title",
+            "type": "text",
+            "instructions": "Heading for the call-to-action banner",
+            "default_value": "Stay Informed About Legal Changes",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_news_cta_content",
+            "label": "CTA Banner Content",
+            "name": "news_cta_content",
+            "type": "textarea",
+            "instructions": "Content text for the call-to-action banner",
+            "rows": 2,
+            "default_value": "Legal developments can directly impact your rights and obligations. Our experienced attorneys stay current with all legal changes to provide you with the most up-to-date advice.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_news_tab_reasons",
+            "label": "Why News Matters",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_news_reasons_title",
+            "label": "Section Title",
+            "name": "news_reasons_title",
+            "type": "text",
+            "instructions": "Heading for the 'Why Legal News Matters' section",
+            "default_value": "Why Legal News Matters",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_news_reasons",
+            "label": "Reasons",
+            "name": "news_reasons",
+            "type": "repeater",
+            "instructions": "Add reasons why staying informed about legal news is important",
+            "min": 0,
+            "max": 8,
+            "layout": "block",
+            "button_label": "Add Reason",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_reason_icon",
+                    "label": "Icon",
+                    "name": "reason_icon",
+                    "type": "text",
+                    "instructions": "Font Awesome icon class (e.g., 'fas fa-gavel')",
+                    "default_value": "fas fa-check",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_reason_title",
+                    "label": "Title",
+                    "name": "reason_title",
+                    "type": "text",
+                    "instructions": "Reason title",
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_reason_content",
+                    "label": "Content",
+                    "name": "reason_content",
+                    "type": "textarea",
+                    "instructions": "Brief explanation",
+                    "rows": 2,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_news_tab_final_cta",
+            "label": "Final CTA",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_news_final_cta_title",
+            "label": "Final CTA Title",
+            "name": "news_final_cta_title",
+            "type": "text",
+            "instructions": "Heading for the final call-to-action section",
+            "default_value": "Need Legal Advice About Recent Changes?",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_news_final_cta_content",
+            "label": "Final CTA Content",
+            "name": "news_final_cta_content",
+            "type": "textarea",
+            "instructions": "Content text for the final call-to-action section",
+            "rows": 2,
+            "default_value": "Our experienced attorneys stay current with all legal developments and can help you understand how they affect your situation.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-latest-news.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Content fields for the Latest Legal News page. All content can be edited here including section visibility, intro, news items, CTA banners, and 'Why News Matters' section.",
+    "show_in_rest": 0,
+    "modified": 1732567500
+}

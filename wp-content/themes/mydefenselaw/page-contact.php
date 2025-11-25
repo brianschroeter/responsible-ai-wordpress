@@ -27,8 +27,8 @@ $contact = mydefenselaw_get_contact_page_fields();
     </div>
 </section>
 
-<!-- Contact Section - Matching live site structure exactly -->
-<div class="contact-section-page" style="padding: 0; background: white;">
+<!-- Main Content - White container like live site -->
+<main class="main-content">
     <div class="container">
         <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
             <h2><?php echo esc_html($contact['hero_title']); ?></h2>
@@ -154,7 +154,7 @@ $contact = mydefenselaw_get_contact_page_fields();
             </div>
         </div>
     </div>
-</div>
+</main>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
