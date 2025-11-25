@@ -175,6 +175,11 @@ function mydefenselaw_disable_gutenberg_for_front_page($use_block_editor, $post)
         return false;
     }
 
+    // Disable Gutenberg for About The Firm page (content managed via ACF)
+    if (get_page_template_slug($post->ID) === 'page-about.php') {
+        return false;
+    }
+
     return $use_block_editor;
 }
 add_filter('use_block_editor_for_post', 'mydefenselaw_disable_gutenberg_for_front_page', 100, 2);

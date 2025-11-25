@@ -694,3 +694,164 @@ function mydefenselaw_get_contact_section_fields() {
         'office_hours' => $defaults['office_hours'],
     );
 }
+
+/**
+ * Get About The Firm page fields
+ *
+ * Returns all ACF fields for the About page with fallback defaults.
+ * Includes section visibility toggles and Attorney CPT integration.
+ *
+ * @return array About page data
+ */
+function mydefenselaw_get_about_fields() {
+    $phone = mydefenselaw_get_primary_phone();
+    $phone_raw = preg_replace('/[^0-9]/', '', $phone);
+
+    // Default mission principles
+    $default_principles = array(
+        array('principle_title' => 'Experience & Knowledge', 'principle_description' => 'Our attorneys are passionate about the law with decades of combined experience'),
+        array('principle_title' => 'Drive & Dedication', 'principle_description' => 'We are committed to delivering effective, efficient, and quality legal services'),
+        array('principle_title' => 'Courteous Service', 'principle_description' => 'Defense Lawyers, P.A. has an experienced and courteous staff to take you through the entire legal process'),
+        array('principle_title' => 'Focus on the client\'s specific needs', 'principle_description' => 'We focus on acquiring the results that our clients want'),
+        array('principle_title' => 'Acquiring the results that our clients want', 'principle_description' => 'Our track record speaks for itself'),
+    );
+
+    // Default attorneys (fallback if no CPT data)
+    $default_attorneys = array(
+        array(
+            'name' => 'Lee Stein, Esq.',
+            'bar_admissions' => 'Admitted in FL',
+            'short_bio' => 'Attorney Lee Stein has been an attorney for over 20 years. He graduated the University of Florida College of Law and is committed to providing professionalism, experience, dedication, service, and results for the firm\'s clients.',
+        ),
+        array(
+            'name' => 'Andre Sailers, Esq.',
+            'bar_admissions' => 'Admitted in GA',
+            'short_bio' => 'Attorney Andre Sailers has been an attorney for over 32 years. He graduated the University of Iowa and holds firm to the creed of "pursuing justice while offering the highest quality legal representation and superior client satisfaction."',
+        ),
+        array(
+            'name' => 'Wardell Huff, Esq.',
+            'bar_admissions' => 'Admitted in DC, NJ, NY, Dist. of MD',
+            'short_bio' => 'Attorney Wardell Huff has been an attorney for over 20 years. He is graduate of Michigan State University College of Law and has held membership within the National Association of Consumer Bankruptcy Attorneys.',
+        ),
+    );
+
+    $defaults = array(
+        'intro_title' => __('About Defense Lawyers, P.A.', 'mydefenselaw'),
+        'intro_content' => '<p>Defense Lawyers, P.A. offers motivated, experienced legal counsel and representation in a variety of practice areas. Our approach has resulted in stable, long-term relationships with our clients, which are based on the firm\'s prompt, efficient and high quality service to reach shared objectives. To employ the wisdom and skill of our practiced attorneys for your legal needs, <a href="' . esc_url(home_url('/contact/')) . '">contact us</a> today!</p>',
+        'mission_title' => __('Mission Statement', 'mydefenselaw'),
+        'mission_intro' => __('Defense Lawyers, P.A. is committed to providing the absolute highest quality of legal advice and advocacy. We recognize that our success must be earned every day to maintain the firm and long standing relationships that we enjoy with our clients. To achieve this end, our firm is committed to the following principles:', 'mydefenselaw'),
+        'mission_principles' => $default_principles,
+        'attorneys_title' => __('Meet The Attorneys', 'mydefenselaw'),
+        'attorneys' => $default_attorneys,
+        'passion_title' => __('Our Attorneys Bring Passion and Dedication to Each Case', 'mydefenselaw'),
+        'passion_content' => __('Our lawyers bring unique specialties and the capacity to excel to every client we represent and to every case we take. At Defense Lawyers, P.A., we have a reputation among our clients and our peers for committed service and highly effective litigation. Because of our success in the courtroom, we receive a lot of referrals from former clients, as well as other legal firms. We enjoy our work and are truly proud when we help our clients achieve the results they desire.', 'mydefenselaw'),
+        'cta_title' => __('Experience, Dedication, Service, and Results', 'mydefenselaw'),
+        'cta_tagline' => __('Defense Lawyers, P.A. prides itself on professionalism, experience, dedication, service, and results.', 'mydefenselaw'),
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+
+    // Return defaults if ACF not available
+    if (!function_exists('get_field')) {
+        return $defaults;
+    }
+
+    // Get ACF fields
+    $acf_principles = get_field('about_mission_principles');
+    $principles = (!empty($acf_principles) && is_array($acf_principles)) ? $acf_principles : $default_principles;
+
+    // Get attorneys based on display mode
+    $display_mode = get_field('about_attorneys_display_mode') ?: 'all';
+    $attorneys = array();
+
+    if ($display_mode === 'select') {
+        // Use specifically selected attorneys from relationship field
+        $selected = get_field('about_attorneys_selected');
+        if ($selected && is_array($selected)) {
+            foreach ($selected as $attorney_post) {
+                $att_id = $attorney_post->ID;
+                $bar_admissions = get_field('bar_admissions', $att_id);
+                $admissions_str = '';
+                if ($bar_admissions && is_array($bar_admissions)) {
+                    $states = array_column($bar_admissions, 'state');
+                    $admissions_str = 'Admitted in ' . implode(', ', $states);
+                }
+                $attorneys[] = array(
+                    'name' => get_the_title($att_id),
+                    'bar_admissions' => $admissions_str,
+                    'short_bio' => get_field('short_bio', $att_id) ?: '',
+                );
+            }
+        }
+    } elseif ($display_mode === 'limit') {
+        // Show limited number from CPT
+        $limit = get_field('about_attorneys_limit') ?: 3;
+        $attorneys = mydefenselaw_get_about_attorneys_from_cpt($limit);
+    } else {
+        // Show all attorneys from CPT
+        $attorneys = mydefenselaw_get_about_attorneys_from_cpt(-1);
+    }
+
+    // Fallback to defaults if no attorneys found
+    if (empty($attorneys)) {
+        $attorneys = $default_attorneys;
+    }
+
+    return array(
+        'intro_title' => get_field('about_intro_title') ?: $defaults['intro_title'],
+        'intro_content' => get_field('about_intro_content') ?: $defaults['intro_content'],
+        'mission_title' => get_field('about_mission_title') ?: $defaults['mission_title'],
+        'mission_intro' => get_field('about_mission_intro') ?: $defaults['mission_intro'],
+        'mission_principles' => $principles,
+        'attorneys_title' => get_field('about_attorneys_title') ?: $defaults['attorneys_title'],
+        'attorneys' => $attorneys,
+        'passion_title' => get_field('about_passion_title') ?: $defaults['passion_title'],
+        'passion_content' => get_field('about_passion_content') ?: $defaults['passion_content'],
+        'cta_title' => get_field('about_cta_title') ?: $defaults['cta_title'],
+        'cta_tagline' => get_field('about_cta_tagline') ?: $defaults['cta_tagline'],
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+}
+
+/**
+ * Get attorneys from CPT for About page
+ *
+ * @param int $limit Number of attorneys to retrieve
+ * @return array Array of attorney data formatted for About page
+ */
+function mydefenselaw_get_about_attorneys_from_cpt($limit = -1) {
+    $attorneys = array();
+
+    $query = new WP_Query(array(
+        'post_type' => 'attorney',
+        'posts_per_page' => $limit,
+        'post_status' => 'publish',
+        'orderby' => 'menu_order',
+        'order' => 'ASC',
+    ));
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $att_id = get_the_ID();
+
+            // Build bar admissions string
+            $bar_admissions = get_field('bar_admissions', $att_id);
+            $admissions_str = '';
+            if ($bar_admissions && is_array($bar_admissions)) {
+                $states = array_column($bar_admissions, 'state');
+                $admissions_str = 'Admitted in ' . implode(', ', $states);
+            }
+
+            $attorneys[] = array(
+                'name' => get_the_title(),
+                'bar_admissions' => $admissions_str,
+                'short_bio' => get_field('short_bio', $att_id) ?: '',
+            );
+        }
+        wp_reset_postdata();
+    }
+
+    return $attorneys;
+}

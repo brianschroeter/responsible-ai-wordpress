@@ -1,0 +1,380 @@
+{
+    "key": "group_about_page",
+    "title": "About The Firm Page",
+    "fields": [
+        {
+            "key": "field_about_tab_visibility",
+            "label": "Section Visibility",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_enable_about_intro",
+            "label": "Show Intro Section",
+            "name": "enable_about_intro",
+            "type": "true_false",
+            "instructions": "Toggle the introduction section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_about_mission",
+            "label": "Show Mission Statement",
+            "name": "enable_about_mission",
+            "type": "true_false",
+            "instructions": "Toggle the mission statement section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_about_attorneys",
+            "label": "Show Attorneys Section",
+            "name": "enable_about_attorneys",
+            "type": "true_false",
+            "instructions": "Toggle the Meet The Attorneys section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_about_passion",
+            "label": "Show Passion Section",
+            "name": "enable_about_passion",
+            "type": "true_false",
+            "instructions": "Toggle the passion paragraph section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_about_cta",
+            "label": "Show CTA Section",
+            "name": "enable_about_cta",
+            "type": "true_false",
+            "instructions": "Toggle the call-to-action section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_tab_intro",
+            "label": "Intro Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_intro_title",
+            "label": "Intro Title",
+            "name": "about_intro_title",
+            "type": "text",
+            "instructions": "Main heading for the intro section",
+            "default_value": "About Defense Lawyers, P.A.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_intro_content",
+            "label": "Intro Content",
+            "name": "about_intro_content",
+            "type": "wysiwyg",
+            "instructions": "Introductory paragraph about the firm. Supports links and basic formatting.",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "default_value": "Defense Lawyers, P.A. offers motivated, experienced legal counsel and representation in a variety of practice areas. Our approach has resulted in stable, long-term relationships with our clients, which are based on the firm's prompt, efficient and high quality service to reach shared objectives. To employ the wisdom and skill of our practiced attorneys for your legal needs, <a href=\"/contact/\">contact us</a> today!",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_tab_mission",
+            "label": "Mission Statement",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_mission_title",
+            "label": "Mission Title",
+            "name": "about_mission_title",
+            "type": "text",
+            "instructions": "Heading for the mission statement section",
+            "default_value": "Mission Statement",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_mission_intro",
+            "label": "Mission Introduction",
+            "name": "about_mission_intro",
+            "type": "textarea",
+            "instructions": "Introductory paragraph before the mission principles list",
+            "rows": 3,
+            "default_value": "Defense Lawyers, P.A. is committed to providing the absolute highest quality of legal advice and advocacy. We recognize that our success must be earned every day to maintain the firm and long standing relationships that we enjoy with our clients. To achieve this end, our firm is committed to the following principles:",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_mission_principles",
+            "label": "Mission Principles",
+            "name": "about_mission_principles",
+            "type": "repeater",
+            "instructions": "Core principles displayed as bullet points",
+            "min": 1,
+            "max": 10,
+            "layout": "table",
+            "button_label": "Add Principle",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_principle_title",
+                    "label": "Title",
+                    "name": "principle_title",
+                    "type": "text",
+                    "instructions": "Bold title (e.g., Experience & Knowledge)",
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_principle_description",
+                    "label": "Description",
+                    "name": "principle_description",
+                    "type": "text",
+                    "instructions": "Description text after the dash",
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_about_tab_attorneys",
+            "label": "Meet The Attorneys",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_attorneys_title",
+            "label": "Section Title",
+            "name": "about_attorneys_title",
+            "type": "text",
+            "instructions": "Heading for the attorneys section",
+            "default_value": "Meet The Attorneys",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_attorneys_display_mode",
+            "label": "Display Mode",
+            "name": "about_attorneys_display_mode",
+            "type": "select",
+            "instructions": "Choose how to select attorneys for display",
+            "choices": {
+                "all": "Show All Attorneys",
+                "select": "Select Specific Attorneys",
+                "limit": "Show Latest (Limited)"
+            },
+            "default_value": "all",
+            "return_format": "value",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_attorneys_limit",
+            "label": "Number to Display",
+            "name": "about_attorneys_limit",
+            "type": "number",
+            "instructions": "Maximum attorneys to display",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_about_attorneys_display_mode",
+                        "operator": "==",
+                        "value": "limit"
+                    }
+                ]
+            ],
+            "default_value": 3,
+            "min": 1,
+            "max": 10,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_attorneys_selected",
+            "label": "Select Attorneys",
+            "name": "about_attorneys_selected",
+            "type": "relationship",
+            "instructions": "Choose specific attorneys to display",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_about_attorneys_display_mode",
+                        "operator": "==",
+                        "value": "select"
+                    }
+                ]
+            ],
+            "post_type": [
+                "attorney"
+            ],
+            "filters": [
+                "search"
+            ],
+            "return_format": "object",
+            "min": 0,
+            "max": 10,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_tab_passion",
+            "label": "Passion Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_passion_title",
+            "label": "Passion Section Title",
+            "name": "about_passion_title",
+            "type": "text",
+            "instructions": "Heading for the passion paragraph section",
+            "default_value": "Our Attorneys Bring Passion and Dedication to Each Case",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_passion_content",
+            "label": "Passion Content",
+            "name": "about_passion_content",
+            "type": "textarea",
+            "instructions": "Paragraph content for the passion section",
+            "rows": 4,
+            "default_value": "Our lawyers bring unique specialties and the capacity to excel to every client we represent and to every case we take. At Defense Lawyers, P.A., we have a reputation among our clients and our peers for committed service and highly effective litigation. Because of our success in the courtroom, we receive a lot of referrals from former clients, as well as other legal firms. We enjoy our work and are truly proud when we help our clients achieve the results they desire.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_tab_cta",
+            "label": "CTA Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_about_cta_title",
+            "label": "CTA Title",
+            "name": "about_cta_title",
+            "type": "text",
+            "instructions": "Heading for the call-to-action section",
+            "default_value": "Experience, Dedication, Service, and Results",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_about_cta_tagline",
+            "label": "CTA Tagline",
+            "name": "about_cta_tagline",
+            "type": "textarea",
+            "instructions": "Tagline text below the CTA heading",
+            "rows": 2,
+            "default_value": "Defense Lawyers, P.A. prides itself on professionalism, experience, dedication, service, and results.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-about.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Content fields for the About The Firm page. All content can be edited here including section visibility, intro, mission statement, attorneys, and CTA.",
+    "show_in_rest": 0,
+    "modified": 1732600000
+}
