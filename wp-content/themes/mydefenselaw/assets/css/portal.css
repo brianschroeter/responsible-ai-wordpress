@@ -1267,6 +1267,7 @@
    Login Page Styles
    ========================================================================== */
 
+/* Login Page - Both with and without portal header */
 .portal-login-page {
     min-height: 100vh;
     display: flex;
@@ -1274,6 +1275,12 @@
     justify-content: center;
     background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-blue) 100%);
     padding: 2rem;
+}
+
+/* When portal header is used on login page */
+.portal-page .portal-login-page {
+    min-height: calc(100vh - var(--admin-bar-height));
+    padding: 4rem 2rem 2rem;
 }
 
 .login-container {

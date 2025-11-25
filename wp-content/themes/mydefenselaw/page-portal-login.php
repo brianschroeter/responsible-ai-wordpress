@@ -22,11 +22,11 @@ $session_expired = isset($_GET['expired']) && $_GET['expired'] === '1';
 $logout_success = isset($_GET['logout']) && $_GET['logout'] === 'success';
 $login_error = isset($_GET['login']) && $_GET['login'] === 'failed';
 
-get_header();
+get_header('portal');
 ?>
 
 <!-- Portal Login Page -->
-<section class="portal-login-section">
+<section class="portal-login-page">
     <div class="container">
         <div class="login-wrapper">
             <div class="login-card">
@@ -163,5 +163,5 @@ get_header();
 </section>
 
 <?php
-get_footer();
+get_footer('portal');
 ?>

@@ -3712,3 +3712,437 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.85rem;
     }
 }
+
+/* ==========================================================================
+   Free Legal Consultation Page Styles
+   ========================================================================== */
+
+/* Page Header with Emergency Badge */
+.consultation-page-header {
+    position: relative;
+}
+
+.consultation-page-header .emergency-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #dc2626;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+.consultation-page-header .emergency-badge i {
+    font-size: 1rem;
+}
+
+/* Consultation Page Main Content */
+.consultation-page {
+    padding: 3rem 0;
+}
+
+/* Consultation Grid Layout */
+.consultation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Consultation Info Column */
+.consultation-info h2 {
+    font-size: 2rem;
+    color: #1a365d;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.consultation-info .lead-text {
+    font-size: 1.1rem;
+    color: #4a5568;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+/* What to Expect Section */
+.expect-section {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.expect-section h3 {
+    font-size: 1.25rem;
+    color: #1a365d;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.expect-section h3 i {
+    color: #dc2626;
+}
+
+.expect-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.expect-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.expect-list li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.expect-list li i {
+    color: #10b981;
+    font-size: 1rem;
+    margin-top: 0.125rem;
+    flex-shrink: 0;
+}
+
+.expect-list li span {
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+/* Why Choose Section */
+.why-choose-section {
+    margin-bottom: 2rem;
+}
+
+.why-choose-section h3 {
+    font-size: 1.25rem;
+    color: #1a365d;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.why-choose-section h3 i {
+    color: #f59e0b;
+}
+
+.why-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.why-feature {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.why-feature:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.why-feature > i {
+    font-size: 1.5rem;
+    color: #dc2626;
+    flex-shrink: 0;
+}
+
+.why-feature strong {
+    display: block;
+    color: #1a365d;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.why-feature p {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Consultation Form Section */
+.consultation-form-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+    position: sticky;
+    top: calc(100px + var(--admin-bar-height, 0px));
+}
+
+.consultation-form-section .form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.consultation-form-section .form-header h4 {
+    font-size: 1.5rem;
+    color: #1a365d;
+    margin-bottom: 0.5rem;
+}
+
+.consultation-form-section .form-header p {
+    color: #64748b;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Consultation Form */
+.consultation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.consultation-form input,
+.consultation-form select,
+.consultation-form textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.consultation-form input:focus,
+.consultation-form select:focus,
+.consultation-form textarea:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.consultation-form input::placeholder,
+.consultation-form textarea::placeholder {
+    color: #9ca3af;
+}
+
+.consultation-form select {
+    cursor: pointer;
+    color: #4a5568;
+}
+
+.consultation-form select option:first-child {
+    color: #9ca3af;
+}
+
+.consultation-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Disclaimer Checkbox */
+.disclaimer-checkbox {
+    background: #fef3c7;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #f59e0b;
+}
+
+.disclaimer-checkbox .checkbox-text {
+    font-size: 0.85rem;
+    color: #92400e;
+    line-height: 1.5;
+}
+
+/* Form Buttons */
+.form-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-buttons .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Practice Areas Section */
+.consultation-practice-areas {
+    background: #f8fafc;
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.consultation-practice-areas h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #1a365d;
+    margin-bottom: 2rem;
+}
+
+.practice-areas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.practice-area-card-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    text-decoration: none;
+    color: #1a365d;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.practice-area-card-mini:hover {
+    border-color: #dc2626;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+    transform: translateY(-3px);
+}
+
+.practice-area-card-mini i {
+    font-size: 1.75rem;
+    color: #dc2626;
+}
+
+.practice-area-card-mini span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+/* Quick Contact Bar */
+.quick-contact-bar {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: #1a365d;
+    border-radius: 12px;
+}
+
+.quick-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white;
+    font-weight: 500;
+}
+
+.quick-contact-item i {
+    color: #f59e0b;
+}
+
+/* Responsive Styles for Consultation Page */
+@media (max-width: 968px) {
+    .consultation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .consultation-form-section {
+        position: relative;
+        top: 0;
+    }
+
+    .why-features {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-contact-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .consultation-page {
+        padding: 2rem 0;
+    }
+
+    .consultation-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .consultation-info .lead-text {
+        font-size: 1rem;
+    }
+
+    .consultation-form-section {
+        padding: 1.5rem;
+    }
+
+    .practice-areas-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .practice-area-card-mini {
+        padding: 1rem;
+    }
+
+    .practice-area-card-mini i {
+        font-size: 1.5rem;
+    }
+
+    .practice-area-card-mini span {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .consultation-page-header .emergency-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .expect-section {
+        padding: 1rem;
+    }
+
+    .consultation-practice-areas {
+        padding: 1.5rem;
+    }
+
+    .practice-areas-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .quick-contact-bar {
+        padding: 1rem;
+    }
+
+    .quick-contact-item {
+        font-size: 0.9rem;
+    }
+}
