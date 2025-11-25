@@ -401,3 +401,4 @@ require_once get_template_directory() . '/inc/template-tags.php';
 require_once get_template_directory() . '/inc/contact-form-handler.php';
 require_once get_template_directory() . '/inc/custom-post-types.php';
 require_once get_template_directory() . '/inc/acf-sync-helper.php';
+require_once get_template_directory() . '/inc/disable-posts.php';
