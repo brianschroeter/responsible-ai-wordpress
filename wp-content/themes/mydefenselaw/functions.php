@@ -123,6 +123,62 @@ function mydefenselaw_scripts() {
 add_action('wp_enqueue_scripts', 'mydefenselaw_scripts');
 
 /**
+ * Enqueue Client Portal Scripts
+ *
+ * Loads portal-specific JavaScript with localized AJAX data and nonces.
+ * Only loads on portal pages to reduce overhead.
+ */
+function mydefenselaw_portal_enqueue_scripts() {
+	// Only load on portal pages
+	if (!mydefenselaw_portal_is_portal_page()) {
+		return;
+	}
+
+	// Enqueue portal JavaScript (create this file if needed)
+	wp_enqueue_script(
+		'mydefenselaw-portal-script',
+		get_template_directory_uri() . '/assets/js/portal.js',
+		array('jquery'),
+		MYDEFENSELAW_VERSION,
+		true
+	);
+
+	// Localize script with AJAX URL and nonces
+	wp_localize_script('mydefenselaw-portal-script', 'portalData', array(
+		'ajaxUrl' => admin_url('admin-ajax.php'),
+		'nonces' => array(
+			'upload_document' => mydefenselaw_portal_create_nonce('upload_document'),
+			'delete_document' => mydefenselaw_portal_create_nonce('delete_document'),
+			'create_folder' => mydefenselaw_portal_create_nonce('create_folder'),
+			'move_document' => mydefenselaw_portal_create_nonce('move_document'),
+			'send_message' => mydefenselaw_portal_create_nonce('send_message'),
+			'mark_read' => mydefenselaw_portal_create_nonce('mark_read'),
+			'get_messages' => mydefenselaw_portal_create_nonce('get_messages'),
+			'update_profile' => mydefenselaw_portal_create_nonce('update_profile'),
+			'change_password' => mydefenselaw_portal_create_nonce('change_password'),
+			'update_notifications' => mydefenselaw_portal_create_nonce('update_notifications'),
+		),
+		'i18n' => array(
+			'uploadError' => __('Upload failed. Please try again.', 'mydefenselaw'),
+			'sendError' => __('Failed to send message. Please try again.', 'mydefenselaw'),
+			'confirmDelete' => __('Are you sure you want to delete this?', 'mydefenselaw'),
+			'loading' => __('Loading...', 'mydefenselaw'),
+			'success' => __('Success!', 'mydefenselaw'),
+			'error' => __('Error', 'mydefenselaw'),
+		),
+	));
+
+	// Enqueue portal styles if needed
+	wp_enqueue_style(
+		'mydefenselaw-portal-style',
+		get_template_directory_uri() . '/assets/css/portal.css',
+		array('mydefenselaw-style'),
+		MYDEFENSELAW_VERSION
+	);
+}
+add_action('wp_enqueue_scripts', 'mydefenselaw_portal_enqueue_scripts');
+
+/**
  * ACF Options Page Setup
  */
 function mydefenselaw_acf_options_page() {
@@ -404,4 +460,5 @@ require_once get_template_directory() . '/inc/disable-posts.php';
 require_once get_template_directory() . '/inc/disable-comments.php';
 require_once get_template_directory() . '/inc/admin-customization.php';
 require_once get_template_directory() . '/inc/translatepress-language-menu.php';
+require_once get_template_directory() . '/inc/seo-schema.php';
 require_once get_template_directory() . '/inc/client-portal/init.php';

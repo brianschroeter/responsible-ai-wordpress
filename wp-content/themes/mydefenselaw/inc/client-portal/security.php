@@ -15,6 +15,28 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Initialize security features
+ *
+ * @since 1.0.0
+ */
+function mydefenselaw_portal_init_security() {
+    // Add security headers on portal pages
+    add_action('send_headers', 'mydefenselaw_portal_security_headers');
+
+    // Rate limiting on login
+    add_filter('authenticate', 'mydefenselaw_portal_authenticate_rate_limit', 30, 3);
+
+    // Track failed logins
+    add_action('wp_login_failed', 'mydefenselaw_portal_failed_login', 10, 2);
+
+    // Clear rate limit on successful login
+    add_action('wp_login', 'mydefenselaw_portal_successful_login', 10, 2);
+
+    // Log logout events
+    add_action('wp_logout', 'mydefenselaw_portal_logout');
+}
+
+/**
  * Check if current user can access portal
  *
  * Verifies: logged in, has client role, session not expired

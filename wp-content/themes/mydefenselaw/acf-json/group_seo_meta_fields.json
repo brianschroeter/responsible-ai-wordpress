@@ -1,0 +1,195 @@
+{
+    "key": "group_seo_meta_fields",
+    "title": "SEO Meta Fields",
+    "fields": [
+        {
+            "key": "field_seo_meta_title",
+            "label": "SEO Meta Title Override",
+            "name": "seo_meta_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional. Override the default page title for search engines. If left blank, the page title will be used. Recommended length: 50-60 characters.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 70,
+            "placeholder": "e.g., Criminal Defense Attorney Boca Raton | MyDefenseLaw",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_seo_meta_description",
+            "label": "SEO Meta Description",
+            "name": "seo_meta_description",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Write a compelling description for search engine results. This should summarize the page content and encourage clicks. Recommended length: 150-160 characters.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": 160,
+            "rows": 3,
+            "placeholder": "e.g., Experienced criminal defense lawyers in Boca Raton, FL. Protecting your rights with aggressive representation. Call for a free consultation today.",
+            "new_lines": ""
+        },
+        {
+            "key": "field_seo_focus_keyword",
+            "label": "Focus Keyword",
+            "name": "seo_focus_keyword",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Enter the primary keyword or phrase you want this page to rank for in search engines. Use natural language that your potential clients would search for.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., DUI attorney Boca Raton",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_seo_local_location",
+            "label": "Local SEO Location",
+            "name": "seo_local_location",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select the primary geographic location this page targets. This helps with local search optimization.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "boca-raton": "Boca Raton",
+                "delray-beach": "Delray Beach",
+                "deerfield-beach": "Deerfield Beach",
+                "boynton-beach": "Boynton Beach",
+                "west-palm-beach": "West Palm Beach",
+                "palm-beach-county": "Palm Beach County",
+                "broward-county": "Broward County",
+                "south-florida": "South Florida",
+                "florida": "Florida (Statewide)"
+            },
+            "default_value": "boca-raton",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_seo_canonical_url",
+            "label": "Canonical URL Override",
+            "name": "seo_canonical_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Advanced: Override the canonical URL for this page. Only use if you need to specify a different canonical URL than the default. Leave blank for most pages.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://mydefenselaw.com/your-canonical-url/"
+        },
+        {
+            "key": "field_seo_robots_meta",
+            "label": "Search Engine Visibility",
+            "name": "seo_robots_meta",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Control how search engines index this page. Default (Index, Follow) is recommended for most pages.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "index-follow": "Index, Follow (Default - Allow search engines)",
+                "noindex-follow": "No Index, Follow (Hide from search, follow links)",
+                "index-nofollow": "Index, No Follow (Show in search, don't follow links)",
+                "noindex-nofollow": "No Index, No Follow (Hide completely)"
+            },
+            "default_value": "index-follow",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_seo_og_image",
+            "label": "Social Media Share Image",
+            "name": "seo_og_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Optional. Upload a custom image for social media sharing (Facebook, LinkedIn, etc.). Recommended size: 1200x630px. If not set, the featured image will be used.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "jpg,jpeg,png,webp",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "practice_area"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "SEO meta fields for optimizing pages and practice areas for search engines and local search visibility.",
+    "show_in_rest": 0,
+    "modified": 1732572000
+}

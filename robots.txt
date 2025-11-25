@@ -1,0 +1,55 @@
+# Robots.txt for MyDefenseLaw - Criminal Defense Law Firm
+# Boca Raton, FL
+# https://mydefenselaw.com
+
+User-agent: *
+Allow: /
+
+# Allow all crawlers access to the site
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+# Block WordPress core files that shouldn't be indexed
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/cache/
+Disallow: /wp-content/themes/*/assets/
+Disallow: /readme.html
+Disallow: /license.txt
+Disallow: /wp-config.php
+
+# Block query strings and parameters
+Disallow: /*?*
+Disallow: /*&*
+
+# Block WordPress feeds (optional, Yoast handles this)
+# Disallow: /feed/
+# Disallow: /comments/feed/
+
+# Block search results pages
+Disallow: /?s=
+Disallow: /search/
+
+# Block author archives (single attorney site may not need these)
+Disallow: /author/
+
+# Block attachment pages
+Disallow: /*attachment*
+
+# Allow important resources for SEO
+Allow: /wp-content/uploads/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Sitemap location
+Sitemap: http://localhost:8088/sitemap_index.xml
+
+# Crawl-delay for bots (be nice to the server)
+# User-agent: *
+# Crawl-delay: 10

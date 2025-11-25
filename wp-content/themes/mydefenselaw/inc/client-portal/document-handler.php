@@ -457,6 +457,7 @@ function mydefenselaw_portal_download_document($document_id) {
  * @param int $document_id Document post ID
  * @return bool True if user can access, false otherwise
  */
+if (!function_exists('mydefenselaw_portal_can_access_document')) {
 function mydefenselaw_portal_can_access_document($user_id, $document_id) {
 	$user = get_user_by('id', $user_id);
 	if (!$user) {
@@ -480,6 +481,7 @@ function mydefenselaw_portal_can_access_document($user_id, $document_id) {
 	}
 
 	return false;
+}
 }
 
 /**
@@ -528,6 +530,7 @@ function mydefenselaw_portal_log_document_access($document_id, $action) {
  * @since 1.0.0
  * @return string IP address
  */
+if (!function_exists('mydefenselaw_portal_get_ip')) {
 function mydefenselaw_portal_get_ip() {
 	$ip_keys = array(
 		'HTTP_CLIENT_IP',
@@ -553,6 +556,7 @@ function mydefenselaw_portal_get_ip() {
 	}
 
 	return 'Unknown';
+}
 }
 
 /**
