@@ -1,0 +1,443 @@
+{
+    "key": "group_homepage_results",
+    "title": "Homepage - Why Choose Us",
+    "fields": [
+        {
+            "key": "field_why_tab",
+            "label": "Why Choose Us",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_why_section_title",
+            "label": "Why Choose Us Title",
+            "name": "why_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading for the 'Why Choose Us' section",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Why Choose Defense Lawyers, P.A.?",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_why_lead_text",
+            "label": "Lead Text",
+            "name": "why_lead_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Introductory paragraph for the Why Choose Us section",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "default_value": "Defense Lawyers, P.A. is dedicated to providing affordable legal services for businesses and individuals who would have otherwise not been able to resolve their legal problems on their own.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_why_features",
+            "label": "Features",
+            "name": "why_features",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add features\/benefits",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "min": 0,
+            "max": 8,
+            "layout": "block",
+            "button_label": "Add Feature",
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_feature_icon",
+                    "label": "Icon Class",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Font Awesome class",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "fas fa-check",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_why_features"
+                },
+                {
+                    "key": "field_feature_title",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Feature title",
+                    "required": 1,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_why_features"
+                },
+                {
+                    "key": "field_feature_description",
+                    "label": "Description",
+                    "name": "description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Feature description",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "rows": 2,
+                    "default_value": "",
+                    "new_lines": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "parent_repeater": "field_why_features"
+                }
+            ]
+        },
+        {
+            "key": "field_why_cta_tab",
+            "label": "CTA & Testimonial",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_why_cta_title",
+            "label": "CTA Title",
+            "name": "why_cta_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Call-to-action section heading",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "We Vigorously Advocate For Your Rights",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_why_cta_text",
+            "label": "CTA Text",
+            "name": "why_cta_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Call-to-action supporting text",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "default_value": "To achieve successful results in complex litigation, you need more than just the facts on your side. You need experienced counsel.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_testimonial_quote",
+            "label": "Testimonial Quote",
+            "name": "testimonial_quote",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Quote text for testimonial section",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 3,
+            "default_value": "Our attorneys are passionate about the law. We are committed to delivering effective, efficient, and quality legal services because we care about every client and every case.",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_testimonial_author",
+            "label": "Testimonial Author",
+            "name": "testimonial_author",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Name of person giving testimonial",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Defense Lawyers, P.A.",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_testimonial_rating",
+            "label": "Testimonial Rating",
+            "name": "testimonial_rating",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Star rating (1-5)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sidebar_config_tab",
+            "label": "Sidebar Configuration",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_sidebar_title",
+            "label": "Sidebar Title",
+            "name": "sidebar_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading for the attorney sidebar (default: \"Meet The Attorneys\")",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Meet The Attorneys",
+            "maxlength": "",
+            "placeholder": "Meet The Attorneys",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sidebar_display_mode",
+            "label": "Attorney Display Mode",
+            "name": "sidebar_display_mode",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "How should attorneys be displayed in the sidebar?",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "auto": "Auto - Show first N attorneys from CPT (ordered by menu order)",
+                "select": "Select - Choose specific attorneys to display",
+                "none": "None - Hide attorney sidebar completely"
+            },
+            "default_value": "auto",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_sidebar_attorneys_limit",
+            "label": "Number of Attorneys",
+            "name": "sidebar_attorneys_limit",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "How many attorneys to display (1-5)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sidebar_display_mode",
+                        "operator": "==",
+                        "value": "auto"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 3,
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_sidebar_attorneys_selected",
+            "label": "Select Attorneys",
+            "name": "sidebar_attorneys_selected",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Choose which attorneys to display in the sidebar",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_sidebar_display_mode",
+                        "operator": "==",
+                        "value": "select"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "attorney"
+            ],
+            "post_status": "",
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "return_format": "object",
+            "min": 0,
+            "max": 5,
+            "elements": "",
+            "bidirectional": 0,
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "front-page.php"
+            }
+        ],
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": true,
+    "display_title": "",
+    "modified": 1764082693
+}

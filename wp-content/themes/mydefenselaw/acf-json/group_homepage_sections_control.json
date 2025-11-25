@@ -1,0 +1,125 @@
+{
+    "key": "group_homepage_sections_control",
+    "title": "Homepage - Section Visibility",
+    "fields": [
+        {
+            "key": "field_enable_hero",
+            "label": "Show Hero Section",
+            "name": "enable_hero",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle the hero section on or off",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_enable_practice_areas",
+            "label": "Show Practice Areas Section",
+            "name": "enable_practice_areas",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle the practice areas section on or off",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_enable_attorneys_section",
+            "label": "Show Meet the Attorneys Section",
+            "name": "enable_attorneys_section",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle the dedicated Meet the Attorneys section on or off. Note: Attorneys can still appear in the Why Choose Us sidebar even if this is disabled.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_enable_why_choose_us",
+            "label": "Show Why Choose Us Section",
+            "name": "enable_why_choose_us",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle the Why Choose Us section on or off",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_enable_contact_form",
+            "label": "Show Contact Form Section",
+            "name": "enable_contact_form",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Toggle the contact form section on or off",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": -1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Control which sections are visible on the homepage. These toggles allow you to show or hide sections without modifying code.",
+    "show_in_rest": 0,
+    "modified": 1732553600
+}
