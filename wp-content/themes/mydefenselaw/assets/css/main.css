@@ -977,10 +977,13 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1rem;  /* Reduced spacing - closer to stars */
+    gap: 0.5rem;
+    position: absolute;  /* Position at bottom of slider */
+    bottom: 0;  /* Align to bottom */
+    left: 0;
+    right: 0;
     padding: 0 2rem 2rem 2rem;  /* Match slide padding for consistent spacing */
-    position: relative;  /* Ensure proper positioning within slider */
+    z-index: 3;  /* Above slides */
 }
 
 .testimonial-prev,
