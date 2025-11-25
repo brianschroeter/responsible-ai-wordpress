@@ -110,6 +110,12 @@ $spanish_pages[] = array(
     'title' => 'Consulta Gratuita',
     'url'   => home_url('/es/free-consultation/'),
 );
+
+// Add Legal News link for Spanish
+$spanish_pages[] = array(
+    'title' => 'Noticias Legales',
+    'url'   => home_url('/es/latest-legal-news/'),
+);
 ?>
 
 <!-- Page Header -->
