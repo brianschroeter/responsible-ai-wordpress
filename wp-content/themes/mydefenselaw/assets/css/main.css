@@ -930,7 +930,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     right: 0;
-    padding: 2rem;
+    padding: 0;
     transition: opacity 0.5s ease-in-out;
     pointer-events: none;
 }
