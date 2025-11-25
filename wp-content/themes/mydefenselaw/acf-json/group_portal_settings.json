@@ -1,0 +1,137 @@
+{
+    "key": "group_portal_settings",
+    "title": "Client Portal Settings",
+    "fields": [
+        {
+            "key": "field_portal_session_timeout",
+            "label": "Session Timeout",
+            "name": "portal_session_timeout",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Minutes before auto-logout",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 30,
+            "min": 5,
+            "max": 120,
+            "step": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "minutes"
+        },
+        {
+            "key": "field_portal_max_file_size",
+            "label": "Maximum File Upload Size",
+            "name": "portal_max_file_size",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Maximum file upload size in MB",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 10,
+            "min": 1,
+            "max": 100,
+            "step": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "MB"
+        },
+        {
+            "key": "field_portal_allowed_file_types",
+            "label": "Allowed File Types",
+            "name": "portal_allowed_file_types",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Comma-separated file extensions (e.g., pdf,doc,docx,jpg,png)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 2,
+            "default_value": "pdf,doc,docx,jpg,jpeg,png",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_portal_email_notifications",
+            "label": "Enable Email Notifications",
+            "name": "portal_email_notifications",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Send email notifications for portal activity",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_portal_notification_email",
+            "label": "Admin Notification Email",
+            "name": "portal_notification_email",
+            "aria-label": "",
+            "type": "email",
+            "instructions": "Email address to receive portal notifications",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_portal_email_notifications",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "client-portal-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "modified": 1737849600
+}

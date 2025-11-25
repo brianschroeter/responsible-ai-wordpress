@@ -47,20 +47,30 @@ function mydefenselaw_add_language_menu_item($items, $args) {
 
     // Determine the target language and link text
     $default_lang = $settings['default-language']; // en_US
-    $current_url = trp_get_current_page_url();
 
-    if ($current_language === $default_lang) {
+    // Get the actual current URL from the browser (not TranslatePress's normalized version)
+    $protocol = is_ssl() ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'];
+    $request_uri = $_SERVER['REQUEST_URI'];
+    $actual_current_url = $protocol . $host . $request_uri;
+
+    // Check if we're actually on a Spanish page by looking at the URL
+    $is_on_spanish_page = (strpos($request_uri, '/es/') === 0 || strpos($request_uri, '/es') === 0);
+
+    if (!$is_on_spanish_page) {
         // We're on English - show link to Spanish
         $target_language = 'es_ES';
         $link_text = 'En Español';
+        // Add /es/ after the host
+        $target_url = $protocol . $host . '/es' . $request_uri;
     } else {
-        // We're on Spanish (or other) - show link to English
+        // We're on Spanish - show link to English
         $target_language = $default_lang;
         $link_text = 'English';
+        // Remove /es from the path
+        $english_path = preg_replace('#^/es(/|$)#', '/', $request_uri);
+        $target_url = $protocol . $host . $english_path;
     }
-
-    // Get the URL for the target language
-    $target_url = $url_converter->get_url_for_language($target_language, $current_url, '');
 
     // Build the menu item HTML
     $language_item = sprintf(

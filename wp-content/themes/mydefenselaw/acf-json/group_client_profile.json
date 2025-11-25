@@ -1,0 +1,104 @@
+{
+    "key": "group_client_profile",
+    "title": "Client Profile Fields",
+    "fields": [
+        {
+            "key": "field_client_phone",
+            "label": "Phone Number",
+            "name": "client_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_client_notification_preferences",
+            "label": "Notification Preferences",
+            "name": "notification_preferences",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "Select which notifications you want to receive",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "new_message": "New message received",
+                "case_update": "Case status update",
+                "document_shared": "New document shared",
+                "court_reminder": "Court date reminder"
+            },
+            "default_value": [
+                "new_message",
+                "case_update",
+                "document_shared",
+                "court_reminder"
+            ],
+            "return_format": "value",
+            "allow_custom": 0,
+            "layout": "vertical",
+            "toggle": 0,
+            "save_custom": 0,
+            "custom_choice_button_text": "Add new choice"
+        },
+        {
+            "key": "field_client_profile_notes",
+            "label": "Profile Notes",
+            "name": "profile_notes",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Internal admin notes about this client (not visible to client)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "rows": 4,
+            "default_value": "",
+            "new_lines": "",
+            "maxlength": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "user_form",
+                "operator": "==",
+                "value": "edit"
+            },
+            {
+                "param": "user_role",
+                "operator": "==",
+                "value": "client"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "modified": 1737849600
+}

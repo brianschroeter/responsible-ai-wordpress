@@ -1,0 +1,209 @@
+{
+    "key": "group_client_message",
+    "title": "Client Message Details",
+    "fields": [
+        {
+            "key": "field_message_client",
+            "label": "Client",
+            "name": "message_client",
+            "aria-label": "",
+            "type": "user",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "role": [
+                "client"
+            ],
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_message_related_case",
+            "label": "Related Case",
+            "name": "related_case",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "Optional: Link this message to a case",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "client_case"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [],
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_message_parent",
+            "label": "Parent Message",
+            "name": "parent_message",
+            "aria-label": "",
+            "type": "post_object",
+            "instructions": "For threaded conversations",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "client_message"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": [],
+            "return_format": "object",
+            "multiple": 0,
+            "allow_null": 1,
+            "bidirectional": 0,
+            "ui": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_message_is_from_client",
+            "label": "From Client",
+            "name": "is_from_client",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Is this message from the client (vs. staff)?",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_message_sender_name",
+            "label": "Sender Name",
+            "name": "sender_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Display name for staff members",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_message_is_from_client",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_message_is_read",
+            "label": "Read",
+            "name": "is_read",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Has this message been read?",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_message_read_at",
+            "label": "Read At",
+            "name": "read_at",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "When the message was read",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_message_is_read",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y g:i a",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "client_message"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": false,
+    "display_title": "",
+    "modified": 1737849600
+}
