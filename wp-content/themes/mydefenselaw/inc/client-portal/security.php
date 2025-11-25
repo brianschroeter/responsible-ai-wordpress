@@ -328,125 +328,9 @@ function mydefenselaw_portal_can_access_message($user_id, $message_id) {
     return mydefenselaw_portal_can_access_case($user_id, $case_id);
 }
 
-/**
- * Get all cases for a client
- *
- * @param int $user_id User ID to get cases for
- * @return array Array of case post IDs
- */
-function mydefenselaw_portal_get_client_cases($user_id) {
-    // Admin can see all cases
-    if (user_can($user_id, 'manage_options')) {
-        $args = array(
-            'post_type'      => 'portal_case',
-            'posts_per_page' => -1,
-            'post_status'    => 'publish',
-            'fields'         => 'ids',
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-        );
-    } else {
-        // Client can only see their assigned cases
-        $args = array(
-            'post_type'      => 'portal_case',
-            'posts_per_page' => -1,
-            'post_status'    => 'publish',
-            'fields'         => 'ids',
-            'meta_query'     => array(
-                array(
-                    'key'     => '_assigned_client',
-                    'value'   => $user_id,
-                    'compare' => '=',
-                ),
-            ),
-            'orderby'        => 'date',
-            'order'          => 'DESC',
-        );
-    }
-
-    $query = new WP_Query($args);
-    return $query->posts;
-}
-
-/**
- * Get all documents for a client
- *
- * @param int      $user_id User ID to get documents for
- * @param int|null $case_id Optional case ID to filter by
- * @return array Array of document post IDs
- */
-function mydefenselaw_portal_get_client_documents($user_id, $case_id = null) {
-    // Get all cases user has access to
-    $case_ids = mydefenselaw_portal_get_client_cases($user_id);
-
-    if (empty($case_ids)) {
-        return array();
-    }
-
-    // If specific case requested, filter to just that case
-    if ($case_id && in_array($case_id, $case_ids)) {
-        $case_ids = array($case_id);
-    }
-
-    $args = array(
-        'post_type'      => 'portal_document',
-        'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'fields'         => 'ids',
-        'meta_query'     => array(
-            array(
-                'key'     => '_case_id',
-                'value'   => $case_ids,
-                'compare' => 'IN',
-            ),
-        ),
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-    );
-
-    $query = new WP_Query($args);
-    return $query->posts;
-}
-
-/**
- * Get all messages for a client
- *
- * @param int      $user_id User ID to get messages for
- * @param int|null $case_id Optional case ID to filter by
- * @return array Array of message post IDs
- */
-function mydefenselaw_portal_get_client_messages($user_id, $case_id = null) {
-    // Get all cases user has access to
-    $case_ids = mydefenselaw_portal_get_client_cases($user_id);
-
-    if (empty($case_ids)) {
-        return array();
-    }
-
-    // If specific case requested, filter to just that case
-    if ($case_id && in_array($case_id, $case_ids)) {
-        $case_ids = array($case_id);
-    }
-
-    $args = array(
-        'post_type'      => 'portal_message',
-        'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'fields'         => 'ids',
-        'meta_query'     => array(
-            array(
-                'key'     => '_case_id',
-                'value'   => $case_ids,
-                'compare' => 'IN',
-            ),
-        ),
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-    );
-
-    $query = new WP_Query($args);
-    return $query->posts;
-}
+// Note: mydefenselaw_portal_get_client_cases, mydefenselaw_portal_get_client_documents,
+// and mydefenselaw_portal_get_client_messages are defined in template-tags.php
+// with enhanced functionality (additional $args parameter support)
 
 /**
  * Add security headers for portal pages
@@ -475,50 +359,8 @@ function mydefenselaw_portal_security_headers() {
 }
 add_action('send_headers', 'mydefenselaw_portal_security_headers');
 
-/**
- * Create portal-specific nonce
- *
- * @param string $action Action name for nonce
- * @return string Nonce value
- */
-function mydefenselaw_portal_create_nonce($action) {
-    return wp_create_nonce('portal_' . $action);
-}
-
-/**
- * Verify portal nonce
- *
- * @param string $nonce  Nonce value to verify
- * @param string $action Action name for nonce
- * @return bool|int False if invalid, 1 if generated 0-12 hours ago, 2 if generated 12-24 hours ago
- */
-function mydefenselaw_portal_verify_nonce($nonce, $action) {
-    return wp_verify_nonce($nonce, 'portal_' . $action);
-}
-
-/**
- * Check if current page is a portal page
- *
- * @return bool True if portal page, false otherwise
- */
-function mydefenselaw_portal_is_portal_page() {
-    // Check if URL contains /portal/ or /client-portal/
-    $request_uri = isset($_SERVER['REQUEST_URI']) ? sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])) : '';
-
-    if (strpos($request_uri, '/portal/') !== false || strpos($request_uri, '/client-portal/') !== false) {
-        return true;
-    }
-
-    // Check if current page template is a portal template
-    if (is_page()) {
-        $template = get_page_template_slug();
-        if (strpos($template, 'portal') !== false) {
-            return true;
-        }
-    }
-
-    return false;
-}
+// Note: mydefenselaw_portal_create_nonce, mydefenselaw_portal_verify_nonce,
+// and mydefenselaw_portal_is_portal_page are defined in inc/enqueue.php
 
 /**
  * Get current URL for redirects
