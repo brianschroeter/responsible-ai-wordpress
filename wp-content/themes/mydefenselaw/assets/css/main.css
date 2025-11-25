@@ -218,7 +218,9 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
 }
 
-.nav-link {
+.nav-link,
+.nav-menu li a,
+.nav-menu > li > a {
     color: #374151;
     text-decoration: none;
     padding: 1.25rem 2rem;
@@ -233,7 +235,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-link:hover,
-.nav-link.active {
+.nav-link.active,
+.nav-menu li a:hover,
+.nav-menu li.current-menu-item a,
+.nav-menu li.current_page_item a {
     color: #1a365d;
     border-bottom-color: #dc2626;
     background: white;
@@ -1340,15 +1345,21 @@ h1, h2, h3, h4, h5, h6 {
     gap: 1rem;
 }
 
+.modal-form .form-field {
+    width: 100%;
+}
+
 .modal-form input,
 .modal-form select,
 .modal-form textarea {
+    width: 100%;
     padding: 1rem;
     border: 2px solid #e2e8f0;
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
     font-family: inherit;
+    box-sizing: border-box;
 }
 
 .modal-form input:focus,
@@ -1394,10 +1405,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-/* Custom Checkbox Styles */
+/* Enhanced Checkbox Styles */
 .modal-checkbox-label {
     position: relative;
-    padding-left: 0;
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
@@ -1418,7 +1428,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .modal-checkbox-label .checkmark {
-    display: none; /* Using native checkbox with accent-color instead */
+    display: none; /* Using native checkbox with accent-color */
 }
 
 /* Form Response Messages */
@@ -1493,6 +1503,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .notification-toast .notification-close:hover {
     opacity: 1;
+}
+
+.notification-toast .notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notification-toast .notification-content i {
+    font-size: 1.25rem;
 }
 
 /* Field Validation Errors */

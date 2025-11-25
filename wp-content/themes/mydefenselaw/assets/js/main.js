@@ -353,6 +353,7 @@
                 form.reset();
 
                 if (responseEl) {
+                    responseEl.className = 'form-response success';
                     responseEl.innerHTML = '<div class="success-message">' + (data.data.message || 'Success!') + '</div>';
                     responseEl.style.display = 'block';
                 }
@@ -369,6 +370,7 @@
             showNotification(error.message || 'Something went wrong. Please call us at 888.444.0253', 'error');
 
             if (responseEl) {
+                responseEl.className = 'form-response error';
                 responseEl.innerHTML = '<div class="error-message">' + (error.message || 'Error submitting form') + '</div>';
                 responseEl.style.display = 'block';
             }
@@ -513,12 +515,11 @@
     function showFieldError(field, message) {
         clearFieldError(field);
 
-        field.style.borderColor = '#dc2626';
+        field.classList.add('field-error');
 
         const errorDiv = document.createElement('div');
-        errorDiv.className = 'field-error';
+        errorDiv.className = 'field-error-message';
         errorDiv.textContent = message;
-        errorDiv.style.cssText = 'color: #dc2626; font-size: 0.875rem; margin-top: 0.25rem;';
 
         field.parentNode.appendChild(errorDiv);
     }
@@ -527,8 +528,8 @@
      * Clear field error
      */
     function clearFieldError(field) {
-        field.style.borderColor = '#e2e8f0';
-        const existingError = field.parentNode.querySelector('.field-error');
+        field.classList.remove('field-error');
+        const existingError = field.parentNode.querySelector('.field-error-message');
         if (existingError) {
             existingError.remove();
         }
@@ -541,52 +542,42 @@
         type = type || 'info';
 
         const notification = document.createElement('div');
-        notification.className = 'notification notification-' + type;
+        notification.className = 'notification-toast ' + type;
         notification.innerHTML =
             '<div class="notification-content">' +
                 '<i class="fas fa-' + (type === 'success' ? 'check-circle' : 'exclamation-triangle') + '"></i>' +
                 '<span>' + message + '</span>' +
-                '<button class="notification-close">&times;</button>' +
             '</div>';
 
-        // Add styles
-        notification.style.cssText =
-            'position: fixed; top: 20px; right: 20px; ' +
-            'background: ' + (type === 'success' ? '#10b981' : '#dc2626') + '; ' +
-            'color: white; padding: 1rem 1.5rem; border-radius: 8px; ' +
-            'box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); z-index: 10000; ' +
-            'max-width: 400px; transform: translateX(100%); transition: transform 0.3s ease;';
-
-        notification.querySelector('.notification-content').style.cssText =
-            'display: flex; align-items: center; gap: 0.75rem;';
-
-        notification.querySelector('.notification-close').style.cssText =
-            'background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; margin-left: auto;';
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'notification-close';
+        closeBtn.innerHTML = '&times;';
+        notification.querySelector('.notification-content').appendChild(closeBtn);
 
         document.body.appendChild(notification);
 
         // Animate in
         setTimeout(function() {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
+            notification.classList.add('show');
+        }, 10);
 
         // Handle close button
-        notification.querySelector('.notification-close').addEventListener('click', function() {
-            notification.style.transform = 'translateX(100%)';
+        closeBtn.addEventListener('click', function() {
+            notification.classList.remove('show');
             setTimeout(function() {
-                if (document.body.contains(notification)) {
-                    document.body.removeChild(notification);
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
                 }
             }, 300);
         });
 
         // Auto remove after 5 seconds
         setTimeout(function() {
-            if (document.body.contains(notification)) {
-                notification.style.transform = 'translateX(100%)';
+            if (notification.parentNode) {
+                notification.classList.remove('show');
                 setTimeout(function() {
-                    if (document.body.contains(notification)) {
-                        document.body.removeChild(notification);
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
                     }
                 }, 300);
             }
