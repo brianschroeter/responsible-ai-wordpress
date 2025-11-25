@@ -1148,3 +1148,126 @@ function mydefenselaw_get_contact_page_fields() {
         'phone_raw' => $phone_raw,
     );
 }
+
+/**
+ * Get Latest Legal News page fields
+ *
+ * Returns all ACF fields for the Latest Legal News page with fallback defaults.
+ * Includes section visibility toggles, intro, news items, CTA sections, and reasons.
+ *
+ * @return array Latest News page data
+ */
+function mydefenselaw_get_latest_news_fields() {
+    $phone = mydefenselaw_get_primary_phone();
+    $phone_raw = preg_replace('/[^0-9]/', '', $phone);
+
+    // Default news items (matching live site content)
+    $default_news_items = array(
+        array(
+            'news_category' => 'Recent Legal Updates',
+            'news_title' => 'Consumer Protection Laws',
+            'news_content' => 'Updates to regulations safeguard consumers against unfair business practices, affecting debt collection, warranty claims, and financial services.',
+        ),
+        array(
+            'news_category' => 'Recent Legal Updates',
+            'news_title' => 'Federal Bankruptcy Updates',
+            'news_content' => 'New federal guidelines clarify debt relief paths while protecting creditors in both individual and business bankruptcy scenarios.',
+        ),
+        array(
+            'news_category' => 'Recent Legal Updates',
+            'news_title' => 'Child Custody Guidelines',
+            'news_content' => 'State guidelines emphasize child welfare with clearer standards for custody determinations and modifications.',
+        ),
+        array(
+            'news_category' => 'Recent Legal Updates',
+            'news_title' => 'Property Rights Updates',
+            'news_content' => 'Court decisions clarified property rights in landlord-tenant disputes, benefiting both owners and renters.',
+        ),
+        array(
+            'news_category' => 'Recent Legal Updates',
+            'news_title' => 'Commercial Contract Standards',
+            'news_content' => 'Standards provide guidance for dispute resolution and performance obligations in business agreements.',
+        ),
+        array(
+            'news_category' => 'Recent Legal Updates',
+            'news_title' => 'Court Procedure Changes',
+            'news_content' => 'Updates streamline litigation while maintaining due process protections, affecting filing and discovery procedures.',
+        ),
+    );
+
+    // Default reasons why legal news matters (matching live site content)
+    $default_reasons = array(
+        array(
+            'reason_icon' => 'fas fa-gavel',
+            'reason_title' => 'Changing Regulations',
+            'reason_content' => 'Laws evolve frequently; awareness helps you grasp potential impacts.',
+        ),
+        array(
+            'reason_icon' => 'fas fa-shield-alt',
+            'reason_title' => 'Know Your Rights',
+            'reason_content' => 'Understanding developments helps identify affected rights and timing for legal counsel.',
+        ),
+        array(
+            'reason_icon' => 'fas fa-clock',
+            'reason_title' => 'Timely Action',
+            'reason_content' => 'Legal matters have deadlines; awareness ensures compliance with required timeframes.',
+        ),
+        array(
+            'reason_icon' => 'fas fa-lightbulb',
+            'reason_title' => 'Better Decisions',
+            'reason_content' => 'Current legal knowledge supports informed choices regarding personal and business matters.',
+        ),
+    );
+
+    $defaults = array(
+        'intro_title' => __('Latest Legal News', 'mydefenselaw'),
+        'intro_content' => '<p>Stay informed with the latest legal developments, court decisions, and regulatory changes that may affect your legal matters. Defense Lawyers, P.A. keeps you updated on important legal news and trends.</p>',
+        'news_items' => $default_news_items,
+        'cta_title' => __('Stay Informed About Legal Changes', 'mydefenselaw'),
+        'cta_content' => __('Legal developments can directly impact your rights and obligations. Our experienced attorneys stay current with all legal changes to provide you with the most up-to-date advice.', 'mydefenselaw'),
+        'reasons_title' => __('Why Legal News Matters', 'mydefenselaw'),
+        'reasons' => $default_reasons,
+        'final_cta_title' => __('Need Legal Advice About Recent Changes?', 'mydefenselaw'),
+        'final_cta_content' => __('Our experienced attorneys stay current with all legal developments and can help you understand how they affect your situation.', 'mydefenselaw'),
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+
+    // Return defaults if ACF not available
+    if (!function_exists('get_field')) {
+        return $defaults;
+    }
+
+    // Get ACF fields - validate that repeaters have actual content
+    $acf_news_items = get_field('news_items');
+    $news_items = $default_news_items;
+    if (!empty($acf_news_items) && is_array($acf_news_items)) {
+        $first_item = reset($acf_news_items);
+        if (!empty($first_item['news_title'])) {
+            $news_items = $acf_news_items;
+        }
+    }
+
+    $acf_reasons = get_field('news_reasons');
+    $reasons = $default_reasons;
+    if (!empty($acf_reasons) && is_array($acf_reasons)) {
+        $first_reason = reset($acf_reasons);
+        if (!empty($first_reason['reason_title'])) {
+            $reasons = $acf_reasons;
+        }
+    }
+
+    return array(
+        'intro_title' => get_field('news_intro_title') ?: $defaults['intro_title'],
+        'intro_content' => get_field('news_intro_content') ?: $defaults['intro_content'],
+        'news_items' => $news_items,
+        'cta_title' => get_field('news_cta_title') ?: $defaults['cta_title'],
+        'cta_content' => get_field('news_cta_content') ?: $defaults['cta_content'],
+        'reasons_title' => get_field('news_reasons_title') ?: $defaults['reasons_title'],
+        'reasons' => $reasons,
+        'final_cta_title' => get_field('news_final_cta_title') ?: $defaults['final_cta_title'],
+        'final_cta_content' => get_field('news_final_cta_content') ?: $defaults['final_cta_content'],
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+}
