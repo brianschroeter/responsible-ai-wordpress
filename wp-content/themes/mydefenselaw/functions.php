@@ -404,3 +404,4 @@ require_once get_template_directory() . '/inc/disable-posts.php';
 require_once get_template_directory() . '/inc/disable-comments.php';
 require_once get_template_directory() . '/inc/admin-customization.php';
 require_once get_template_directory() . '/inc/translatepress-language-menu.php';
+require_once get_template_directory() . '/inc/client-portal/init.php';
