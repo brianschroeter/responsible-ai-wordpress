@@ -651,8 +651,11 @@
             if (isTransitioning) return; // Guard against rapid clicks
             isTransitioning = true;
 
-            // Hide all slides
-            slides.forEach(slide => slide.classList.remove('active'));
+            // Hide all slides - update both class AND inline opacity
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.style.opacity = '0';
+            });
             dots.forEach(dot => dot.classList.remove('active'));
 
             // Show target slide
@@ -664,7 +667,9 @@
                 currentSlide = index;
             }
 
+            // Activate new slide - update both class AND inline opacity
             slides[currentSlide].classList.add('active');
+            slides[currentSlide].style.opacity = '1';
             dots[currentSlide].classList.add('active');
 
             // Reset transition flag after transition completes (500ms)
