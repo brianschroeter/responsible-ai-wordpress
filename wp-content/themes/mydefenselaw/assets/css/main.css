@@ -978,30 +978,14 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;  /* Reduced spacing - closer to stars */
     padding: 0 2rem 2rem 2rem;  /* Match slide padding for consistent spacing */
     position: relative;  /* Ensure proper positioning within slider */
 }
 
 .testimonial-prev,
 .testimonial-next {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.testimonial-prev:hover,
-.testimonial-next:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+    display: none;  /* Hide arrow navigation - dots only */
 }
 
 .testimonial-dots {
