@@ -1023,3 +1023,114 @@ function mydefenselaw_get_resources_fields() {
         'phone_raw' => $phone_raw,
     );
 }
+
+/**
+ * Get Contact Us page fields
+ *
+ * Returns all ACF fields for the Contact Us page with fallback defaults.
+ * Includes section visibility toggles, contact info, why choose us, form settings, and process steps.
+ *
+ * @return array Contact page data
+ */
+function mydefenselaw_get_contact_page_fields() {
+    $phone = mydefenselaw_get_primary_phone();
+    $phone_raw = preg_replace('/[^0-9]/', '', $phone);
+    $location = mydefenselaw_get_location();
+
+    // Default why choose features
+    $default_features = array(
+        array(
+            'feature_icon' => 'fas fa-trophy',
+            'feature_title' => '25+ Years of Experience',
+            'feature_description' => 'Proven track record in complex legal matters',
+        ),
+        array(
+            'feature_icon' => 'fas fa-clock',
+            'feature_title' => 'Available 24/7',
+            'feature_description' => 'Legal emergencies don\'t wait, neither do we',
+        ),
+        array(
+            'feature_icon' => 'fas fa-comments',
+            'feature_title' => 'Free Consultation',
+            'feature_description' => 'Understand your options without cost',
+        ),
+        array(
+            'feature_icon' => 'fas fa-user-shield',
+            'feature_title' => 'Dedicated Service',
+            'feature_description' => 'Personalized attention to your case',
+        ),
+    );
+
+    // Default process steps
+    $default_process_steps = array(
+        array(
+            'step_icon' => 'fas fa-comments',
+            'step_title' => 'Consultation',
+            'step_description' => 'We\'ll discuss your case and legal options during a free, confidential consultation.',
+        ),
+        array(
+            'step_icon' => 'fas fa-search',
+            'step_title' => 'Case Review',
+            'step_description' => 'Our attorneys will analyze your situation and develop a strategic approach.',
+        ),
+        array(
+            'step_icon' => 'fas fa-gavel',
+            'step_title' => 'Representation',
+            'step_description' => 'We\'ll vigorously defend your rights and pursue the best possible outcome.',
+        ),
+    );
+
+    $defaults = array(
+        'hero_title' => __('Get Your Free Consultation Today', 'mydefenselaw'),
+        'hero_subtitle' => __('Don\'t face your legal challenges alone. Contact us now for expert guidance.', 'mydefenselaw'),
+        'hero_badge' => __('Emergency? Call Now for Immediate Help', 'mydefenselaw'),
+        'info_title' => __('Defense Lawyers, P.A.', 'mydefenselaw'),
+        'location' => $location,
+        'serving' => __('Serving All of Florida', 'mydefenselaw'),
+        'hours_label' => __('24/7 Emergency Line', 'mydefenselaw'),
+        'office_hours' => __('Office Hours: Mon-Fri 9AM-6PM', 'mydefenselaw'),
+        'why_title' => __('Why Choose Defense Lawyers, P.A.?', 'mydefenselaw'),
+        'why_features' => $default_features,
+        'form_title' => __('Request Your Free Consultation', 'mydefenselaw'),
+        'form_subtitle' => __('All information is confidential and protected by attorney-client privilege.', 'mydefenselaw'),
+        'form_button' => __('Request Free Consultation', 'mydefenselaw'),
+        'form_disclaimer' => __('By submitting this form, you acknowledge that no attorney-client relationship has been formed. Representation will not be agreed upon unless and until Defense Lawyers, P.A. agrees to take you on as a client.', 'mydefenselaw'),
+        'process_title' => __('What to Expect', 'mydefenselaw'),
+        'process_steps' => $default_process_steps,
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+
+    // Return defaults if ACF not available
+    if (!function_exists('get_field')) {
+        return $defaults;
+    }
+
+    // Get ACF fields
+    $acf_features = get_field('contact_why_features');
+    $features = (!empty($acf_features) && is_array($acf_features)) ? $acf_features : $default_features;
+
+    $acf_steps = get_field('contact_process_steps');
+    $process_steps = (!empty($acf_steps) && is_array($acf_steps)) ? $acf_steps : $default_process_steps;
+
+    return array(
+        'hero_title' => get_field('contact_hero_title') ?: $defaults['hero_title'],
+        'hero_subtitle' => get_field('contact_hero_subtitle') ?: $defaults['hero_subtitle'],
+        'hero_badge' => get_field('contact_hero_badge') ?: $defaults['hero_badge'],
+        'info_title' => get_field('contact_info_title') ?: $defaults['info_title'],
+        'location' => $location,
+        'serving' => get_field('contact_info_serving') ?: $defaults['serving'],
+        'hours_label' => get_field('contact_info_hours_label') ?: $defaults['hours_label'],
+        'office_hours' => get_field('contact_info_office_hours') ?: $defaults['office_hours'],
+        'why_title' => get_field('contact_why_title') ?: $defaults['why_title'],
+        'why_features' => $features,
+        'form_title' => get_field('contact_form_title') ?: $defaults['form_title'],
+        'form_subtitle' => get_field('contact_form_subtitle') ?: $defaults['form_subtitle'],
+        'form_button' => get_field('contact_form_button') ?: $defaults['form_button'],
+        'form_disclaimer' => get_field('contact_form_disclaimer') ?: $defaults['form_disclaimer'],
+        'process_title' => get_field('contact_process_title') ?: $defaults['process_title'],
+        'process_steps' => $process_steps,
+        'phone' => $phone,
+        'phone_raw' => $phone_raw,
+    );
+}

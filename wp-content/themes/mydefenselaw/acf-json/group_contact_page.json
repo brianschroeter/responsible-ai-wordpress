@@ -1,0 +1,425 @@
+{
+    "key": "group_contact_page",
+    "title": "Contact Us Page",
+    "fields": [
+        {
+            "key": "field_contact_tab_visibility",
+            "label": "Section Visibility",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_enable_contact_hero",
+            "label": "Show Hero Section",
+            "name": "enable_contact_hero",
+            "type": "true_false",
+            "instructions": "Toggle the hero/header section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_contact_info",
+            "label": "Show Contact Info",
+            "name": "enable_contact_info",
+            "type": "true_false",
+            "instructions": "Toggle the contact information section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_contact_why",
+            "label": "Show Why Choose Us",
+            "name": "enable_contact_why",
+            "type": "true_false",
+            "instructions": "Toggle the Why Choose section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_contact_form",
+            "label": "Show Contact Form",
+            "name": "enable_contact_form",
+            "type": "true_false",
+            "instructions": "Toggle the contact form section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_enable_contact_process",
+            "label": "Show Process Steps",
+            "name": "enable_contact_process",
+            "type": "true_false",
+            "instructions": "Toggle the 3-step process section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_tab_hero",
+            "label": "Hero Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_contact_hero_title",
+            "label": "Hero Title",
+            "name": "contact_hero_title",
+            "type": "text",
+            "instructions": "Main headline for the hero section",
+            "default_value": "Get Your Free Consultation Today",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_hero_subtitle",
+            "label": "Hero Subtitle",
+            "name": "contact_hero_subtitle",
+            "type": "textarea",
+            "instructions": "Subtitle text below the main headline",
+            "rows": 2,
+            "default_value": "Don't face your legal challenges alone. Contact us now for expert guidance.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_hero_badge",
+            "label": "Hero Badge Text",
+            "name": "contact_hero_badge",
+            "type": "text",
+            "instructions": "Badge text displayed in the hero (e.g., 'Emergency? Call Now')",
+            "default_value": "Emergency? Call Now for Immediate Help",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_tab_info",
+            "label": "Contact Info",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_contact_info_title",
+            "label": "Contact Info Title",
+            "name": "contact_info_title",
+            "type": "text",
+            "instructions": "Heading for the contact information section",
+            "default_value": "Defense Lawyers, P.A.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_info_serving",
+            "label": "Serving Area",
+            "name": "contact_info_serving",
+            "type": "text",
+            "instructions": "Area served text",
+            "default_value": "Serving All of Florida",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_info_hours_label",
+            "label": "Hours Label",
+            "name": "contact_info_hours_label",
+            "type": "text",
+            "instructions": "Label for business hours",
+            "default_value": "24/7 Emergency Line",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_info_office_hours",
+            "label": "Office Hours",
+            "name": "contact_info_office_hours",
+            "type": "text",
+            "instructions": "Regular office hours",
+            "default_value": "Office Hours: Mon-Fri 9AM-6PM",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_tab_why",
+            "label": "Why Choose Us",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_contact_why_title",
+            "label": "Why Choose Us Title",
+            "name": "contact_why_title",
+            "type": "text",
+            "instructions": "Heading for the Why Choose Us section",
+            "default_value": "Why Choose Defense Lawyers, P.A.?",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_why_features",
+            "label": "Features",
+            "name": "contact_why_features",
+            "type": "repeater",
+            "instructions": "Add features highlighting why clients should choose the firm",
+            "min": 1,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Add Feature",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_why_feature_icon",
+                    "label": "Icon",
+                    "name": "feature_icon",
+                    "type": "text",
+                    "instructions": "Font Awesome icon class (e.g., fas fa-trophy)",
+                    "default_value": "fas fa-check-circle",
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_why_feature_title",
+                    "label": "Title",
+                    "name": "feature_title",
+                    "type": "text",
+                    "instructions": "Feature title",
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_why_feature_description",
+                    "label": "Description",
+                    "name": "feature_description",
+                    "type": "text",
+                    "instructions": "Brief description",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_contact_tab_form",
+            "label": "Contact Form",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_contact_form_title",
+            "label": "Form Title",
+            "name": "contact_form_title",
+            "type": "text",
+            "instructions": "Heading above the contact form",
+            "default_value": "Request Your Free Consultation",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_form_subtitle",
+            "label": "Form Subtitle",
+            "name": "contact_form_subtitle",
+            "type": "text",
+            "instructions": "Subtitle/description below form heading",
+            "default_value": "All information is confidential and protected by attorney-client privilege.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_form_button",
+            "label": "Submit Button Text",
+            "name": "contact_form_button",
+            "type": "text",
+            "instructions": "Text for the form submit button",
+            "default_value": "Request Free Consultation",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_form_disclaimer",
+            "label": "Form Disclaimer",
+            "name": "contact_form_disclaimer",
+            "type": "textarea",
+            "instructions": "Legal disclaimer text below the form",
+            "rows": 3,
+            "default_value": "By submitting this form, you acknowledge that no attorney-client relationship has been formed. Representation will not be agreed upon unless and until Defense Lawyers, P.A. agrees to take you on as a client.",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_tab_process",
+            "label": "Process Steps",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_contact_process_title",
+            "label": "Process Section Title",
+            "name": "contact_process_title",
+            "type": "text",
+            "instructions": "Heading for the process section",
+            "default_value": "What to Expect",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_contact_process_steps",
+            "label": "Process Steps",
+            "name": "contact_process_steps",
+            "type": "repeater",
+            "instructions": "Add the steps in your consultation process",
+            "min": 1,
+            "max": 5,
+            "layout": "block",
+            "button_label": "Add Step",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_process_step_icon",
+                    "label": "Icon",
+                    "name": "step_icon",
+                    "type": "text",
+                    "instructions": "Font Awesome icon class",
+                    "default_value": "fas fa-comments",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_process_step_title",
+                    "label": "Title",
+                    "name": "step_title",
+                    "type": "text",
+                    "instructions": "Step title",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_process_step_description",
+                    "label": "Description",
+                    "name": "step_description",
+                    "type": "textarea",
+                    "instructions": "Step description",
+                    "rows": 2,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-contact.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Content fields for the Contact Us page. All content can be edited here including section visibility, hero, contact info, why choose us, form settings, and process steps.",
+    "show_in_rest": 0,
+    "modified": 1732600000
+}
