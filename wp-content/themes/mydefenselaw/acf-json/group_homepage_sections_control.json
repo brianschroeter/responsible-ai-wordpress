@@ -118,7 +118,7 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "Control which sections are visible on the homepage. These toggles allow you to show or hide sections without modifying code.",
     "show_in_rest": 0,
     "modified": 1732553600

@@ -294,7 +294,7 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": true,
     "display_title": "",
