@@ -56,19 +56,41 @@ $data = mydefenselaw_get_why_choose_us_fields();
                     <?php endforeach; ?>
                 </div>
 
-                <div class="testimonial-highlight">
-                    <div class="quote-icon">
-                        <i class="fas fa-quote-left"></i>
-                    </div>
-                    <blockquote>
-                        <?php echo esc_html($data['testimonial']['quote']); ?>
-                    </blockquote>
-                    <cite>- <?php echo esc_html($data['testimonial']['author']); ?></cite>
-                    <div class="stars">
-                        <?php for ($i = 0; $i < (int)$data['testimonial']['rating']; $i++) : ?>
-                        <i class="fas fa-star"></i>
-                        <?php endfor; ?>
-                    </div>
+                <div class="testimonial-slider">
+                    <?php if (!empty($data['testimonials'])) : ?>
+                        <?php foreach ($data['testimonials'] as $index => $testimonial) : ?>
+                        <div class="testimonial-slide <?php echo $index === 0 ? 'active' : ''; ?>">
+                            <div class="quote-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
+                            <blockquote>
+                                <?php echo wp_kses_post(wpautop($testimonial['quote'])); ?>
+                            </blockquote>
+                            <cite>- <?php echo esc_html($testimonial['author']); ?></cite>
+                            <div class="stars">
+                                <?php for ($i = 0; $i < (int)$testimonial['rating']; $i++) : ?>
+                                <i class="fas fa-star"></i>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+
+                        <?php if (count($data['testimonials']) > 1) : ?>
+                        <div class="testimonial-controls">
+                            <button class="testimonial-prev" aria-label="Previous testimonial">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="testimonial-dots">
+                                <?php foreach ($data['testimonials'] as $index => $testimonial) : ?>
+                                <span class="dot <?php echo $index === 0 ? 'active' : ''; ?>" data-slide="<?php echo $index; ?>"></span>
+                                <?php endforeach; ?>
+                            </div>
+                            <button class="testimonial-next" aria-label="Next testimonial">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
             <?php endif; ?>

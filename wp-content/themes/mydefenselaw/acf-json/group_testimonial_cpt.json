@@ -1,0 +1,47 @@
+{
+    "key": "group_testimonial_cpt",
+    "title": "Testimonial Details",
+    "fields": [
+        {
+            "key": "field_testimonial_rating",
+            "label": "Star Rating",
+            "name": "testimonial_rating",
+            "aria-label": "",
+            "type": "range",
+            "instructions": "Select the star rating for this testimonial (1-5 stars)",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 5,
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "prepend": "",
+            "append": "stars"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "testimonial"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": true,
+    "display_title": "",
+    "modified": 1764085000
+}

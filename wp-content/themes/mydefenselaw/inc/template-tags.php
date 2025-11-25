@@ -587,6 +587,13 @@ function mydefenselaw_get_why_choose_us_fields() {
         }
     }
 
+    // Get testimonials from CPT (with fallback to default)
+    $testimonials = mydefenselaw_get_testimonials();
+    if (empty($testimonials)) {
+        // Fallback to default testimonial if no posts exist
+        $testimonials = array($defaults['testimonial']);
+    }
+
     return array(
         'title' => get_field('why_title', $front_page_id) ?: $defaults['title'],
         'lead_text' => get_field('why_lead_text', $front_page_id) ?: $defaults['lead_text'],
@@ -595,16 +602,49 @@ function mydefenselaw_get_why_choose_us_fields() {
             'title' => get_field('why_cta_title', $front_page_id) ?: $defaults['cta']['title'],
             'text' => get_field('why_cta_text', $front_page_id) ?: $defaults['cta']['text'],
         ),
-        'testimonial' => array(
-            'quote' => get_field('testimonial_quote', $front_page_id) ?: $defaults['testimonial']['quote'],
-            'author' => get_field('testimonial_author', $front_page_id) ?: $defaults['testimonial']['author'],
-            'rating' => get_field('testimonial_rating', $front_page_id) ?: $defaults['testimonial']['rating'],
-        ),
+        'testimonials' => $testimonials,
         'sidebar_title' => $sidebar_title,
         'attorneys' => $attorneys,
         'phone' => $phone,
         'phone_raw' => $phone_raw,
     );
+}
+
+/**
+ * Get testimonials from Testimonial CPT
+ *
+ * @param int $limit Number of testimonials to retrieve (default -1 for all)
+ * @return array Array of testimonial data
+ */
+function mydefenselaw_get_testimonials($limit = -1) {
+    $args = array(
+        'post_type' => 'testimonial',
+        'posts_per_page' => $limit,
+        'post_status' => 'publish',
+        'orderby' => 'date',
+        'order' => 'DESC',
+    );
+
+    $query = new WP_Query($args);
+    $testimonials = array();
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            $post_id = get_the_ID();
+
+            $testimonials[] = array(
+                'id' => $post_id,
+                'quote' => get_the_content(),
+                'author' => get_the_title(),
+                'rating' => get_field('testimonial_rating', $post_id) ?: 5,
+                'photo' => get_the_post_thumbnail_url($post_id, 'thumbnail'),
+            );
+        }
+        wp_reset_postdata();
+    }
+
+    return $testimonials;
 }
 
 /**
