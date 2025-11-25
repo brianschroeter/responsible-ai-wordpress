@@ -92,6 +92,45 @@ function mydefenselaw_portal_enqueue_assets() {
             'sessionTimeout' => 30 * 60 * 1000, // 30 minutes
         ),
     ));
+
+    // Localize translatable strings for portal.js
+    wp_localize_script('mydefenselaw-portal', 'mydefenseLawPortalStrings', array(
+        'uploadProgress' => __('Uploading %s: %d%%', 'mydefenselaw'),
+        'uploadSuccess' => __('%s uploaded successfully', 'mydefenselaw'),
+        'uploadFailed' => __('Upload failed', 'mydefenselaw'),
+        'uploadError' => __('Upload error: Invalid response', 'mydefenselaw'),
+        'serverError' => __('Upload failed: Server error', 'mydefenselaw'),
+        'deleteConfirm' => __('Are you sure you want to delete "%s"?', 'mydefenselaw'),
+        'deleteSuccess' => __('Document deleted successfully', 'mydefenselaw'),
+        'deleteFailed' => __('Failed to delete document', 'mydefenselaw'),
+        'loadConversationFailed' => __('Failed to load conversation', 'mydefenselaw'),
+        'loadConversationError' => __('Error loading conversation', 'mydefenselaw'),
+        'enterMessage' => __('Please enter a message', 'mydefenselaw'),
+        'sendReplyFailed' => __('Failed to send reply', 'mydefenselaw'),
+        'sendReplyError' => __('Error sending reply', 'mydefenselaw'),
+        'sendReply' => __('Send Reply', 'mydefenselaw'),
+        'sendMessageFailed' => __('Failed to send message', 'mydefenselaw'),
+        'sendMessageError' => __('Error sending message', 'mydefenselaw'),
+        'sendMessage' => __('Send Message', 'mydefenselaw'),
+        'messageSent' => __('Message sent successfully', 'mydefenselaw'),
+        'saving' => __('Saving...', 'mydefenselaw'),
+        'profileUpdated' => __('Profile updated successfully', 'mydefenselaw'),
+        'profileUpdateFailed' => __('Failed to update profile', 'mydefenselaw'),
+        'profileUpdateError' => __('Error updating profile', 'mydefenselaw'),
+        'saveChanges' => __('Save Changes', 'mydefenselaw'),
+        'fillPasswordFields' => __('Please fill in all password fields', 'mydefenselaw'),
+        'passwordsNoMatch' => __('New passwords do not match', 'mydefenselaw'),
+        'passwordMinLength' => __('Password must be at least 8 characters', 'mydefenselaw'),
+        'changing' => __('Changing...', 'mydefenselaw'),
+        'passwordChanged' => __('Password changed successfully', 'mydefenselaw'),
+        'passwordChangeFailed' => __('Failed to change password', 'mydefenselaw'),
+        'passwordChangeError' => __('Error changing password', 'mydefenselaw'),
+        'changePassword' => __('Change Password', 'mydefenselaw'),
+        'sessionExpiring' => __('Your session will expire in 5 minutes. Please save your work.', 'mydefenselaw'),
+        'fieldRequired' => __('This field is required', 'mydefenselaw'),
+        'minLength' => __('Must be at least %d characters', 'mydefenselaw'),
+        'notificationPrefsUpdated' => __('Notification preferences updated', 'mydefenselaw'),
+    ));
 }
 add_action('wp_enqueue_scripts', 'mydefenselaw_portal_enqueue_assets', 20);
 
@@ -128,9 +167,9 @@ function mydefenselaw_portal_is_portal_page() {
     }
 
     // Check for portal post type
-    if (get_post_type() === 'portal_document' ||
-        get_post_type() === 'portal_message' ||
-        get_post_type() === 'portal_case') {
+    if (get_post_type() === 'client_document' ||
+        get_post_type() === 'client_message' ||
+        get_post_type() === 'client_case') {
         return true;
     }
 
@@ -193,21 +232,10 @@ add_filter('script_loader_tag', 'mydefenselaw_script_attributes', 10, 3);
  * Preload critical assets
  */
 function mydefenselaw_preload_assets() {
-    // Don't preload main.css on portal pages - portal.css handles styling there
-    if (function_exists('mydefenselaw_portal_is_portal_page') && mydefenselaw_portal_is_portal_page()) {
-        // For portal pages, preload portal.css instead
-        ?>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/css/portal.css" as="style">
-        <?php
-    } else {
-        // For non-portal pages, preload main.css
-        ?>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preload" href="<?php echo get_template_directory_uri(); ?>/assets/css/main.css" as="style">
-        <?php
-    }
+    // Only preload font connections - stylesheets are efficiently loaded by wp_enqueue_style
+    ?>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <?php
 }
 add_action('wp_head', 'mydefenselaw_preload_assets', 1);
