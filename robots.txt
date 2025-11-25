@@ -47,8 +47,9 @@ Allow: /*.gif$
 Allow: /*.webp$
 Allow: /*.svg$
 
-# Sitemap location
+# Sitemap location (Yoast SEO generates this automatically)
 Sitemap: http://localhost:8088/sitemap_index.xml
+# Note: Update domain in production to https://mydefenselaw.com/sitemap_index.xml
 
 # Crawl-delay for bots (be nice to the server)
 # User-agent: *
