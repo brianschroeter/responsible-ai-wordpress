@@ -917,7 +917,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Testimonial Slider */
 .testimonial-slider {
     background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
+    padding: 0;  /* No padding - slides have their own padding */
     border-radius: 12px;
     position: relative;
     min-height: 250px;
@@ -932,7 +932,7 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     right: 0;
-    padding: 0;
+    padding: 2rem;  /* Match parent padding for proper content positioning */
     transition: opacity 0.5s ease-in-out;
     pointer-events: none;
     transform: translate3d(0, 0, 0);        /* Force GPU layer */
@@ -979,6 +979,8 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     gap: 1.5rem;
     margin-top: 2rem;
+    padding: 0 2rem 2rem 2rem;  /* Match slide padding for consistent spacing */
+    position: relative;  /* Ensure proper positioning within slider */
 }
 
 .testimonial-prev,

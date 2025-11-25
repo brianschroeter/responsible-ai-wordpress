@@ -641,9 +641,9 @@
             // Restore active slide opacity
             slides[currentSlide].style.opacity = '1';
 
-            // Set container height with padding accounted for
-            // Container has 2rem (32px) padding, so add to height
-            slider.style.height = (maxHeight + 64) + 'px';
+            // Set container height to match tallest slide
+            // Slides have their own padding, so no need to add extra
+            slider.style.height = maxHeight + 'px';
         }
 
         // Show specific slide
