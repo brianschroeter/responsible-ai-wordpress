@@ -1953,7 +1953,6 @@ h1, h2, h3, h4, h5, h6 {
    ========================================================================== */
 
 .resources-section {
-    padding: 2rem 0;
     background: white;
 }
 
@@ -2063,10 +2062,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Responsive adjustments for Resources page */
 @media (max-width: 768px) {
-    .resources-section {
-        padding: 1.5rem 0;
-    }
-
     .resources-section .container {
         padding: 1.5rem;
     }
