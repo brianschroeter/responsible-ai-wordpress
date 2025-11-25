@@ -13,7 +13,7 @@ define('MYDEFENSELAW_VERSION', '1.0.0');
  * Theme Setup
  */
 function mydefenselaw_setup() {
-    // Add default posts and comments RSS feed links to head
+    // Add default posts RSS feed links to head (comments disabled)
     add_theme_support('automatic-feed-links');
 
     // Let WordPress manage the document title
@@ -25,8 +25,6 @@ function mydefenselaw_setup() {
     // Switch default core markup to output valid HTML5
     add_theme_support('html5', array(
         'search-form',
-        'comment-form',
-        'comment-list',
         'gallery',
         'caption',
         'style',
@@ -402,3 +400,4 @@ require_once get_template_directory() . '/inc/contact-form-handler.php';
 require_once get_template_directory() . '/inc/custom-post-types.php';
 require_once get_template_directory() . '/inc/acf-sync-helper.php';
 require_once get_template_directory() . '/inc/disable-posts.php';
+require_once get_template_directory() . '/inc/disable-comments.php';
