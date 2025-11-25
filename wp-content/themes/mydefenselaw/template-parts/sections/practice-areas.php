@@ -8,8 +8,8 @@
  */
 
 // Get section header fields from ACF (with defaults)
-$section_title = 'How We Can Defend You';
-$section_subtitle = 'Our experienced attorneys handle a wide range of legal matters with proven results.';
+$section_title = esc_html__('How We Can Defend You', 'mydefenselaw');
+$section_subtitle = esc_html__('Our experienced attorneys handle a wide range of legal matters with proven results.', 'mydefenselaw');
 
 if (function_exists('get_field')) {
     $front_page_id = get_option('page_on_front');
@@ -56,38 +56,38 @@ if (empty($practice_areas)) {
     $practice_areas = array(
         array(
             'icon' => 'fas fa-gavel',
-            'title' => 'Civil Defense Litigation',
-            'description' => 'Civil litigation is a legal dispute between two or more parties that seek money damages or specific performance rather than criminal sanctions.',
+            'title' => esc_html__('Civil Defense Litigation', 'mydefenselaw'),
+            'description' => esc_html__('Civil litigation is a legal dispute between two or more parties that seek money damages or specific performance rather than criminal sanctions.', 'mydefenselaw'),
             'link' => home_url('/civil-defense-litigation/')
         ),
         array(
             'icon' => 'fas fa-shield-alt',
-            'title' => 'Consumer Protection',
-            'description' => 'Consumer Protection encompasses a large body of laws enacted by the government to protect consumers by regulating business transactions.',
+            'title' => esc_html__('Consumer Protection', 'mydefenselaw'),
+            'description' => esc_html__('Consumer Protection encompasses a large body of laws enacted by the government to protect consumers by regulating business transactions.', 'mydefenselaw'),
             'link' => home_url('/consumer-protection/')
         ),
         array(
             'icon' => 'fas fa-file-invoice-dollar',
-            'title' => 'Bankruptcy Law',
-            'description' => 'Bankruptcy laws help people who can no longer pay their creditors get a fresh start – by liquidating assets to pay their debts or by creating a repayment plan.',
+            'title' => esc_html__('Bankruptcy Law', 'mydefenselaw'),
+            'description' => esc_html__('Bankruptcy laws help people who can no longer pay their creditors get a fresh start – by liquidating assets to pay their debts or by creating a repayment plan.', 'mydefenselaw'),
             'link' => home_url('/bankruptcy-law/')
         ),
         array(
             'icon' => 'fas fa-handshake',
-            'title' => 'Contract Law',
-            'description' => 'Contract law includes the concepts of formation, offer, acceptance, and consideration; performance and excuse for nonperformance; breach and damages.',
+            'title' => esc_html__('Contract Law', 'mydefenselaw'),
+            'description' => esc_html__('Contract law includes the concepts of formation, offer, acceptance, and consideration; performance and excuse for nonperformance; breach and damages.', 'mydefenselaw'),
             'link' => home_url('/contract-law/')
         ),
         array(
             'icon' => 'fas fa-home',
-            'title' => 'Family Law',
-            'description' => 'Family law covers rules for living together, prenuptial agreements, marriage, divorce, alimony, and mediation, along with laws on domestic violence.',
+            'title' => esc_html__('Family Law', 'mydefenselaw'),
+            'description' => esc_html__('Family law covers rules for living together, prenuptial agreements, marriage, divorce, alimony, and mediation, along with laws on domestic violence.', 'mydefenselaw'),
             'link' => home_url('/family-law/')
         ),
         array(
             'icon' => 'fas fa-building',
-            'title' => 'Real Estate Law',
-            'description' => 'Property disputes and real estate transactions. Commercial real estate transactions are typically more complex than residential transactions.',
+            'title' => esc_html__('Real Estate Law', 'mydefenselaw'),
+            'description' => esc_html__('Property disputes and real estate transactions. Commercial real estate transactions are typically more complex than residential transactions.', 'mydefenselaw'),
             'link' => home_url('/real-estate-law/')
         ),
     );
@@ -110,7 +110,7 @@ if (empty($practice_areas)) {
                 <h3><?php echo esc_html($area['title']); ?></h3>
                 <p><?php echo esc_html($area['description']); ?></p>
                 <a href="<?php echo esc_url($area['link']); ?>" class="card-link">
-                    Learn More <i class="fas fa-arrow-right"></i>
+                    <?php esc_html_e('Learn More', 'mydefenselaw'); ?> <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
             <?php endforeach; ?>

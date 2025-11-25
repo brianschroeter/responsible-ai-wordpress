@@ -34,16 +34,16 @@ $hero_bg = !empty($hero['background']) ? $hero['background'] : 'https://images.u
 
 // Stats with defaults
 $stats = !empty($hero['stats']) ? $hero['stats'] : array(
-    array('number' => '1000+', 'label' => 'Cases Won'),
-    array('number' => '25+', 'label' => 'Years Experience'),
-    array('number' => '24/7', 'label' => 'Available'),
+    array('number' => '1000+', 'label' => esc_html__('Cases Won', 'mydefenselaw')),
+    array('number' => '25+', 'label' => esc_html__('Years Experience', 'mydefenselaw')),
+    array('number' => '24/7', 'label' => esc_html__('Available', 'mydefenselaw')),
 );
 
 // Guarantees with defaults
 $guarantees = !empty($hero['guarantees']) ? $hero['guarantees'] : array(
-    array('icon' => 'fas fa-lock', 'text' => 'Confidential'),
-    array('icon' => 'fas fa-handshake', 'text' => 'Experienced Legal Team'),
-    array('icon' => 'fas fa-clock', 'text' => 'Quick Response'),
+    array('icon' => 'fas fa-lock', 'text' => esc_html__('Confidential', 'mydefenselaw')),
+    array('icon' => 'fas fa-handshake', 'text' => esc_html__('Experienced Legal Team', 'mydefenselaw')),
+    array('icon' => 'fas fa-clock', 'text' => esc_html__('Quick Response', 'mydefenselaw')),
 );
 ?>
 
@@ -57,7 +57,7 @@ $guarantees = !empty($hero['guarantees']) ? $hero['guarantees'] : array(
         <div class="hero-content">
             <div class="hero-badge">
                 <i class="fas fa-award"></i>
-                <span><?php echo esc_html(function_exists('get_field') && get_field('hero_badge', 'option') ? get_field('hero_badge', 'option') : '25+ Years of Experience'); ?></span>
+                <span><?php echo esc_html(function_exists('get_field') && get_field('hero_badge', 'option') ? get_field('hero_badge', 'option') : esc_html__('25+ Years of Experience', 'mydefenselaw')); ?></span>
             </div>
 
             <h1 class="hero-title">

@@ -24,22 +24,22 @@ $contact = mydefenselaw_get_contact_section_fields();
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <strong>Office Location</strong>
+                            <strong><?php esc_html_e('Office Location', 'mydefenselaw'); ?></strong>
                             <p><?php echo esc_html($contact['location']); ?><br><?php echo esc_html($contact['serving']); ?></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <strong>Phone</strong>
+                            <strong><?php esc_html_e('Phone', 'mydefenselaw'); ?></strong>
                             <p><a href="tel:<?php echo esc_attr($contact['phone_raw']); ?>"><?php echo esc_html($contact['phone']); ?></a></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <strong>Availability</strong>
-                            <p><?php echo esc_html($contact['hours']); ?> Emergency Line<br>Office Hours: <?php echo esc_html($contact['office_hours']); ?></p>
+                            <strong><?php esc_html_e('Availability', 'mydefenselaw'); ?></strong>
+                            <p><?php echo esc_html($contact['hours']); ?> <?php esc_html_e('Emergency Line', 'mydefenselaw'); ?><br><?php esc_html_e('Office Hours:', 'mydefenselaw'); ?> <?php echo esc_html($contact['office_hours']); ?></p>
                         </div>
                     </div>
                 </div>
@@ -56,34 +56,34 @@ $contact = mydefenselaw_get_contact_section_fields();
                     <input type="hidden" name="form_source" value="homepage">
 
                     <div class="form-row">
-                        <input type="text" name="firstName" placeholder="First Name *" required>
-                        <input type="text" name="lastName" placeholder="Last Name *" required>
+                        <input type="text" name="firstName" placeholder="<?php echo esc_attr__('First Name *', 'mydefenselaw'); ?>" required>
+                        <input type="text" name="lastName" placeholder="<?php echo esc_attr__('Last Name *', 'mydefenselaw'); ?>" required>
                     </div>
-                    <input type="tel" name="phone" placeholder="Phone Number *" required>
-                    <input type="email" name="email" placeholder="Email Address *" required>
+                    <input type="tel" name="phone" placeholder="<?php echo esc_attr__('Phone Number *', 'mydefenselaw'); ?>" required>
+                    <input type="email" name="email" placeholder="<?php echo esc_attr__('Email Address *', 'mydefenselaw'); ?>" required>
                     <select name="legalIssue" required>
-                        <option value="">What type of legal issue? *</option>
-                        <option value="civil-litigation">Civil Defense Litigation</option>
-                        <option value="consumer-protection">Consumer Protection</option>
-                        <option value="family-law">Family Law</option>
-                        <option value="bankruptcy">Bankruptcy</option>
-                        <option value="contract-dispute">Contract Law</option>
-                        <option value="real-estate">Real Estate Law</option>
-                        <option value="landlord-tenant">Landlord/Tenant Issues</option>
-                        <option value="intellectual-property">Intellectual Property</option>
-                        <option value="traffic-tickets">Traffic Tickets</option>
-                        <option value="other">Other</option>
+                        <option value=""><?php echo esc_html__('What type of legal issue? *', 'mydefenselaw'); ?></option>
+                        <option value="civil-litigation"><?php echo esc_html__('Civil Defense Litigation', 'mydefenselaw'); ?></option>
+                        <option value="consumer-protection"><?php echo esc_html__('Consumer Protection', 'mydefenselaw'); ?></option>
+                        <option value="family-law"><?php echo esc_html__('Family Law', 'mydefenselaw'); ?></option>
+                        <option value="bankruptcy"><?php echo esc_html__('Bankruptcy', 'mydefenselaw'); ?></option>
+                        <option value="contract-dispute"><?php echo esc_html__('Contract Law', 'mydefenselaw'); ?></option>
+                        <option value="real-estate"><?php echo esc_html__('Real Estate Law', 'mydefenselaw'); ?></option>
+                        <option value="landlord-tenant"><?php echo esc_html__('Landlord/Tenant Issues', 'mydefenselaw'); ?></option>
+                        <option value="intellectual-property"><?php echo esc_html__('Intellectual Property', 'mydefenselaw'); ?></option>
+                        <option value="traffic-tickets"><?php echo esc_html__('Traffic Tickets', 'mydefenselaw'); ?></option>
+                        <option value="other"><?php echo esc_html__('Other', 'mydefenselaw'); ?></option>
                     </select>
-                    <textarea name="message" placeholder="Briefly describe your situation..." rows="4"></textarea>
+                    <textarea name="message" placeholder="<?php echo esc_attr__('Briefly describe your situation...', 'mydefenselaw'); ?>" rows="4"></textarea>
                     <label class="checkbox-label">
                         <input type="checkbox" name="urgent">
                         <span class="checkmark"></span>
-                        This is urgent - I need immediate assistance
+                        <?php esc_html_e('This is urgent - I need immediate assistance', 'mydefenselaw'); ?>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" name="agreement" required>
                         <span class="checkmark"></span>
-                        I understand that Defense Lawyers, P.A. has not yet agreed to represent me, and that submitting this form does not constitute a contract.
+                        <?php esc_html_e('I understand that Defense Lawyers, P.A. has not yet agreed to represent me, and that submitting this form does not constitute a contract.', 'mydefenselaw'); ?>
                     </label>
                     <button type="submit" class="btn btn-primary btn-full">
                         <i class="fas fa-paper-plane"></i>

@@ -38,8 +38,8 @@ $data = mydefenselaw_get_why_choose_us_fields();
                     <h3><?php echo esc_html($data['cta']['title']); ?></h3>
                     <p><?php echo esc_html($data['cta']['text']); ?></p>
                     <div class="cta-buttons">
-                        <a href="tel:<?php echo esc_attr($data['phone_raw']); ?>" class="btn btn-primary">Call <?php echo esc_html($data['phone']); ?></a>
-                        <a href="<?php echo esc_url(home_url('/free-consultation/')); ?>" class="btn btn-outline consultation-trigger">Free Consultation</a>
+                        <a href="tel:<?php echo esc_attr($data['phone_raw']); ?>" class="btn btn-primary"><?php esc_html_e('Call', 'mydefenselaw'); ?> <?php echo esc_html($data['phone']); ?></a>
+                        <a href="<?php echo esc_url(home_url('/free-consultation/')); ?>" class="btn btn-outline consultation-trigger"><?php esc_html_e('Free Consultation', 'mydefenselaw'); ?></a>
                     </div>
                 </div>
             </div>
