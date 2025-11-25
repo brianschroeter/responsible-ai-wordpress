@@ -56,10 +56,12 @@ $data = mydefenselaw_get_why_choose_us_fields();
                     <?php endforeach; ?>
                 </div>
 
-                <div class="testimonial-slider">
+                <div class="testimonial-slider" role="region" aria-label="Client testimonials" aria-live="polite">
                     <?php if (!empty($data['testimonials'])) : ?>
                         <?php foreach ($data['testimonials'] as $index => $testimonial) : ?>
-                        <div class="testimonial-slide <?php echo $index === 0 ? 'active' : ''; ?>">
+                        <div class="testimonial-slide <?php echo $index === 0 ? 'active' : ''; ?>"
+                             role="group"
+                             aria-label="Testimonial <?php echo $index + 1; ?> of <?php echo count($data['testimonials']); ?>">
                             <div class="quote-icon">
                                 <i class="fas fa-quote-left"></i>
                             </div>

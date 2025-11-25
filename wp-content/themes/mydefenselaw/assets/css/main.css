@@ -933,12 +933,17 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
     transition: opacity 0.5s ease-in-out;
     pointer-events: none;
+    transform: translate3d(0, 0, 0);        /* Force GPU layer */
+    backface-visibility: hidden;             /* Prevent sub-pixel rendering */
+    -webkit-font-smoothing: antialiased;     /* Smooth text during transition */
+    z-index: 1;                              /* Base layer for inactive slides */
 }
 
 .testimonial-slide.active {
     opacity: 1;
-    position: relative;
+    position: absolute;  /* FIXED - no more position switching */
     pointer-events: auto;
+    z-index: 2;          /* Layer active slide on top */
 }
 
 .quote-icon {

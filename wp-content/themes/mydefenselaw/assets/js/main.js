@@ -609,9 +609,13 @@
 
         let currentSlide = 0;
         let autoplayInterval;
+        let isTransitioning = false;  // NEW - prevent rapid clicks
 
         // Show specific slide
         function showSlide(index) {
+            if (isTransitioning) return; // Guard against rapid clicks
+            isTransitioning = true;
+
             // Hide all slides
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
@@ -627,6 +631,11 @@
 
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
+
+            // Reset transition flag after transition completes (500ms)
+            setTimeout(() => {
+                isTransitioning = false;
+            }, 500);
         }
 
         // Next slide
@@ -641,6 +650,7 @@
 
         // Start autoplay
         function startAutoplay() {
+            stopAutoplay(); // Clear any existing timer first
             autoplayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
         }
 
@@ -648,6 +658,7 @@
         function stopAutoplay() {
             if (autoplayInterval) {
                 clearInterval(autoplayInterval);
+                autoplayInterval = null; // Explicitly clear reference
             }
         }
 
@@ -680,6 +691,22 @@
         // Pause on hover
         slider.addEventListener('mouseenter', stopAutoplay);
         slider.addEventListener('mouseleave', startAutoplay);
+
+        // Keyboard navigation
+        slider.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                stopAutoplay();
+                prevSlide();
+                startAutoplay();
+            } else if (e.key === 'ArrowRight') {
+                stopAutoplay();
+                nextSlide();
+                startAutoplay();
+            }
+        });
+
+        // Make slider focusable for keyboard navigation
+        slider.setAttribute('tabindex', '0');
 
         // Start autoplay
         startAutoplay();
