@@ -1,0 +1,810 @@
+{
+    "key": "group_rai_homepage",
+    "title": "Homepage Settings",
+    "fields": [
+        {
+            "key": "field_rai_tab_visibility",
+            "label": "Section Visibility",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_enable_hero",
+            "label": "Show Hero Section",
+            "name": "enable_hero",
+            "type": "true_false",
+            "instructions": "Toggle the hero slider section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_mission",
+            "label": "Show Mission Section",
+            "name": "enable_mission",
+            "type": "true_false",
+            "instructions": "Toggle the mission section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_stats",
+            "label": "Show Stats Section",
+            "name": "enable_stats",
+            "type": "true_false",
+            "instructions": "Toggle the statistics section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_pathways",
+            "label": "Show Pathways Section",
+            "name": "enable_pathways",
+            "type": "true_false",
+            "instructions": "Toggle the pathways section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_agents",
+            "label": "Show AI Agents Section",
+            "name": "enable_agents",
+            "type": "true_false",
+            "instructions": "Toggle the AI agents section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_partners",
+            "label": "Show Partners Section",
+            "name": "enable_partners",
+            "type": "true_false",
+            "instructions": "Toggle the partners logo section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_resources",
+            "label": "Show Resources Section",
+            "name": "enable_resources",
+            "type": "true_false",
+            "instructions": "Toggle the resources section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_testimonials",
+            "label": "Show Testimonials Section",
+            "name": "enable_testimonials",
+            "type": "true_false",
+            "instructions": "Toggle the testimonials section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_news",
+            "label": "Show News Section",
+            "name": "enable_news",
+            "type": "true_false",
+            "instructions": "Toggle the latest news section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_newsletter",
+            "label": "Show Newsletter Section",
+            "name": "enable_newsletter",
+            "type": "true_false",
+            "instructions": "Toggle the newsletter signup section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_enable_cta",
+            "label": "Show CTA Section",
+            "name": "enable_cta",
+            "type": "true_false",
+            "instructions": "Toggle the call-to-action section on or off",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "20",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_tab_hero",
+            "label": "Hero Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_hero_slides",
+            "label": "Hero Slides",
+            "name": "hero_slides",
+            "type": "repeater",
+            "instructions": "Add multiple hero slides with different content",
+            "min": 1,
+            "max": 5,
+            "layout": "block",
+            "button_label": "Add Slide",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_rai_hero_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "instructions": "Main heading for this slide",
+                    "placeholder": "Responsible AI for a Better Future",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_hero_subtitle",
+                    "label": "Subtitle",
+                    "name": "subtitle",
+                    "type": "textarea",
+                    "instructions": "Supporting text below the title",
+                    "rows": 3,
+                    "placeholder": "Building ethical AI solutions that empower humanity",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_hero_image",
+                    "label": "Background Image",
+                    "name": "image",
+                    "type": "image",
+                    "instructions": "Hero background image (recommended: 1920x1080px)",
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_hero_cta_primary_text",
+                    "label": "Primary CTA Text",
+                    "name": "cta_primary_text",
+                    "type": "text",
+                    "instructions": "Text for the primary button",
+                    "placeholder": "Get Started",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_hero_cta_primary_link",
+                    "label": "Primary CTA Link",
+                    "name": "cta_primary_link",
+                    "type": "url",
+                    "instructions": "URL for the primary button",
+                    "placeholder": "https://",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_hero_cta_secondary_text",
+                    "label": "Secondary CTA Text",
+                    "name": "cta_secondary_text",
+                    "type": "text",
+                    "instructions": "Text for the secondary button (optional)",
+                    "placeholder": "Learn More",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_hero_cta_secondary_link",
+                    "label": "Secondary CTA Link",
+                    "name": "cta_secondary_link",
+                    "type": "url",
+                    "instructions": "URL for the secondary button (optional)",
+                    "placeholder": "https://",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_rai_tab_stats",
+            "label": "Statistics Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_stats_items",
+            "label": "Statistics Items",
+            "name": "stats_items",
+            "type": "repeater",
+            "instructions": "Add statistics to display in the stats section",
+            "min": 1,
+            "max": 6,
+            "layout": "table",
+            "button_label": "Add Statistic",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_rai_stat_number",
+                    "label": "Number",
+                    "name": "number",
+                    "type": "text",
+                    "instructions": "The main statistic number",
+                    "placeholder": "500",
+                    "wrapper": {
+                        "width": "15",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_stat_prefix",
+                    "label": "Prefix",
+                    "name": "prefix",
+                    "type": "text",
+                    "instructions": "Character before number (optional)",
+                    "placeholder": "$",
+                    "wrapper": {
+                        "width": "10",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_stat_suffix",
+                    "label": "Suffix",
+                    "name": "suffix",
+                    "type": "text",
+                    "instructions": "Character after number (optional)",
+                    "placeholder": "+, M, K, %",
+                    "wrapper": {
+                        "width": "10",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_stat_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "instructions": "Short label for this statistic",
+                    "placeholder": "Projects Completed",
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_stat_description",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "text",
+                    "instructions": "Additional context (optional)",
+                    "placeholder": "Across 50+ industries",
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_rai_tab_partners",
+            "label": "Partners Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_partner_logos",
+            "label": "Partner Logos",
+            "name": "partner_logos",
+            "type": "repeater",
+            "instructions": "Add partner/client logos",
+            "min": 0,
+            "max": 20,
+            "layout": "table",
+            "button_label": "Add Partner Logo",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_rai_partner_logo_image",
+                    "label": "Logo Image",
+                    "name": "logo_image",
+                    "type": "image",
+                    "instructions": "Partner logo (recommended: transparent PNG, 200x100px)",
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_partner_logo_url",
+                    "label": "Logo URL",
+                    "name": "logo_url",
+                    "type": "url",
+                    "instructions": "Partner website URL (optional)",
+                    "placeholder": "https://",
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_partner_logo_alt",
+                    "label": "Alt Text",
+                    "name": "logo_alt",
+                    "type": "text",
+                    "instructions": "Accessibility alt text for the logo",
+                    "placeholder": "Partner Name",
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_rai_tab_agents",
+            "label": "AI Agents Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_ai_agents",
+            "label": "AI Agents",
+            "name": "ai_agents",
+            "type": "repeater",
+            "instructions": "Add AI agent cards to showcase",
+            "min": 0,
+            "max": 12,
+            "layout": "block",
+            "button_label": "Add AI Agent",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_rai_agent_icon",
+                    "label": "Agent Icon",
+                    "name": "agent_icon",
+                    "type": "image",
+                    "instructions": "Icon or avatar for this AI agent (recommended: 128x128px)",
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_agent_title",
+                    "label": "Agent Title",
+                    "name": "agent_title",
+                    "type": "text",
+                    "instructions": "Name of the AI agent",
+                    "placeholder": "Medical Research Assistant",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_agent_tagline",
+                    "label": "Agent Tagline",
+                    "name": "agent_tagline",
+                    "type": "text",
+                    "instructions": "Short tagline or category",
+                    "placeholder": "Healthcare AI",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_agent_description",
+                    "label": "Agent Description",
+                    "name": "agent_description",
+                    "type": "textarea",
+                    "instructions": "Brief description of what this agent does",
+                    "rows": 3,
+                    "placeholder": "Analyzes medical research papers and assists in diagnosis recommendations",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_agent_link",
+                    "label": "Agent Link",
+                    "name": "agent_link",
+                    "type": "url",
+                    "instructions": "Link to agent details page (optional)",
+                    "placeholder": "https://",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_rai_tab_testimonials",
+            "label": "Testimonials Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_testimonials",
+            "label": "Testimonials",
+            "name": "testimonials",
+            "type": "repeater",
+            "instructions": "Add client testimonials and reviews",
+            "min": 0,
+            "max": 15,
+            "layout": "block",
+            "button_label": "Add Testimonial",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "sub_fields": [
+                {
+                    "key": "field_rai_testimonial_quote",
+                    "label": "Quote",
+                    "name": "quote",
+                    "type": "textarea",
+                    "instructions": "The testimonial quote text",
+                    "rows": 4,
+                    "placeholder": "This AI solution transformed our business operations...",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_testimonial_author_name",
+                    "label": "Author Name",
+                    "name": "author_name",
+                    "type": "text",
+                    "instructions": "Name of the person giving the testimonial",
+                    "placeholder": "John Smith",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_testimonial_author_title",
+                    "label": "Author Title",
+                    "name": "author_title",
+                    "type": "text",
+                    "instructions": "Job title of the author",
+                    "placeholder": "CEO",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_testimonial_author_company",
+                    "label": "Author Company",
+                    "name": "author_company",
+                    "type": "text",
+                    "instructions": "Company name",
+                    "placeholder": "Tech Corp",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                },
+                {
+                    "key": "field_rai_testimonial_author_image",
+                    "label": "Author Photo",
+                    "name": "author_image",
+                    "type": "image",
+                    "instructions": "Photo of the person (optional, recommended: 128x128px)",
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_rai_tab_newsletter",
+            "label": "Newsletter Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_newsletter_headline",
+            "label": "Newsletter Headline",
+            "name": "newsletter_headline",
+            "type": "text",
+            "instructions": "Main heading for the newsletter section",
+            "default_value": "Stay Updated on Responsible AI",
+            "placeholder": "Join Our Newsletter",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_newsletter_subtext",
+            "label": "Newsletter Subtext",
+            "name": "newsletter_subtext",
+            "type": "textarea",
+            "instructions": "Supporting text below the headline",
+            "rows": 2,
+            "default_value": "Get the latest insights on ethical AI development and responsible technology practices delivered to your inbox.",
+            "placeholder": "Subscribe to receive updates...",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_newsletter_button_text",
+            "label": "Button Text",
+            "name": "newsletter_button_text",
+            "type": "text",
+            "instructions": "Text for the submit button",
+            "default_value": "Subscribe Now",
+            "placeholder": "Subscribe",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_newsletter_privacy_text",
+            "label": "Privacy Text",
+            "name": "newsletter_privacy_text",
+            "type": "text",
+            "instructions": "Privacy disclaimer text",
+            "default_value": "We respect your privacy. Unsubscribe at any time.",
+            "placeholder": "Privacy notice...",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_tab_cta",
+            "label": "CTA Section",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_rai_cta_title",
+            "label": "CTA Title",
+            "name": "cta_title",
+            "type": "text",
+            "instructions": "Main heading for the call-to-action section",
+            "default_value": "Ready to Build Responsible AI?",
+            "placeholder": "Get Started Today",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_cta_text",
+            "label": "CTA Text",
+            "name": "cta_text",
+            "type": "textarea",
+            "instructions": "Supporting text for the CTA",
+            "rows": 3,
+            "default_value": "Partner with us to create AI solutions that prioritize ethics, transparency, and human welfare.",
+            "placeholder": "Join us in building...",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_cta_primary_button_text",
+            "label": "Primary Button Text",
+            "name": "cta_primary_button_text",
+            "type": "text",
+            "instructions": "Text for the primary CTA button",
+            "default_value": "Start Your Project",
+            "placeholder": "Get Started",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_cta_primary_button_link",
+            "label": "Primary Button Link",
+            "name": "cta_primary_button_link",
+            "type": "url",
+            "instructions": "URL for the primary button",
+            "placeholder": "https://",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_cta_secondary_button_text",
+            "label": "Secondary Button Text",
+            "name": "cta_secondary_button_text",
+            "type": "text",
+            "instructions": "Text for the secondary button (optional)",
+            "default_value": "Learn More",
+            "placeholder": "Contact Us",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        },
+        {
+            "key": "field_rai_cta_secondary_button_link",
+            "label": "Secondary Button Link",
+            "name": "cta_secondary_button_link",
+            "type": "url",
+            "instructions": "URL for the secondary button (optional)",
+            "placeholder": "https://",
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "default"
+            },
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "author",
+        "format",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Content fields for the Responsible AI homepage. Control section visibility, hero slides, statistics, partners, AI agents, testimonials, newsletter settings, and call-to-action content.",
+    "show_in_rest": 0,
+    "modified": 1732642800
+}
