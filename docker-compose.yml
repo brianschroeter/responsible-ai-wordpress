@@ -3,7 +3,7 @@ services:
     build:
       context: ./docker/wordpress
       dockerfile: Dockerfile
-    container_name: mydefenselaw_wordpress
+    container_name: responsibleai_wordpress
     restart: unless-stopped
     ports:
       - "8088:80"
@@ -19,18 +19,20 @@ services:
         define('WP_DEBUG_DISPLAY', false);
         define('SCRIPT_DEBUG', true);
         define('CONCATENATE_SCRIPTS', false);
+        define('MAILHOG_HOST', 'mailhog');
+        define('MAILHOG_PORT', 1025);
     volumes:
       - wordpress_data:/var/www/html
-      - /Volumes/Data/projects/mydefenselaw-wordpress/wp-content:/var/www/html/wp-content
+      - ./wp-content:/var/www/html/wp-content
     depends_on:
       - db
       - mailhog
     networks:
-      - mydefenselaw_network
+      - responsibleai_network
 
   db:
     image: mariadb:10.11
-    container_name: mydefenselaw_db
+    container_name: responsibleai_db
     restart: unless-stopped
     ports:
       - "3307:3306"
@@ -42,11 +44,11 @@ services:
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
-      - mydefenselaw_network
+      - responsibleai_network
 
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: mydefenselaw_phpmyadmin
+    container_name: responsibleai_phpmyadmin
     restart: unless-stopped
     ports:
       - "8089:80"
@@ -59,25 +61,25 @@ services:
     depends_on:
       - db
     networks:
-      - mydefenselaw_network
+      - responsibleai_network
 
   mailhog:
     image: mailhog/mailhog:latest
-    container_name: mydefenselaw_mailhog
+    container_name: responsibleai_mailhog
     restart: unless-stopped
     ports:
       - "1025:1025"
       - "8025:8025"
     networks:
-      - mydefenselaw_network
+      - responsibleai_network
 
   wp-cli:
     image: wordpress:cli-php8.2
-    container_name: mydefenselaw_wpcli
+    container_name: responsibleai_wpcli
     user: "33:33"
     volumes:
       - wordpress_data:/var/www/html
-      - /Volumes/Data/projects/mydefenselaw-wordpress/wp-content:/var/www/html/wp-content
+      - ./wp-content:/var/www/html/wp-content
     environment:
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_NAME: ${DB_NAME}
@@ -87,7 +89,7 @@ services:
       - db
       - wordpress
     networks:
-      - mydefenselaw_network
+      - responsibleai_network
     profiles:
       - cli
 
@@ -98,5 +100,5 @@ volumes:
     driver: local
 
 networks:
-  mydefenselaw_network:
+  responsibleai_network:
     driver: bridge

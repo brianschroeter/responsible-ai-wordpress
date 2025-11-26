@@ -30,7 +30,7 @@ RUN a2enmod rewrite headers expires
 RUN echo "account default" > /etc/msmtprc \
     && echo "host mailhog" >> /etc/msmtprc \
     && echo "port 1025" >> /etc/msmtprc \
-    && echo "from wordpress@mydefenselaw.local" >> /etc/msmtprc \
+    && echo "from wordpress@responsibleai.local" >> /etc/msmtprc \
     && chmod 644 /etc/msmtprc
 
 # Set sendmail path to use msmtp
