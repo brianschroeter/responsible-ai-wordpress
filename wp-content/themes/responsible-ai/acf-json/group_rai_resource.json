@@ -1,0 +1,324 @@
+{
+    "key": "group_rai_resource",
+    "title": "Resource Details",
+    "fields": [
+        {
+            "key": "field_rai_resource_details_tab",
+            "label": "Resource Details",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rai_resource_type",
+            "label": "Resource Type",
+            "name": "resource_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select the type of resource",
+            "required": 1,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "handbook": "Handbook",
+                "whitepaper": "Whitepaper",
+                "toolkit": "Toolkit",
+                "framework": "Framework",
+                "template": "Template",
+                "guide": "Guide",
+                "checklist": "Checklist"
+            },
+            "default_value": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        },
+        {
+            "key": "field_rai_resource_file",
+            "label": "Resource File",
+            "name": "resource_file",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "Upload a downloadable resource file (PDF, DOCX, etc.)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": 0,
+            "max_size": 10,
+            "mime_types": "pdf,doc,docx,xls,xlsx,ppt,pptx,txt,zip"
+        },
+        {
+            "key": "field_rai_resource_external_url",
+            "label": "External Resource URL",
+            "name": "resource_external_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "If the resource is hosted externally, provide the URL here",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://example.com/resource"
+        },
+        {
+            "key": "field_rai_featured_resource",
+            "label": "Featured Resource",
+            "name": "featured_resource",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Display this resource on the homepage",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Feature on homepage",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_rai_resource_meta_tab",
+            "label": "Resource Meta",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rai_resource_author",
+            "label": "Resource Author",
+            "name": "resource_author",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Author or organization that created this resource",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rai_resource_publication_date",
+            "label": "Publication Date",
+            "name": "resource_publication_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "When this resource was originally published",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "Y-m-d",
+            "first_day": 1
+        },
+        {
+            "key": "field_rai_resource_version",
+            "label": "Resource Version",
+            "name": "resource_version",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Version number (e.g., 1.0, 2.3, etc.)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33.33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "1.0",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rai_resource_pages",
+            "label": "Number of Pages",
+            "name": "resource_pages",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Total page count for this resource",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33.33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 1,
+            "max": "",
+            "step": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": "pages"
+        },
+        {
+            "key": "field_rai_resource_file_size",
+            "label": "File Size",
+            "name": "resource_file_size",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "File size (e.g., 2.5 MB)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33.33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "2.5 MB",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rai_related_content_tab",
+            "label": "Related Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rai_related_resources",
+            "label": "Related Resources",
+            "name": "related_resources",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Select related resources",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rai_resource"
+            ],
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": 0,
+            "max": 6,
+            "taxonomy": [],
+            "elements": [],
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_rai_related_events",
+            "label": "Related Events",
+            "name": "related_events",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Select related events",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "rai_event"
+            ],
+            "filters": [
+                "search",
+                "post_type"
+            ],
+            "return_format": "object",
+            "min": 0,
+            "max": 6,
+            "taxonomy": [],
+            "elements": [],
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rai_resource"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Field group for Responsible AI Resource custom post type",
+    "show_in_rest": true,
+    "display_title": "",
+    "modified": 1732650000
+}
