@@ -33,11 +33,11 @@ $is_homepage = is_front_page();
             <div class="top-bar-content">
                 <div class="contact-quick">
                     <span><i class="fas fa-phone"></i> <?php echo esc_html($phone); ?></span>
-                    <span><i class="fas fa-map-marker-alt"></i> Boca Raton, FL</span>
-                    <span><i class="fas fa-clock"></i> Available 24/7</span>
+                    <span><i class="fas fa-map-marker-alt"></i> <?php esc_html_e('Boca Raton, FL', 'mydefenselaw'); ?></span>
+                    <span><i class="fas fa-clock"></i> <?php esc_html_e('Available 24/7', 'mydefenselaw'); ?></span>
                 </div>
                 <div class="emergency-notice">
-                    <strong>Emergency? Call Now for Immediate Help</strong>
+                    <strong><?php esc_html_e('Emergency? Call Now for Immediate Help', 'mydefenselaw'); ?></strong>
                 </div>
             </div>
         </div>
@@ -65,9 +65,9 @@ $is_homepage = is_front_page();
 
                 <div class="header-contact">
                     <div class="consultation-cta">
-                        <span class="cta-label">Free Consultation</span>
+                        <span class="cta-label"><?php esc_html_e('Free Consultation', 'mydefenselaw'); ?></span>
                         <a href="tel:<?php echo esc_attr($phone_raw); ?>" class="phone-main"><?php echo esc_html($phone); ?></a>
-                        <button class="btn-consultation consultation-trigger" id="modalTriggerHeader">Get Started Today</button>
+                        <button class="btn-consultation consultation-trigger" id="modalTriggerHeader"><?php esc_html_e('Get Started Today', 'mydefenselaw'); ?></button>
                     </div>
                 </div>
 

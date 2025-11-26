@@ -67,10 +67,10 @@ $phone_raw = preg_replace('/[^0-9]/', '', $phone);
                                 <li><i class="fas fa-phone"></i> <a href="tel:<?php echo esc_attr($phone_raw); ?>" itemprop="telephone"><?php echo esc_html($phone); ?></a></li>
                                 <li itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <span itemprop="streetAddress">1515 N Federal Hwy, Suite 300</span><br>
-                                    <span itemprop="addressLocality">Boca Raton</span>,
-                                    <span itemprop="addressRegion">FL</span>
-                                    <span itemprop="postalCode">33432</span>
+                                    <span itemprop="streetAddress"><?php esc_html_e('1515 N Federal Hwy, Suite 300', 'mydefenselaw'); ?></span><br>
+                                    <span itemprop="addressLocality"><?php esc_html_e('Boca Raton', 'mydefenselaw'); ?></span>,
+                                    <span itemprop="addressRegion"><?php esc_html_e('FL', 'mydefenselaw'); ?></span>
+                                    <span itemprop="postalCode"><?php esc_html_e('33432', 'mydefenselaw'); ?></span>
                                 </li>
                                 <li><i class="fas fa-clock"></i> <?php esc_html_e('Available 24/7', 'mydefenselaw'); ?></li>
                                 <li><a href="<?php echo esc_url(home_url('/free-consultation/')); ?>"><?php esc_html_e('Free Consultation', 'mydefenselaw'); ?></a></li>
