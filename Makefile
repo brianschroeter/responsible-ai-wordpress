@@ -8,7 +8,7 @@ RED := \033[0;31m
 NC := \033[0m # No Color
 
 help: ## Show this help message
-	@echo "$(BLUE)MyDefenseLaw WordPress Docker Environment$(NC)"
+	@echo "$(BLUE)Responsible AI WordPress Docker Environment$(NC)"
 	@echo ""
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "$(GREEN)%-15s$(NC) %s\n", $$1, $$2}'
 
@@ -62,7 +62,7 @@ fresh: down ## Fresh install - removes all volumes and starts clean
 	@read confirm
 	docker-compose down -v
 	rm -rf wp-content/themes wp-content/plugins wp-content/uploads
-	mkdir -p wp-content/themes/mydefenselaw wp-content/plugins wp-content/uploads
+	mkdir -p wp-content/themes/responsibleai wp-content/plugins wp-content/uploads
 	docker-compose up -d
 	@echo "$(GREEN)Fresh environment created!$(NC)"
 
