@@ -31,7 +31,7 @@ $show_practice_areas = get_field('enable_consultation_practice_areas') !== false
             </div>
             <h1><?php echo esc_html(get_the_title()); ?></h1>
             <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="<?php echo esc_url(home_url('/')); ?>">Home</a> / <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
+                <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'mydefenselaw'); ?></a> / <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
             </nav>
         </div>
     </div>
@@ -102,28 +102,28 @@ $show_practice_areas = get_field('enable_consultation_practice_areas') !== false
                     <input type="tel" name="phone" placeholder="Phone Number *" required>
 
                     <select name="legalIssue" required>
-                        <option value="">Type of Legal Issue *</option>
-                        <option value="civil-litigation">Civil Defense Litigation</option>
-                        <option value="consumer-protection">Consumer Protection</option>
-                        <option value="bankruptcy">Bankruptcy Law</option>
-                        <option value="contract-law">Contract Law</option>
-                        <option value="family-law">Family Law</option>
-                        <option value="real-estate">Real Estate Law</option>
-                        <option value="landlord-tenant">Landlord/Tenant Issues</option>
-                        <option value="intellectual-property">Intellectual Property</option>
-                        <option value="traffic-tickets">Traffic Tickets</option>
-                        <option value="other">Other</option>
+                        <option value=""><?php esc_html_e('Type of Legal Issue *', 'mydefenselaw'); ?></option>
+                        <option value="civil-litigation"><?php esc_html_e('Civil Defense Litigation', 'mydefenselaw'); ?></option>
+                        <option value="consumer-protection"><?php esc_html_e('Consumer Protection', 'mydefenselaw'); ?></option>
+                        <option value="bankruptcy"><?php esc_html_e('Bankruptcy Law', 'mydefenselaw'); ?></option>
+                        <option value="contract-law"><?php esc_html_e('Contract Law', 'mydefenselaw'); ?></option>
+                        <option value="family-law"><?php esc_html_e('Family Law', 'mydefenselaw'); ?></option>
+                        <option value="real-estate"><?php esc_html_e('Real Estate Law', 'mydefenselaw'); ?></option>
+                        <option value="landlord-tenant"><?php esc_html_e('Landlord/Tenant Issues', 'mydefenselaw'); ?></option>
+                        <option value="intellectual-property"><?php esc_html_e('Intellectual Property', 'mydefenselaw'); ?></option>
+                        <option value="traffic-tickets"><?php esc_html_e('Traffic Tickets', 'mydefenselaw'); ?></option>
+                        <option value="other"><?php esc_html_e('Other', 'mydefenselaw'); ?></option>
                     </select>
 
                     <select name="urgency">
-                        <option value="">Urgency Level</option>
-                        <option value="immediate">Immediate (within 24 hours)</option>
-                        <option value="urgent">Urgent (within 1 week)</option>
-                        <option value="normal">Normal (within 2 weeks)</option>
-                        <option value="planning">Planning Ahead</option>
+                        <option value=""><?php esc_html_e('Urgency Level', 'mydefenselaw'); ?></option>
+                        <option value="immediate"><?php esc_html_e('Immediate (within 24 hours)', 'mydefenselaw'); ?></option>
+                        <option value="urgent"><?php esc_html_e('Urgent (within 1 week)', 'mydefenselaw'); ?></option>
+                        <option value="normal"><?php esc_html_e('Normal (within 2 weeks)', 'mydefenselaw'); ?></option>
+                        <option value="planning"><?php esc_html_e('Planning Ahead', 'mydefenselaw'); ?></option>
                     </select>
 
-                    <textarea name="message" placeholder="Describe Your Legal Issue *" rows="5" required></textarea>
+                    <textarea name="message" placeholder="<?php esc_attr_e('Describe Your Legal Issue *', 'mydefenselaw'); ?>" rows="5" required></textarea>
 
                     <label class="checkbox-label disclaimer-checkbox">
                         <input type="checkbox" name="agreement" required>
@@ -167,15 +167,15 @@ $show_practice_areas = get_field('enable_consultation_practice_areas') !== false
         <div class="quick-contact-bar">
             <div class="quick-contact-item">
                 <i class="fas fa-calendar-check"></i>
-                <span>Free Consultation</span>
+                <span><?php esc_html_e('Free Consultation', 'mydefenselaw'); ?></span>
             </div>
             <div class="quick-contact-item">
                 <i class="fas fa-user-lock"></i>
-                <span>Client Login</span>
+                <span><?php esc_html_e('Client Login', 'mydefenselaw'); ?></span>
             </div>
             <div class="quick-contact-item">
                 <i class="fas fa-newspaper"></i>
-                <span>Latest News</span>
+                <span><?php esc_html_e('Latest News', 'mydefenselaw'); ?></span>
             </div>
         </div>
 
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <?php esc_html_e('Submitting...', 'mydefenselaw'); ?>';
             submitBtn.disabled = true;
 
             const formData = new FormData(form);
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 responseDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             })
             .catch(error => {
-                responseDiv.innerHTML = 'An error occurred. Please try again or call us directly.';
+                responseDiv.innerHTML = '<?php esc_html_e('An error occurred. Please try again or call us directly.', 'mydefenselaw'); ?>';
                 responseDiv.className = 'form-response error';
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;

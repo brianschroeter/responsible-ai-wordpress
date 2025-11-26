@@ -349,7 +349,7 @@ function mydefenselaw_portal_format_court_date($date) {
 		} elseif ($days_ago === 1) {
 			$relative = __('Yesterday', 'mydefenselaw');
 		} else {
-			$relative = sprintf(__('%d days ago', 'mydefenselaw'), $days_ago);
+			$relative = sprintf(_n('%d day ago', '%d days ago', $days_ago, 'mydefenselaw'), $days_ago);
 		}
 	} elseif ($days_diff === 0) {
 		// Today
@@ -359,7 +359,7 @@ function mydefenselaw_portal_format_court_date($date) {
 		$relative = __('Tomorrow', 'mydefenselaw');
 	} elseif ($days_diff <= 7) {
 		// Within a week
-		$relative = sprintf(__('in %d days', 'mydefenselaw'), $days_diff);
+		$relative = sprintf(_n('in %d day', 'in %d days', $days_diff, 'mydefenselaw'), $days_diff);
 	} else {
 		// More than a week
 		$weeks = ceil($days_diff / 7);

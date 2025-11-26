@@ -328,60 +328,140 @@ function mydefenselaw_portal_get_email_template($template_name, $vars = array())
 /**
  * HTML email wrapper with branding
  *
+ * Uses centralized email template system for consistent styling.
+ *
  * @since 1.0.0
  * @return string HTML email wrapper template
  */
 function mydefenselaw_portal_email_wrapper() {
-	$phone = mydefenselaw_get_phone();
-	$logo_url = get_template_directory_uri() . '/assets/images/logo.png';
+	// Return a template string with {{CONTENT}} placeholder
+	// This will be replaced by mydefenselaw_portal_get_email_template()
+	// We use the centralized wrapper but need to return a format compatible with existing code
+	$phone = function_exists('mydefenselaw_get_phone') ? mydefenselaw_get_phone() : '888.444.0253';
+	$site_name = get_bloginfo('name');
+	$year = date('Y');
 
-	return '
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>MyDefenseLaw</title>
-	</head>
-	<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:Arial,sans-serif;">
-		<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4;padding:20px 0;">
-			<tr>
-				<td align="center">
-					<table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,0.1);">
-						<!-- Header -->
-						<tr>
-							<td style="background-color:#1a365d;padding:20px;text-align:center;">
-								<h1 style="color:#ffffff;margin:0;font-size:24px;">MyDefenseLaw</h1>
-								<p style="color:#94a3b8;margin:5px 0 0 0;font-size:14px;">Client Portal</p>
-							</td>
-						</tr>
-						<!-- Content -->
-						<tr>
-							<td style="padding:30px;">
-								{{CONTENT}}
-							</td>
-						</tr>
-						<!-- Footer -->
-						<tr>
-							<td style="background-color:#f8fafc;padding:20px;text-align:center;border-top:1px solid #e2e8f0;">
-								<p style="margin:0;font-size:14px;color:#64748b;">
-									Questions? Call us at <a href="tel:' . esc_attr($phone) . '" style="color:#1a365d;text-decoration:none;">' . esc_html($phone) . '</a>
-								</p>
-								<p style="margin:10px 0 0 0;font-size:12px;color:#94a3b8;">
-									This is an automated message from your MyDefenseLaw Client Portal.
-								</p>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</body>
-	</html>';
+	return '<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="x-apple-disable-message-reformatting">
+	<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+	<title>' . esc_html($site_name) . '</title>
+	<!--[if mso]>
+	<noscript>
+		<xml>
+			<o:OfficeDocumentSettings>
+				<o:PixelsPerInch>96</o:PixelsPerInch>
+			</o:OfficeDocumentSettings>
+		</xml>
+	</noscript>
+	<![endif]-->
+	<style>
+		@import url(\'https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap\');
+		body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+		table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+		img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+		body { margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f4f4f4; }
+		a { color: #2563eb; }
+		a:hover { color: #1d4ed8; }
+		.button-primary:hover { background-color: #b91c1c !important; }
+		.button-secondary:hover { background-color: #152a4a !important; }
+		@media screen and (max-width: 600px) {
+			.email-container { width: 100% !important; }
+			.mobile-padding { padding-left: 20px !important; padding-right: 20px !important; }
+		}
+	</style>
+</head>
+<body style="margin:0;padding:0;background-color:#f4f4f4;font-family:\'Open Sans\',Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+
+	<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">
+		Defense Lawyers, P.A. - Client Portal Notification
+	</div>
+
+	<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f4f4f4;">
+		<tr>
+			<td align="center" style="padding:30px 15px;">
+				<table role="presentation" class="email-container" cellpadding="0" cellspacing="0" width="600" style="max-width:600px;background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+
+					<!-- Top Gold Accent Bar -->
+					<tr>
+						<td style="background-color:#fbbf24;height:4px;font-size:0;line-height:0;">&nbsp;</td>
+					</tr>
+
+					<!-- Header -->
+					<tr>
+						<td style="background:linear-gradient(135deg,#1a365d 0%,#2d4a7c 100%);padding:30px 40px;text-align:center;">
+							<h1 style="color:#ffffff;margin:0;font-family:\'Merriweather\',Georgia,serif;font-size:28px;font-weight:700;">Defense Lawyers, P.A.</h1>
+							<p style="color:#94a3b8;margin:8px 0 0 0;font-family:\'Open Sans\',Arial,sans-serif;font-size:14px;letter-spacing:0.5px;">Client Portal</p>
+						</td>
+					</tr>
+
+					<!-- Content -->
+					<tr>
+						<td class="mobile-padding" style="padding:40px;">
+							{{CONTENT}}
+						</td>
+					</tr>
+
+					<!-- Divider -->
+					<tr>
+						<td style="padding:0 40px;">
+							<table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+								<tr>
+									<td style="border-top:1px solid #e2e8f0;"></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+					<!-- Footer -->
+					<tr>
+						<td style="background-color:#f8fafc;padding:30px 40px;">
+							<table role="presentation" cellpadding="0" cellspacing="0" width="100%">
+								<tr>
+									<td style="text-align:center;padding-bottom:20px;">
+										<p style="margin:0 0 8px 0;font-family:\'Open Sans\',Arial,sans-serif;font-size:14px;color:#1a365d;font-weight:600;">Questions? We\'re Here to Help</p>
+										<p style="margin:0;">
+											<a href="tel:' . esc_attr(preg_replace('/[^0-9]/', '', $phone)) . '" style="color:#dc2626;font-family:\'Open Sans\',Arial,sans-serif;font-size:18px;font-weight:700;text-decoration:none;">' . esc_html($phone) . '</a>
+										</p>
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align:center;padding-top:15px;border-top:1px solid #e2e8f0;">
+										<p style="margin:0 0 5px 0;font-family:\'Open Sans\',Arial,sans-serif;font-size:12px;color:#64748b;">
+											&copy; ' . esc_html($year) . ' Defense Lawyers, P.A. All rights reserved.
+										</p>
+										<p style="margin:0;font-family:\'Open Sans\',Arial,sans-serif;font-size:11px;color:#94a3b8;">
+											This is an automated message from your Client Portal.
+										</p>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+					<!-- Bottom Navy Bar -->
+					<tr>
+						<td style="background-color:#1a365d;height:6px;font-size:0;line-height:0;">&nbsp;</td>
+					</tr>
+
+				</table>
+			</td>
+		</tr>
+	</table>
+
+</body>
+</html>';
 }
 
 /**
  * Email content templates
+ *
+ * Uses Merriweather for headings and Open Sans for body text
+ * to match the frontend design system.
  *
  * @since 1.0.0
  * @param string $template Template identifier
@@ -391,78 +471,126 @@ function mydefenselaw_portal_email_wrapper() {
 function mydefenselaw_portal_email_content($template, $vars) {
 	$templates = array(
 		'new_message' => '
-			<h2 style="color:#1a365d;margin:0 0 20px 0;">New Message</h2>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">Hello {{client_name}},</p>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">You have received a new message from <strong>{{sender_name}}</strong>.</p>
-			<div style="background:#f8fafc;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #2271b1;">
-				<p style="margin:0 0 10px 0;font-weight:bold;color:#1a365d;">{{message_subject}}</p>
-				<p style="margin:0;color:#64748b;">{{message_preview}}...</p>
-			</div>
-			<p style="text-align:center;margin:30px 0 0 0;">
-				<a href="{{portal_url}}" style="background:#dc2626;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:6px;display:inline-block;font-weight:600;">View Message</a>
-			</p>',
+			<h2 style="font-family:\'Merriweather\',Georgia,serif;color:#1a365d;margin:0 0 20px 0;font-size:24px;font-weight:700;">New Message</h2>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">Hello {{client_name}},</p>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">You have received a new message from <strong style="color:#1a365d;">{{sender_name}}</strong>.</p>
+			<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0;">
+				<tr>
+					<td style="background:#f0f9ff;padding:20px;border-radius:0 8px 8px 0;border-left:4px solid #2563eb;">
+						<p style="margin:0 0 10px 0;font-family:\'Open Sans\',Arial,sans-serif;font-weight:700;color:#1a365d;font-size:16px;">{{message_subject}}</p>
+						<p style="margin:0;font-family:\'Open Sans\',Arial,sans-serif;color:#64748b;font-size:15px;line-height:1.6;">{{message_preview}}...</p>
+					</td>
+				</tr>
+			</table>
+			<table role="presentation" cellpadding="0" cellspacing="0" style="margin:30px auto 0 auto;">
+				<tr>
+					<td style="border-radius:6px;background-color:#dc2626;">
+						<a href="{{portal_url}}" class="button-primary" style="display:inline-block;background:#dc2626;color:#ffffff;padding:14px 32px;text-decoration:none;border-radius:6px;font-family:\'Open Sans\',Arial,sans-serif;font-weight:600;font-size:16px;">View Message</a>
+					</td>
+				</tr>
+			</table>',
 
 		'case_update' => '
-			<h2 style="color:#1a365d;margin:0 0 20px 0;">Case Status Update</h2>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">Hello {{client_name}},</p>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">The status of your case <strong>{{case_number}}</strong> has been updated.</p>
-			<div style="background:#f8fafc;padding:20px;border-radius:6px;margin:20px 0;text-align:center;">
-				<span style="color:#94a3b8;text-decoration:line-through;font-size:16px;">{{old_status}}</span>
-				<span style="margin:0 15px;color:#1a365d;font-size:20px;">&rarr;</span>
-				<span style="color:#00a32a;font-weight:bold;font-size:16px;">{{new_status}}</span>
-			</div>
-			<p style="text-align:center;margin:30px 0 0 0;">
-				<a href="{{portal_url}}" style="background:#dc2626;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:6px;display:inline-block;font-weight:600;">View Case Details</a>
-			</p>',
+			<h2 style="font-family:\'Merriweather\',Georgia,serif;color:#1a365d;margin:0 0 20px 0;font-size:24px;font-weight:700;">Case Status Update</h2>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">Hello {{client_name}},</p>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">The status of your case <strong style="color:#1a365d;">{{case_number}}</strong> has been updated.</p>
+			<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0;">
+				<tr>
+					<td style="background:#f8fafc;padding:25px;border-radius:8px;text-align:center;">
+						<span style="font-family:\'Open Sans\',Arial,sans-serif;color:#94a3b8;text-decoration:line-through;font-size:16px;">{{old_status}}</span>
+						<span style="margin:0 20px;color:#fbbf24;font-size:24px;">→</span>
+						<span style="font-family:\'Open Sans\',Arial,sans-serif;color:#10b981;font-weight:700;font-size:18px;">{{new_status}}</span>
+					</td>
+				</tr>
+			</table>
+			<table role="presentation" cellpadding="0" cellspacing="0" style="margin:30px auto 0 auto;">
+				<tr>
+					<td style="border-radius:6px;background-color:#dc2626;">
+						<a href="{{portal_url}}" class="button-primary" style="display:inline-block;background:#dc2626;color:#ffffff;padding:14px 32px;text-decoration:none;border-radius:6px;font-family:\'Open Sans\',Arial,sans-serif;font-weight:600;font-size:16px;">View Case Details</a>
+					</td>
+				</tr>
+			</table>',
 
 		'document_shared' => '
-			<h2 style="color:#1a365d;margin:0 0 20px 0;">New Document Available</h2>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">Hello {{client_name}},</p>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">A new document has been shared with you:</p>
-			<div style="background:#f8fafc;padding:15px;border-radius:6px;margin:20px 0;text-align:center;">
-				<p style="margin:0;font-weight:bold;color:#1a365d;font-size:16px;">📄 {{document_name}}</p>
-			</div>
-			<p style="text-align:center;margin:30px 0 0 0;">
-				<a href="{{portal_url}}" style="background:#dc2626;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:6px;display:inline-block;font-weight:600;">View Documents</a>
-			</p>',
+			<h2 style="font-family:\'Merriweather\',Georgia,serif;color:#1a365d;margin:0 0 20px 0;font-size:24px;font-weight:700;">New Document Available</h2>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">Hello {{client_name}},</p>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">A new document has been shared with you:</p>
+			<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0;">
+				<tr>
+					<td style="background:#f8fafc;padding:20px;border-radius:8px;text-align:center;">
+						<p style="margin:0;font-family:\'Open Sans\',Arial,sans-serif;font-weight:700;color:#1a365d;font-size:18px;">📄 {{document_name}}</p>
+					</td>
+				</tr>
+			</table>
+			<table role="presentation" cellpadding="0" cellspacing="0" style="margin:30px auto 0 auto;">
+				<tr>
+					<td style="border-radius:6px;background-color:#dc2626;">
+						<a href="{{portal_url}}" class="button-primary" style="display:inline-block;background:#dc2626;color:#ffffff;padding:14px 32px;text-decoration:none;border-radius:6px;font-family:\'Open Sans\',Arial,sans-serif;font-weight:600;font-size:16px;">View Documents</a>
+					</td>
+				</tr>
+			</table>',
 
 		'court_reminder' => '
-			<h2 style="color:#1a365d;margin:0 0 20px 0;">⚠️ Court Date Reminder</h2>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">Hello {{client_name}},</p>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">This is a reminder that you have an upcoming court date in <strong>{{days_until}} days</strong>.</p>
-			<div style="background:#fef3c7;padding:15px;border-radius:6px;margin:20px 0;border-left:4px solid #f59e0b;">
-				<p style="margin:0 0 10px 0;font-weight:bold;color:#92400e;">Case: {{case_number}}</p>
-				<p style="margin:0 0 5px 0;color:#78350f;">📅 <strong>{{court_date}}</strong></p>
-				<p style="margin:0;color:#78350f;">📍 {{court_location}}</p>
-			</div>
-			<p style="text-align:center;margin:30px 0 0 0;">
-				<a href="{{portal_url}}" style="background:#dc2626;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:6px;display:inline-block;font-weight:600;">View Case Details</a>
-			</p>',
+			<h2 style="font-family:\'Merriweather\',Georgia,serif;color:#1a365d;margin:0 0 20px 0;font-size:24px;font-weight:700;">⚠️ Court Date Reminder</h2>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">Hello {{client_name}},</p>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">This is a reminder that you have an upcoming court date in <strong style="color:#dc2626;">{{days_until}} days</strong>.</p>
+			<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0;">
+				<tr>
+					<td style="background:#fef3c7;padding:20px;border-radius:0 8px 8px 0;border-left:4px solid #f59e0b;">
+						<p style="margin:0 0 12px 0;font-family:\'Open Sans\',Arial,sans-serif;font-weight:700;color:#92400e;font-size:16px;">Case: {{case_number}}</p>
+						<p style="margin:0 0 8px 0;font-family:\'Open Sans\',Arial,sans-serif;color:#78350f;font-size:15px;">📅 <strong>{{court_date}}</strong></p>
+						<p style="margin:0;font-family:\'Open Sans\',Arial,sans-serif;color:#78350f;font-size:15px;">📍 {{court_location}}</p>
+					</td>
+				</tr>
+			</table>
+			<table role="presentation" cellpadding="0" cellspacing="0" style="margin:30px auto 0 auto;">
+				<tr>
+					<td style="border-radius:6px;background-color:#dc2626;">
+						<a href="{{portal_url}}" class="button-primary" style="display:inline-block;background:#dc2626;color:#ffffff;padding:14px 32px;text-decoration:none;border-radius:6px;font-family:\'Open Sans\',Arial,sans-serif;font-weight:600;font-size:16px;">View Case Details</a>
+					</td>
+				</tr>
+			</table>',
 
 		'staff_new_message' => '
-			<h2 style="color:#1a365d;margin:0 0 20px 0;">New Portal Message</h2>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">A client has sent a new message through the portal.</p>
-			<div style="background:#f8fafc;padding:15px;border-radius:6px;margin:20px 0;">
-				<p style="margin:0 0 10px 0;"><strong>From:</strong> {{client_name}} ({{client_email}})</p>
-				<p style="margin:0 0 10px 0;"><strong>Subject:</strong> {{message_subject}}</p>
-				<hr style="border:none;border-top:1px solid #e2e8f0;margin:15px 0;">
-				<div style="color:#374151;">{{message_content}}</div>
-			</div>
-			<p style="text-align:center;margin:30px 0 0 0;">
-				<a href="{{admin_url}}" style="background:#1a365d;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:6px;display:inline-block;font-weight:600;">View in Admin</a>
-			</p>',
+			<h2 style="font-family:\'Merriweather\',Georgia,serif;color:#1a365d;margin:0 0 20px 0;font-size:24px;font-weight:700;">New Portal Message</h2>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">A client has sent a new message through the portal.</p>
+			<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0;">
+				<tr>
+					<td style="background:#f8fafc;padding:20px;border-radius:8px;">
+						<p style="margin:0 0 10px 0;font-family:\'Open Sans\',Arial,sans-serif;font-size:15px;color:#333333;"><strong style="color:#64748b;">From:</strong> {{client_name}} ({{client_email}})</p>
+						<p style="margin:0 0 15px 0;font-family:\'Open Sans\',Arial,sans-serif;font-size:15px;color:#333333;"><strong style="color:#64748b;">Subject:</strong> {{message_subject}}</p>
+						<hr style="border:none;border-top:1px solid #e2e8f0;margin:15px 0;">
+						<div style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;font-size:15px;line-height:1.7;">{{message_content}}</div>
+					</td>
+				</tr>
+			</table>
+			<table role="presentation" cellpadding="0" cellspacing="0" style="margin:30px auto 0 auto;">
+				<tr>
+					<td style="border-radius:6px;background-color:#1a365d;">
+						<a href="{{admin_url}}" class="button-secondary" style="display:inline-block;background:#1a365d;color:#ffffff;padding:14px 32px;text-decoration:none;border-radius:6px;font-family:\'Open Sans\',Arial,sans-serif;font-weight:600;font-size:16px;">View in Admin</a>
+					</td>
+				</tr>
+			</table>',
 
 		'staff_document_upload' => '
-			<h2 style="color:#1a365d;margin:0 0 20px 0;">New Document Uploaded</h2>
-			<p style="color:#374151;line-height:1.6;margin:0 0 15px 0;">A client has uploaded a new document to the portal.</p>
-			<div style="background:#f8fafc;padding:15px;border-radius:6px;margin:20px 0;">
-				<p style="margin:0 0 10px 0;"><strong>From:</strong> {{client_name}} ({{client_email}})</p>
-				<p style="margin:0 0 10px 0;"><strong>Document:</strong> {{document_name}}</p>
-				<p style="margin:0;"><strong>File Type:</strong> {{file_type}}</p>
-			</div>
-			<p style="text-align:center;margin:30px 0 0 0;">
-				<a href="{{admin_url}}" style="background:#1a365d;color:#ffffff;padding:12px 30px;text-decoration:none;border-radius:6px;display:inline-block;font-weight:600;">View in Admin</a>
-			</p>',
+			<h2 style="font-family:\'Merriweather\',Georgia,serif;color:#1a365d;margin:0 0 20px 0;font-size:24px;font-weight:700;">New Document Uploaded</h2>
+			<p style="font-family:\'Open Sans\',Arial,sans-serif;color:#333333;line-height:1.7;margin:0 0 15px 0;font-size:16px;">A client has uploaded a new document to the portal.</p>
+			<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0;">
+				<tr>
+					<td style="background:#f8fafc;padding:20px;border-radius:8px;">
+						<p style="margin:0 0 10px 0;font-family:\'Open Sans\',Arial,sans-serif;font-size:15px;color:#333333;"><strong style="color:#64748b;">From:</strong> {{client_name}} ({{client_email}})</p>
+						<p style="margin:0 0 10px 0;font-family:\'Open Sans\',Arial,sans-serif;font-size:15px;color:#333333;"><strong style="color:#64748b;">Document:</strong> {{document_name}}</p>
+						<p style="margin:0;font-family:\'Open Sans\',Arial,sans-serif;font-size:15px;color:#333333;"><strong style="color:#64748b;">File Type:</strong> {{file_type}}</p>
+					</td>
+				</tr>
+			</table>
+			<table role="presentation" cellpadding="0" cellspacing="0" style="margin:30px auto 0 auto;">
+				<tr>
+					<td style="border-radius:6px;background-color:#1a365d;">
+						<a href="{{admin_url}}" class="button-secondary" style="display:inline-block;background:#1a365d;color:#ffffff;padding:14px 32px;text-decoration:none;border-radius:6px;font-family:\'Open Sans\',Arial,sans-serif;font-weight:600;font-size:16px;">View in Admin</a>
+					</td>
+				</tr>
+			</table>',
 	);
 
 	$content = isset($templates[$template]) ? $templates[$template] : '';

@@ -983,7 +983,7 @@ a:focus {
 
 .mdl-stats-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 15px;
     padding: 5px;
 }
@@ -1212,11 +1212,7 @@ a:focus {
 }
 
 /* Responsive Dashboard */
-@media screen and (max-width: 1200px) {
-    .mdl-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+/* Note: .mdl-stats-grid uses auto-fit and wraps automatically */
 
 @media screen and (max-width: 782px) {
     .mdl-welcome-hero {

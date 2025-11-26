@@ -6,6 +6,52 @@
 (function() {
     'use strict';
 
+    // Fallback for localized strings (default to English if not defined)
+    if (typeof mydefenseLawPortalStrings === 'undefined') {
+        window.mydefenseLawPortalStrings = {
+            uploadProgress: 'Uploading {filename}: {percent}%',
+            uploadSuccess: '{filename} uploaded successfully',
+            uploadFailed: 'Upload failed',
+            uploadError: 'Upload error: Invalid response',
+            serverError: 'Upload failed: Server error',
+            deleteConfirm: 'Are you sure you want to delete "{documentName}"?',
+            deleteSuccess: 'Document deleted successfully',
+            deleteFailed: 'Failed to delete document',
+            errorDeletingDocument: 'Error deleting document',
+            conversationLoadFailed: 'Failed to load conversation',
+            conversationLoadError: 'Error loading conversation',
+            enterMessage: 'Please enter a message',
+            replySending: 'Sending...',
+            replySent: 'Reply sent successfully',
+            replyFailed: 'Failed to send reply',
+            replyError: 'Error sending reply',
+            sendReply: 'Send Reply',
+            messageSending: 'Sending...',
+            messageSent: 'Message sent successfully',
+            messageFailed: 'Failed to send message',
+            messageError: 'Error sending message',
+            sendMessage: 'Send Message',
+            saving: 'Saving...',
+            profileUpdated: 'Profile updated successfully',
+            profileUpdateFailed: 'Failed to update profile',
+            profileUpdateError: 'Error updating profile',
+            saveChanges: 'Save Changes',
+            allPasswordFields: 'Please fill in all password fields',
+            passwordsDoNotMatch: 'New passwords do not match',
+            passwordTooShort: 'Password must be at least 8 characters',
+            passwordChanging: 'Changing...',
+            passwordChanged: 'Password changed successfully',
+            passwordChangeFailed: 'Failed to change password',
+            passwordChangeError: 'Error changing password',
+            changePassword: 'Change Password',
+            notificationPrefsUpdated: 'Notification preferences updated',
+            sessionExpiring: 'Your session will expire in 5 minutes. Please save your work.',
+            requiredField: 'This field is required',
+            invalidEmail: 'Please enter a valid email address',
+            minLengthError: 'Must be at least {minlength} characters'
+        };
+    }
+
     // Portal namespace
     const Portal = {
         // Configuration
@@ -161,7 +207,9 @@
                             progressFill.style.width = percent + '%';
                         }
                         if (progressText) {
-                            progressText.textContent = `Uploading ${file.name}: ${Math.round(percent)}%`;
+                            progressText.textContent = mydefenseLawPortalStrings.uploadProgress
+                                .replace('{filename}', file.name)
+                                .replace('{percent}', Math.round(percent));
                         }
                     }
                 });
@@ -172,20 +220,23 @@
                         try {
                             const response = JSON.parse(xhr.responseText);
                             if (response.success) {
-                                this.showToast(`${file.name} uploaded successfully`, 'success');
+                                this.showToast(
+                                    mydefenseLawPortalStrings.uploadSuccess.replace('{filename}', file.name),
+                                    'success'
+                                );
 
                                 // Reload documents list
                                 setTimeout(() => {
                                     window.location.reload();
                                 }, 1500);
                             } else {
-                                this.showToast(response.data?.message || 'Upload failed', 'error');
+                                this.showToast(response.data?.message || mydefenseLawPortalStrings.uploadFailed, 'error');
                             }
                         } catch (error) {
-                            this.showToast('Upload error: Invalid response', 'error');
+                            this.showToast(mydefenseLawPortalStrings.uploadError, 'error');
                         }
                     } else {
-                        this.showToast('Upload failed: Server error', 'error');
+                        this.showToast(mydefenseLawPortalStrings.serverError, 'error');
                     }
 
                     // Reset progress
@@ -240,7 +291,7 @@
                     const documentId = btn.dataset.documentId;
                     const documentName = btn.dataset.documentName;
 
-                    if (confirm(`Are you sure you want to delete "${documentName}"?`)) {
+                    if (confirm(mydefenseLawPortalStrings.deleteConfirm.replace('{documentName}', documentName))) {
                         this.deleteDocument(documentId);
                     }
                 });
@@ -280,7 +331,7 @@
             this.ajax('portal_delete_document', { document_id: documentId })
                 .then(response => {
                     if (response.success) {
-                        this.showToast('Document deleted successfully', 'success');
+                        this.showToast(mydefenseLawPortalStrings.deleteSuccess, 'success');
 
                         // Remove document from DOM
                         const documentElement = document.querySelector(`[data-document-id="${documentId}"]`);
@@ -288,12 +339,12 @@
                             documentElement.closest('.document-card, .document-list-item').remove();
                         }
                     } else {
-                        this.showToast(response.data?.message || 'Failed to delete document', 'error');
+                        this.showToast(response.data?.message || mydefenseLawPortalStrings.deleteFailed, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Delete error:', error);
-                    this.showToast('Error deleting document', 'error');
+                    this.showToast(mydefenseLawPortalStrings.errorDeletingDocument, 'error');
                 });
         },
 
@@ -371,12 +422,12 @@
                         // Mark as read
                         this.markThreadAsRead(threadId);
                     } else {
-                        this.showToast('Failed to load conversation', 'error');
+                        this.showToast(mydefenseLawPortalStrings.conversationLoadFailed, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Load conversation error:', error);
-                    this.showToast('Error loading conversation', 'error');
+                    this.showToast(mydefenseLawPortalStrings.conversationLoadError, 'error');
                 });
         },
 
@@ -414,12 +465,12 @@
 
             const message = textarea.value.trim();
             if (!message) {
-                this.showToast('Please enter a message', 'warning');
+                this.showToast(mydefenseLawPortalStrings.enterMessage, 'warning');
                 return;
             }
 
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            submitBtn.textContent = mydefenseLawPortalStrings.replySending;
 
             this.ajax('portal_send_reply', {
                 thread_id: this.state.currentThread,
@@ -427,22 +478,22 @@
             })
                 .then(response => {
                     if (response.success) {
-                        this.showToast('Reply sent successfully', 'success');
+                        this.showToast(mydefenseLawPortalStrings.replySent, 'success');
                         textarea.value = '';
 
                         // Reload conversation
                         this.loadConversation(this.state.currentThread);
                     } else {
-                        this.showToast(response.data?.message || 'Failed to send reply', 'error');
+                        this.showToast(response.data?.message || mydefenseLawPortalStrings.replyFailed, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Send reply error:', error);
-                    this.showToast('Error sending reply', 'error');
+                    this.showToast(mydefenseLawPortalStrings.replyError, 'error');
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Reply';
+                    submitBtn.textContent = mydefenseLawPortalStrings.sendReply;
                 });
         },
 
@@ -453,7 +504,7 @@
             const formData = new FormData(form);
 
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            submitBtn.textContent = mydefenseLawPortalStrings.messageSending;
 
             this.ajax('portal_send_message', {
                 subject: formData.get('subject'),
@@ -461,23 +512,23 @@
             })
                 .then(response => {
                     if (response.success) {
-                        this.showToast('Message sent successfully', 'success');
+                        this.showToast(mydefenseLawPortalStrings.messageSent, 'success');
                         this.closeModal('compose-modal');
                         form.reset();
 
                         // Reload page to show new message
                         setTimeout(() => window.location.reload(), 1500);
                     } else {
-                        this.showToast(response.data?.message || 'Failed to send message', 'error');
+                        this.showToast(response.data?.message || mydefenseLawPortalStrings.messageFailed, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Send message error:', error);
-                    this.showToast('Error sending message', 'error');
+                    this.showToast(mydefenseLawPortalStrings.messageError, 'error');
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
+                    submitBtn.textContent = mydefenseLawPortalStrings.sendMessage;
                 });
         },
 
@@ -551,7 +602,7 @@
             const formData = new FormData(form);
 
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Saving...';
+            submitBtn.textContent = mydefenseLawPortalStrings.saving;
 
             this.ajax('portal_update_profile', {
                 first_name: formData.get('first_name'),
@@ -561,18 +612,18 @@
             })
                 .then(response => {
                     if (response.success) {
-                        this.showToast('Profile updated successfully', 'success');
+                        this.showToast(mydefenseLawPortalStrings.profileUpdated, 'success');
                     } else {
-                        this.showToast(response.data?.message || 'Failed to update profile', 'error');
+                        this.showToast(response.data?.message || mydefenseLawPortalStrings.profileUpdateFailed, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Update profile error:', error);
-                    this.showToast('Error updating profile', 'error');
+                    this.showToast(mydefenseLawPortalStrings.profileUpdateError, 'error');
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Save Changes';
+                    submitBtn.textContent = mydefenseLawPortalStrings.saveChanges;
                 });
         },
 
@@ -587,22 +638,22 @@
 
             // Validation
             if (!currentPassword || !newPassword || !confirmPassword) {
-                this.showToast('Please fill in all password fields', 'warning');
+                this.showToast(mydefenseLawPortalStrings.allPasswordFields, 'warning');
                 return;
             }
 
             if (newPassword !== confirmPassword) {
-                this.showToast('New passwords do not match', 'error');
+                this.showToast(mydefenseLawPortalStrings.passwordsDoNotMatch, 'error');
                 return;
             }
 
             if (newPassword.length < 8) {
-                this.showToast('Password must be at least 8 characters', 'error');
+                this.showToast(mydefenseLawPortalStrings.passwordTooShort, 'error');
                 return;
             }
 
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Changing...';
+            submitBtn.textContent = mydefenseLawPortalStrings.passwordChanging;
 
             this.ajax('portal_change_password', {
                 current_password: currentPassword,
@@ -610,19 +661,19 @@
             })
                 .then(response => {
                     if (response.success) {
-                        this.showToast('Password changed successfully', 'success');
+                        this.showToast(mydefenseLawPortalStrings.passwordChanged, 'success');
                         form.reset();
                     } else {
-                        this.showToast(response.data?.message || 'Failed to change password', 'error');
+                        this.showToast(response.data?.message || mydefenseLawPortalStrings.passwordChangeFailed, 'error');
                     }
                 })
                 .catch(error => {
                     console.error('Change password error:', error);
-                    this.showToast('Error changing password', 'error');
+                    this.showToast(mydefenseLawPortalStrings.passwordChangeError, 'error');
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
-                    submitBtn.textContent = 'Change Password';
+                    submitBtn.textContent = mydefenseLawPortalStrings.changePassword;
                 });
         },
 

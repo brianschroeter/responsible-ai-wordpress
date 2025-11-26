@@ -9,6 +9,22 @@
 (function() {
     'use strict';
 
+    // Ensure i18n strings are available
+    if (typeof mydefenseLawStrings === 'undefined') {
+        window.mydefenseLawStrings = {
+            formRequired: 'This field is required',
+            emailInvalid: 'Please enter a valid email address',
+            phoneInvalid: 'Please enter a valid phone number',
+            checkboxRequired: 'This checkbox is required',
+            fieldsRequired: 'Please fill in all required fields correctly.',
+            thankYou: 'Thank you! We\'ll contact you as soon as possible.',
+            success: 'Success!',
+            errorOccurred: 'Something went wrong. Please call us at 888.444.0253',
+            formError: 'Error submitting form',
+            sending: 'Sending...'
+        };
+    }
+
     // DOM Elements - declared at top level for access across functions
     let mobileMenuBtn, navigation, navMenu, modal, modalClose, modalForm, contactForm, header;
 
@@ -311,7 +327,7 @@
         const originalText = submitBtn.innerHTML;
 
         // Show loading state
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + mydefenseLawStrings.sending;
         submitBtn.disabled = true;
 
         // Validate all required fields first
@@ -327,7 +343,7 @@
         if (!isValid) {
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
-            showNotification('Please fill in all required fields correctly.', 'error');
+            showNotification(mydefenseLawStrings.fieldsRequired, 'error');
             return;
         }
 
@@ -349,12 +365,12 @@
         })
         .then(function(data) {
             if (data.success) {
-                showNotification(data.data.message || 'Thank you! We\'ll contact you as soon as possible.', 'success');
+                showNotification(data.data.message || mydefenseLawStrings.thankYou, 'success');
                 form.reset();
 
                 if (responseEl) {
                     responseEl.className = 'form-response success';
-                    responseEl.innerHTML = '<div class="success-message">' + (data.data.message || 'Success!') + '</div>';
+                    responseEl.innerHTML = '<div class="success-message">' + (data.data.message || mydefenseLawStrings.success) + '</div>';
                     responseEl.style.display = 'block';
                 }
 
@@ -367,11 +383,11 @@
         })
         .catch(function(error) {
             console.error('Form submission error:', error);
-            showNotification(error.message || 'Something went wrong. Please call us at 888.444.0253', 'error');
+            showNotification(error.message || mydefenseLawStrings.errorOccurred, 'error');
 
             if (responseEl) {
                 responseEl.className = 'form-response error';
-                responseEl.innerHTML = '<div class="error-message">' + (error.message || 'Error submitting form') + '</div>';
+                responseEl.innerHTML = '<div class="error-message">' + (error.message || mydefenseLawStrings.formError) + '</div>';
                 responseEl.style.display = 'block';
             }
         })
@@ -470,16 +486,16 @@
 
         if (field.hasAttribute('required') && !value) {
             isValid = false;
-            errorMessage = 'This field is required';
+            errorMessage = mydefenseLawStrings.formRequired;
         } else if (field.type === 'email' && value && !validateEmail(value)) {
             isValid = false;
-            errorMessage = 'Please enter a valid email address';
+            errorMessage = mydefenseLawStrings.emailInvalid;
         } else if (field.type === 'tel' && value && !validatePhone(value)) {
             isValid = false;
-            errorMessage = 'Please enter a valid phone number';
+            errorMessage = mydefenseLawStrings.phoneInvalid;
         } else if (field.type === 'checkbox' && field.hasAttribute('required') && !field.checked) {
             isValid = false;
-            errorMessage = 'This checkbox is required';
+            errorMessage = mydefenseLawStrings.checkboxRequired;
         }
 
         if (!isValid) {

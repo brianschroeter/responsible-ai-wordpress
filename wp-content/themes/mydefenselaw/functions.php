@@ -119,6 +119,20 @@ function mydefenselaw_scripts() {
         'ajaxUrl' => admin_url('admin-ajax.php'),
         'nonce'   => wp_create_nonce('mydefenselaw_contact'),
     ));
+
+    // Localize translatable strings for main.js
+    wp_localize_script('mydefenselaw-script', 'mydefenseLawStrings', array(
+        'formRequired' => __('This field is required', 'mydefenselaw'),
+        'emailInvalid' => __('Please enter a valid email address', 'mydefenselaw'),
+        'phoneInvalid' => __('Please enter a valid phone number', 'mydefenselaw'),
+        'checkboxRequired' => __('This checkbox is required', 'mydefenselaw'),
+        'fieldsRequired' => __('Please fill in all required fields correctly.', 'mydefenselaw'),
+        'thankYou' => __('Thank you! We\'ll contact you as soon as possible.', 'mydefenselaw'),
+        'success' => __('Success!', 'mydefenselaw'),
+        'errorOccurred' => __('Something went wrong. Please call us at 888.444.0253', 'mydefenselaw'),
+        'formError' => __('Error submitting form', 'mydefenselaw'),
+        'sending' => __('Sending...', 'mydefenselaw'),
+    ));
 }
 add_action('wp_enqueue_scripts', 'mydefenselaw_scripts');
 
@@ -168,13 +182,7 @@ function mydefenselaw_portal_enqueue_scripts() {
 		),
 	));
 
-	// Enqueue portal styles if needed
-	wp_enqueue_style(
-		'mydefenselaw-portal-style',
-		get_template_directory_uri() . '/assets/css/portal.css',
-		array('mydefenselaw-style'),
-		MYDEFENSELAW_VERSION
-	);
+	// Note: Portal CSS is enqueued via inc/enqueue.php mydefenselaw_portal_enqueue_assets()
 }
 add_action('wp_enqueue_scripts', 'mydefenselaw_portal_enqueue_scripts');
 
@@ -452,6 +460,7 @@ function mydefenselaw_footer_about_fallback() {
 require_once get_template_directory() . '/inc/enqueue.php';
 require_once get_template_directory() . '/inc/customizer.php';
 require_once get_template_directory() . '/inc/template-tags.php';
+require_once get_template_directory() . '/inc/email-templates.php';
 require_once get_template_directory() . '/inc/contact-form-handler.php';
 require_once get_template_directory() . '/inc/custom-post-types.php';
 require_once get_template_directory() . '/inc/form-submissions-cpt.php';

@@ -19,7 +19,7 @@ function mydefenselaw_handle_contact_form() {
     // Verify nonce
     if (!isset($_POST['contact_nonce']) || !wp_verify_nonce($_POST['contact_nonce'], 'mydefenselaw_contact')) {
         wp_send_json_error(array(
-            'message' => 'Security verification failed. Please refresh the page and try again.'
+            'message' => __('Security verification failed. Please refresh the page and try again.', 'mydefenselaw')
         ));
     }
 
@@ -28,7 +28,7 @@ function mydefenselaw_handle_contact_form() {
         // Log potential spam attempt but return success to not alert bots
         error_log('Spam attempt detected from IP: ' . sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? '')));
         wp_send_json_success(array(
-            'message' => 'Thank you! Your consultation request has been submitted successfully.'
+            'message' => __('Thank you! Your consultation request has been submitted successfully.', 'mydefenselaw')
         ));
     }
 
@@ -48,27 +48,27 @@ function mydefenselaw_handle_contact_form() {
     $errors = array();
 
     if (empty($first_name)) {
-        $errors[] = 'First name is required.';
+        $errors[] = __('First name is required.', 'mydefenselaw');
     }
 
     if (empty($last_name)) {
-        $errors[] = 'Last name is required.';
+        $errors[] = __('Last name is required.', 'mydefenselaw');
     }
 
     if (empty($phone)) {
-        $errors[] = 'Phone number is required.';
+        $errors[] = __('Phone number is required.', 'mydefenselaw');
     }
 
     if (empty($email) || !is_email($email)) {
-        $errors[] = 'A valid email address is required.';
+        $errors[] = __('A valid email address is required.', 'mydefenselaw');
     }
 
     if (empty($legal_issue)) {
-        $errors[] = 'Please select a legal issue type.';
+        $errors[] = __('Please select a legal issue type.', 'mydefenselaw');
     }
 
     if (!$agreement) {
-        $errors[] = 'You must agree to the terms to submit this form.';
+        $errors[] = __('You must agree to the terms to submit this form.', 'mydefenselaw');
     }
 
     if (!empty($errors)) {
@@ -81,35 +81,31 @@ function mydefenselaw_handle_contact_form() {
     $admin_email = get_option('admin_email');
     $site_name = get_bloginfo('name');
 
-    $subject = ($is_urgent ? '[URGENT] ' : '') . "New Consultation Request from {$first_name} {$last_name}";
+    $subject = ($is_urgent ? __('[URGENT]', 'mydefenselaw') . ' ' : '') . sprintf(
+        __('New Consultation Request from %1$s %2$s', 'mydefenselaw'),
+        $first_name,
+        $last_name
+    );
 
-    $email_body = "
-New consultation request received from the website.
+    // Prepare email data for styled templates
+    $email_data = array(
+        'first_name'  => $first_name,
+        'last_name'   => $last_name,
+        'email'       => $email,
+        'phone'       => $phone,
+        'legal_issue' => $legal_issue,
+        'message'     => $message,
+        'is_urgent'   => $is_urgent,
+        'form_source' => $form_source,
+        'ip_address'  => sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? '')),
+    );
 
-" . ($is_urgent ? "*** THIS IS AN URGENT REQUEST ***\n\n" : "") . "
-CONTACT INFORMATION
--------------------
-Name: {$first_name} {$last_name}
-Phone: {$phone}
-Email: {$email}
-
-LEGAL ISSUE
------------
-Type: {$legal_issue}
-
-MESSAGE
--------
-{$message}
-
----
-This message was sent from the {$site_name} website contact form.
-Submitted on: " . current_time('F j, Y \a\t g:i a') . "
-IP Address: " . sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? '')) . "
-";
+    // Generate styled HTML email for admin
+    $email_body = mydefenselaw_email_contact_admin($email_data);
 
     $headers = array(
-        'Content-Type: text/plain; charset=UTF-8',
-        "From: {$site_name} <wordpress@" . parse_url(home_url(), PHP_URL_HOST) . ">",
+        'Content-Type: text/html; charset=UTF-8',
+        "From: {$site_name} <noreply@" . parse_url(home_url(), PHP_URL_HOST) . ">",
         "Reply-To: {$first_name} {$last_name} <{$email}>"
     );
 
@@ -142,32 +138,24 @@ IP Address: " . sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'] ?? '')) .
     }
 
     if ($sent) {
-        // Optionally send confirmation to user
-        $user_subject = "Thank you for contacting Defense Lawyers, P.A.";
-        $user_body = "
-Dear {$first_name},
+        // Send styled confirmation to user
+        $user_subject = __('Thank you for contacting Defense Lawyers, P.A.', 'mydefenselaw');
+        $user_body = mydefenselaw_email_contact_client($email_data);
 
-Thank you for contacting Defense Lawyers, P.A. We have received your consultation request and will review your information promptly.
+        // Update headers for client email (no reply-to needed)
+        $client_headers = array(
+            'Content-Type: text/html; charset=UTF-8',
+            "From: {$site_name} <noreply@" . parse_url(home_url(), PHP_URL_HOST) . ">",
+        );
 
-" . ($is_urgent ? "We understand this is an urgent matter and will prioritize your request.\n\n" : "") . "
-A member of our legal team will contact you within 24-48 business hours. If you have an urgent matter and need immediate assistance, please call us directly at 888.444.0253.
-
-Best regards,
-Defense Lawyers, P.A.
-Boca Raton, FL
-
----
-This is an automated response. Please do not reply to this email.
-";
-
-        wp_mail($email, $user_subject, $user_body, $headers);
+        wp_mail($email, $user_subject, $user_body, $client_headers);
 
         wp_send_json_success(array(
-            'message' => 'Thank you! Your consultation request has been submitted successfully. We will contact you within 24-48 hours.'
+            'message' => __('Thank you! Your consultation request has been submitted successfully. We will contact you within 24-48 hours.', 'mydefenselaw')
         ));
     } else {
         wp_send_json_error(array(
-            'message' => 'There was a problem sending your request. Please try again or call us directly at 888.444.0253.'
+            'message' => __('There was a problem sending your request. Please try again or call us directly at 888.444.0253.', 'mydefenselaw')
         ));
     }
 }

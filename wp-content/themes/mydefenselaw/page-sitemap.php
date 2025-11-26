@@ -124,7 +124,7 @@ $spanish_pages[] = array(
         <div class="page-header-content">
             <h1><?php echo esc_html(get_the_title()); ?></h1>
             <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="<?php echo esc_url(home_url('/')); ?>">Home</a> / <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
+                <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'mydefenselaw'); ?></a> / <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
             </nav>
         </div>
     </div>
@@ -139,7 +139,7 @@ $spanish_pages[] = array(
 
             <!-- Main Pages (from WordPress Primary Menu) -->
             <div class="sitemap-section">
-                <h2>Main Pages</h2>
+                <h2><?php esc_html_e('Main Pages', 'mydefenselaw'); ?></h2>
                 <ul class="sitemap-links">
                     <?php if ($main_menu_items && !is_wp_error($main_menu_items)) : ?>
                         <?php foreach ($main_menu_items as $item) : ?>
@@ -151,33 +151,33 @@ $spanish_pages[] = array(
                         <?php endforeach; ?>
                     <?php else : ?>
                         <!-- Fallback if no menu exists -->
-                        <li><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/about-the-firm/')); ?>">About The Firm</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/latest-legal-news/')); ?>">Latest News</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/resources/')); ?>">Legal Resources</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/contact-us/')); ?>">Contact Us</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/about-the-firm/')); ?>"><?php esc_html_e('About The Firm', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/latest-legal-news/')); ?>"><?php esc_html_e('Latest News', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/resources/')); ?>"><?php esc_html_e('Legal Resources', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/contact-us/')); ?>"><?php esc_html_e('Contact Us', 'mydefenselaw'); ?></a></li>
                     <?php endif; ?>
-                    <li><a href="#" class="consultation-trigger">Free Consultation</a></li>
+                    <li><a href="#" class="consultation-trigger"><?php esc_html_e('Free Consultation', 'mydefenselaw'); ?></a></li>
                 </ul>
             </div>
 
             <!-- Practice Areas (from Custom Post Type) -->
             <div class="sitemap-section">
-                <h2>Practice Areas</h2>
+                <h2><?php esc_html_e('Practice Areas', 'mydefenselaw'); ?></h2>
                 <ul class="sitemap-links">
                     <?php if ($practice_areas) : ?>
                         <?php foreach ($practice_areas as $area) : ?>
                             <li><a href="<?php echo esc_url(get_permalink($area->ID)); ?>"><?php echo esc_html($area->post_title); ?></a></li>
                         <?php endforeach; ?>
                     <?php else : ?>
-                        <li><em>No practice areas found.</em></li>
+                        <li><em><?php esc_html_e('No practice areas found.', 'mydefenselaw'); ?></em></li>
                     <?php endif; ?>
                 </ul>
             </div>
 
             <!-- En Español (dynamically generated from main pages) -->
             <div class="sitemap-section">
-                <h2>En Español</h2>
+                <h2><?php esc_html_e('En Español', 'mydefenselaw'); ?></h2>
                 <ul class="sitemap-links">
                     <?php if (!empty($spanish_pages)) : ?>
                         <?php foreach ($spanish_pages as $page) : ?>
@@ -185,18 +185,18 @@ $spanish_pages[] = array(
                         <?php endforeach; ?>
                     <?php else : ?>
                         <!-- Fallback Spanish links -->
-                        <li><a href="<?php echo esc_url(home_url('/es/')); ?>">Página Principal</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/es/about-the-firm/')); ?>">Sobre Nosotros</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/es/practice-areas/')); ?>">Áreas de Práctica</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/es/contact-us/')); ?>">Contáctenos</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/es/resources/')); ?>">Recursos Legales</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/')); ?>"><?php esc_html_e('Página Principal', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/about-the-firm/')); ?>"><?php esc_html_e('Sobre Nosotros', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/practice-areas/')); ?>"><?php esc_html_e('Áreas de Práctica', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/contact-us/')); ?>"><?php esc_html_e('Contáctenos', 'mydefenselaw'); ?></a></li>
+                        <li><a href="<?php echo esc_url(home_url('/es/resources/')); ?>"><?php esc_html_e('Recursos Legales', 'mydefenselaw'); ?></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
 
             <!-- Legal Information (from page queries) -->
             <div class="sitemap-section">
-                <h2>Legal Information</h2>
+                <h2><?php esc_html_e('Legal Information', 'mydefenselaw'); ?></h2>
                 <ul class="sitemap-links">
                     <?php
                     // Track which pages we've output to avoid duplicates
@@ -204,7 +204,7 @@ $spanish_pages[] = array(
 
                     // Privacy Policy - use WordPress setting if available, otherwise check query
                     if ($privacy_policy_url) : ?>
-                        <li><a href="<?php echo esc_url($privacy_policy_url); ?>">Privacy Policy</a></li>
+                        <li><a href="<?php echo esc_url($privacy_policy_url); ?>"><?php esc_html_e('Privacy Policy', 'mydefenselaw'); ?></a></li>
                         <?php $output_slugs[] = 'privacy-policy'; ?>
                     <?php else :
                         $privacy_page = get_page_by_path('privacy-policy');
@@ -212,7 +212,7 @@ $spanish_pages[] = array(
                             <li><a href="<?php echo esc_url(get_permalink($privacy_page->ID)); ?>"><?php echo esc_html($privacy_page->post_title); ?></a></li>
                             <?php $output_slugs[] = 'privacy-policy'; ?>
                         <?php else : ?>
-                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>"><?php esc_html_e('Privacy Policy', 'mydefenselaw'); ?></a></li>
                             <?php $output_slugs[] = 'privacy-policy'; ?>
                         <?php endif; ?>
                     <?php endif; ?>
@@ -223,11 +223,11 @@ $spanish_pages[] = array(
                     if ($terms_page) : ?>
                         <li><a href="<?php echo esc_url(get_permalink($terms_page->ID)); ?>"><?php echo esc_html($terms_page->post_title); ?></a></li>
                     <?php else : ?>
-                        <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>">Terms of Service</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>"><?php esc_html_e('Terms of Service', 'mydefenselaw'); ?></a></li>
                     <?php endif; ?>
 
                     <!-- Site Map (current page) -->
-                    <li><a href="<?php echo esc_url(get_permalink()); ?>">Site Map</a></li>
+                    <li><a href="<?php echo esc_url(get_permalink()); ?>"><?php esc_html_e('Site Map', 'mydefenselaw'); ?></a></li>
 
                     <?php
                     // Accessibility
@@ -235,49 +235,49 @@ $spanish_pages[] = array(
                     if ($accessibility_page) : ?>
                         <li><a href="<?php echo esc_url(get_permalink($accessibility_page->ID)); ?>"><?php echo esc_html($accessibility_page->post_title); ?></a></li>
                     <?php else : ?>
-                        <li><a href="<?php echo esc_url(home_url('/accessibility/')); ?>">Accessibility</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/accessibility/')); ?>"><?php esc_html_e('Accessibility', 'mydefenselaw'); ?></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
 
             <!-- Client Services (from Portal pages query + contact) -->
             <div class="sitemap-section">
-                <h2>Client Services</h2>
+                <h2><?php esc_html_e('Client Services', 'mydefenselaw'); ?></h2>
                 <ul class="sitemap-links">
                     <?php
                     // Check if portal login page exists
                     $portal_login = get_page_by_path('portal-login');
                     if ($portal_login) : ?>
-                        <li><a href="<?php echo esc_url(get_permalink($portal_login->ID)); ?>">Client Portal Login</a></li>
+                        <li><a href="<?php echo esc_url(get_permalink($portal_login->ID)); ?>"><?php esc_html_e('Client Portal Login', 'mydefenselaw'); ?></a></li>
                     <?php else : ?>
-                        <li><a href="<?php echo esc_url(home_url('/portal-login/')); ?>">Client Portal Login</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/portal-login/')); ?>"><?php esc_html_e('Client Portal Login', 'mydefenselaw'); ?></a></li>
                     <?php endif; ?>
 
                     <?php
                     // Free Consultation page if exists
                     $consultation_page = get_page_by_path('free-consultation');
                     if ($consultation_page) : ?>
-                        <li><a href="<?php echo esc_url(get_permalink($consultation_page->ID)); ?>">Schedule Consultation</a></li>
+                        <li><a href="<?php echo esc_url(get_permalink($consultation_page->ID)); ?>"><?php esc_html_e('Schedule Consultation', 'mydefenselaw'); ?></a></li>
                     <?php else : ?>
-                        <li><a href="#" class="consultation-trigger">Schedule Consultation</a></li>
+                        <li><a href="#" class="consultation-trigger"><?php esc_html_e('Schedule Consultation', 'mydefenselaw'); ?></a></li>
                     <?php endif; ?>
 
                     <?php
                     // Contact page
                     $contact_page = get_page_by_path('contact-us');
                     if ($contact_page) : ?>
-                        <li><a href="<?php echo esc_url(get_permalink($contact_page->ID)); ?>">Contact Form</a></li>
+                        <li><a href="<?php echo esc_url(get_permalink($contact_page->ID)); ?>"><?php esc_html_e('Contact Form', 'mydefenselaw'); ?></a></li>
                     <?php else : ?>
-                        <li><a href="<?php echo esc_url(home_url('/contact-us/')); ?>">Contact Form</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/contact-us/')); ?>"><?php esc_html_e('Contact Form', 'mydefenselaw'); ?></a></li>
                     <?php endif; ?>
 
-                    <li><a href="tel:<?php echo esc_attr($phone_raw); ?>">Call Us: <?php echo esc_html($phone); ?></a></li>
+                    <li><a href="tel:<?php echo esc_attr($phone_raw); ?>"><?php echo esc_html__('Call Us:', 'mydefenselaw') . ' ' . esc_html($phone); ?></a></li>
                 </ul>
             </div>
 
             <!-- Contact Information (from ACF Theme Options) -->
             <div class="sitemap-section">
-                <h2>Contact Information</h2>
+                <h2><?php esc_html_e('Contact Information', 'mydefenselaw'); ?></h2>
                 <ul class="sitemap-links contact-info-list">
                     <li>
                         <i class="fas fa-phone" aria-hidden="true"></i>
@@ -298,7 +298,7 @@ $spanish_pages[] = array(
                 </ul>
                 <div class="emergency-callout">
                     <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
-                    <strong>24/7 Emergency Line Available</strong>
+                    <strong><?php esc_html_e('24/7 Emergency Line Available', 'mydefenselaw'); ?></strong>
                 </div>
             </div>
 
@@ -307,31 +307,31 @@ $spanish_pages[] = array(
         <!-- Quick Action Buttons -->
         <div class="sitemap-cta">
             <a href="tel:<?php echo esc_attr($phone_raw); ?>" class="btn btn-primary">
-                <i class="fas fa-phone" aria-hidden="true"></i> Call <?php echo esc_html($phone); ?>
+                <i class="fas fa-phone" aria-hidden="true"></i> <?php echo esc_html__('Call', 'mydefenselaw') . ' ' . esc_html($phone); ?>
             </a>
             <?php if ($consultation_page) : ?>
                 <a href="<?php echo esc_url(get_permalink($consultation_page->ID)); ?>" class="btn btn-outline">
-                    <i class="fas fa-calendar-check" aria-hidden="true"></i> Free Consultation
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i> <?php esc_html_e('Free Consultation', 'mydefenselaw'); ?>
                 </a>
             <?php else : ?>
                 <button class="btn btn-outline consultation-trigger">
-                    <i class="fas fa-calendar-check" aria-hidden="true"></i> Free Consultation
+                    <i class="fas fa-calendar-check" aria-hidden="true"></i> <?php esc_html_e('Free Consultation', 'mydefenselaw'); ?>
                 </button>
             <?php endif; ?>
             <?php if ($contact_page) : ?>
                 <a href="<?php echo esc_url(get_permalink($contact_page->ID)); ?>" class="btn btn-outline">
-                    <i class="fas fa-envelope" aria-hidden="true"></i> Contact Form
+                    <i class="fas fa-envelope" aria-hidden="true"></i> <?php esc_html_e('Contact Form', 'mydefenselaw'); ?>
                 </a>
             <?php else : ?>
                 <a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="btn btn-outline">
-                    <i class="fas fa-envelope" aria-hidden="true"></i> Contact Form
+                    <i class="fas fa-envelope" aria-hidden="true"></i> <?php esc_html_e('Contact Form', 'mydefenselaw'); ?>
                 </a>
             <?php endif; ?>
         </div>
 
         <!-- Legal Notice -->
         <div class="sitemap-legal-notice">
-            <p><strong>Important Notice:</strong> The information on this website is for general informational purposes only and does not constitute legal advice. Contacting Defense Lawyers, P.A. through this website does not create an attorney-client relationship. Please do not send any confidential information until an attorney-client relationship has been established.</p>
+            <p><strong><?php esc_html_e('Important Notice:', 'mydefenselaw'); ?></strong> <?php esc_html_e('The information on this website is for general informational purposes only and does not constitute legal advice. Contacting Defense Lawyers, P.A. through this website does not create an attorney-client relationship. Please do not send any confidential information until an attorney-client relationship has been established.', 'mydefenselaw'); ?></p>
         </div>
 
     </div>

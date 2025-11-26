@@ -21,7 +21,7 @@ $contact = mydefenselaw_get_contact_page_fields();
         <div class="page-header-content">
             <h1><?php echo esc_html(get_the_title()); ?></h1>
             <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="<?php echo esc_url(home_url('/')); ?>">Home</a> / <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
+                <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Home', 'mydefenselaw'); ?></a> / <span aria-current="page"><?php echo esc_html(get_the_title()); ?></span>
             </nav>
         </div>
     </div>
@@ -42,29 +42,29 @@ $contact = mydefenselaw_get_contact_page_fields();
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <strong>Office Location</strong>
+                            <strong><?php esc_html_e('Office Location', 'mydefenselaw'); ?></strong>
                             <p><?php echo esc_html($contact['location']); ?><br><?php echo esc_html($contact['serving']); ?></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <strong>Phone</strong>
+                            <strong><?php esc_html_e('Phone', 'mydefenselaw'); ?></strong>
                             <p><a href="tel:<?php echo esc_attr($contact['phone_raw']); ?>"><?php echo esc_html($contact['phone']); ?></a></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
-                            <strong>Availability</strong>
+                            <strong><?php esc_html_e('Availability', 'mydefenselaw'); ?></strong>
                             <p><?php echo esc_html($contact['hours_label']); ?><br><?php echo esc_html($contact['office_hours']); ?></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <strong>Get Started</strong>
-                            <p><a href="#contactForm">Request Free Consultation</a></p>
+                            <strong><?php esc_html_e('Get Started', 'mydefenselaw'); ?></strong>
+                            <p><a href="#contactForm"><?php esc_html_e('Request Free Consultation', 'mydefenselaw'); ?></a></p>
                         </div>
                     </div>
                 </div>
@@ -102,35 +102,35 @@ $contact = mydefenselaw_get_contact_page_fields();
                     <input type="tel" name="phone" placeholder="Phone Number *" required>
                     <input type="email" name="email" placeholder="Email Address *" required>
                     <select name="legalIssue" required>
-                        <option value="">What type of legal issue? *</option>
-                        <option value="civil-litigation">Civil Defense Litigation</option>
-                        <option value="consumer-protection">Consumer Protection</option>
-                        <option value="family-law">Family Law</option>
-                        <option value="bankruptcy">Bankruptcy</option>
-                        <option value="contract-dispute">Contract Law</option>
-                        <option value="real-estate">Real Estate Law</option>
-                        <option value="landlord-tenant">Landlord/Tenant Issues</option>
-                        <option value="intellectual-property">Intellectual Property</option>
-                        <option value="traffic-tickets">Traffic Tickets</option>
-                        <option value="other">Other</option>
+                        <option value=""><?php esc_html_e('What type of legal issue? *', 'mydefenselaw'); ?></option>
+                        <option value="civil-litigation"><?php esc_html_e('Civil Defense Litigation', 'mydefenselaw'); ?></option>
+                        <option value="consumer-protection"><?php esc_html_e('Consumer Protection', 'mydefenselaw'); ?></option>
+                        <option value="family-law"><?php esc_html_e('Family Law', 'mydefenselaw'); ?></option>
+                        <option value="bankruptcy"><?php esc_html_e('Bankruptcy', 'mydefenselaw'); ?></option>
+                        <option value="contract-dispute"><?php esc_html_e('Contract Law', 'mydefenselaw'); ?></option>
+                        <option value="real-estate"><?php esc_html_e('Real Estate Law', 'mydefenselaw'); ?></option>
+                        <option value="landlord-tenant"><?php esc_html_e('Landlord/Tenant Issues', 'mydefenselaw'); ?></option>
+                        <option value="intellectual-property"><?php esc_html_e('Intellectual Property', 'mydefenselaw'); ?></option>
+                        <option value="traffic-tickets"><?php esc_html_e('Traffic Tickets', 'mydefenselaw'); ?></option>
+                        <option value="other"><?php esc_html_e('Other', 'mydefenselaw'); ?></option>
                     </select>
                     <select name="urgency">
-                        <option value="">How urgent is your matter?</option>
-                        <option value="immediate">Immediate (within 24 hours)</option>
-                        <option value="urgent">Urgent (within 1 week)</option>
-                        <option value="normal">Normal (within 2 weeks)</option>
-                        <option value="planning">Planning ahead</option>
+                        <option value=""><?php esc_html_e('How urgent is your matter?', 'mydefenselaw'); ?></option>
+                        <option value="immediate"><?php esc_html_e('Immediate (within 24 hours)', 'mydefenselaw'); ?></option>
+                        <option value="urgent"><?php esc_html_e('Urgent (within 1 week)', 'mydefenselaw'); ?></option>
+                        <option value="normal"><?php esc_html_e('Normal (within 2 weeks)', 'mydefenselaw'); ?></option>
+                        <option value="planning"><?php esc_html_e('Planning ahead', 'mydefenselaw'); ?></option>
                     </select>
                     <textarea name="message" placeholder="Briefly describe your situation..." rows="4"></textarea>
                     <label class="checkbox-label">
                         <input type="checkbox" name="urgent">
                         <span class="checkmark"></span>
-                        This is urgent - I need immediate assistance
+                        <?php esc_html_e('This is urgent - I need immediate assistance', 'mydefenselaw'); ?>
                     </label>
                     <label class="checkbox-label">
                         <input type="checkbox" name="agreement" required>
                         <span class="checkmark"></span>
-                        I understand that Defense Lawyers, P.A. has not yet agreed to represent me, and that submitting this form does not constitute a contract.
+                        <?php esc_html_e('I understand that Defense Lawyers, P.A. has not yet agreed to represent me, and that submitting this form does not constitute a contract.', 'mydefenselaw'); ?>
                     </label>
                     <div class="form-response" id="formResponse"></div>
                     <button type="submit" class="btn btn-primary btn-full">
@@ -147,7 +147,7 @@ $contact = mydefenselaw_get_contact_page_fields();
                 <?php $step_num = 1; ?>
                 <?php foreach ($contact['process_steps'] as $step) : ?>
                 <div>
-                    <h4><i class="<?php echo esc_attr($step['step_icon']); ?>" style="color: #dc2626; margin-right: 0.5rem;"></i>Step <?php echo $step_num; ?>: <?php echo esc_html($step['step_title']); ?></h4>
+                    <h4><i class="<?php echo esc_attr($step['step_icon']); ?>" style="color: #dc2626; margin-right: 0.5rem;"></i><?php esc_html_e('Step', 'mydefenselaw'); ?> <?php echo $step_num; ?>: <?php echo esc_html($step['step_title']); ?></h4>
                     <p><?php echo esc_html($step['step_description']); ?></p>
                 </div>
                 <?php $step_num++; ?>
@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <?php esc_html_e('Sending...', 'mydefenselaw'); ?>';
             submitBtn.disabled = true;
 
             const formData = new FormData(form);
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 responseDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
             })
             .catch(error => {
-                responseDiv.innerHTML = 'An error occurred. Please try again or call us directly.';
+                responseDiv.innerHTML = '<?php echo esc_js(esc_html__('An error occurred. Please try again or call us directly.', 'mydefenselaw')); ?>';
                 responseDiv.className = 'form-response error';
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
