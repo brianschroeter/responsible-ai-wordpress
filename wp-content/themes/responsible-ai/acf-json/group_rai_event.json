@@ -1,0 +1,597 @@
+{
+    "key": "group_rai_event",
+    "title": "Event Details",
+    "fields": [
+        {
+            "key": "field_rai_event_details_tab",
+            "label": "Event Details",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rai_event_type",
+            "label": "Event Type",
+            "name": "event_type",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select the type of event",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "webinar": "Webinar",
+                "conference": "Conference",
+                "workshop": "Workshop",
+                "meetup": "Meetup",
+                "training": "Training"
+            },
+            "default_value": "webinar",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rai_event_format",
+            "label": "Event Format",
+            "name": "event_format",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select how the event will be delivered",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "virtual": "Virtual",
+                "in-person": "In-Person",
+                "hybrid": "Hybrid"
+            },
+            "default_value": "virtual",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rai_event_start_date",
+            "label": "Start Date & Time",
+            "name": "event_start_date",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "When does the event start?",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y g:i a",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 0
+        },
+        {
+            "key": "field_rai_event_end_date",
+            "label": "End Date & Time",
+            "name": "event_end_date",
+            "aria-label": "",
+            "type": "date_time_picker",
+            "instructions": "When does the event end?",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y g:i a",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 0
+        },
+        {
+            "key": "field_rai_event_timezone",
+            "label": "Event Timezone",
+            "name": "event_timezone",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Select the event timezone",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "America/New_York": "Eastern Time (ET)",
+                "America/Chicago": "Central Time (CT)",
+                "America/Denver": "Mountain Time (MT)",
+                "America/Los_Angeles": "Pacific Time (PT)",
+                "America/Anchorage": "Alaska Time (AKT)",
+                "Pacific/Honolulu": "Hawaii Time (HT)",
+                "Europe/London": "London (GMT/BST)",
+                "Europe/Paris": "Paris (CET/CEST)",
+                "Europe/Berlin": "Berlin (CET/CEST)",
+                "Asia/Dubai": "Dubai (GST)",
+                "Asia/Kolkata": "India (IST)",
+                "Asia/Singapore": "Singapore (SGT)",
+                "Asia/Hong_Kong": "Hong Kong (HKT)",
+                "Asia/Tokyo": "Tokyo (JST)",
+                "Australia/Sydney": "Sydney (AEDT/AEST)",
+                "UTC": "UTC (Universal Time)"
+            },
+            "default_value": "America/New_York",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_rai_location_tab",
+            "label": "Location",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rai_event_venue_name",
+            "label": "Venue Name",
+            "name": "event_venue_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Name of the venue (for in-person or hybrid events)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_rai_event_format",
+                        "operator": "!=",
+                        "value": "virtual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., San Francisco Conference Center",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rai_event_address",
+            "label": "Address",
+            "name": "event_address",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Full street address",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_rai_event_format",
+                        "operator": "!=",
+                        "value": "virtual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "123 Main Street",
+            "new_lines": "br"
+        },
+        {
+            "key": "field_rai_event_city",
+            "label": "City",
+            "name": "event_city",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_rai_event_format",
+                        "operator": "!=",
+                        "value": "virtual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., San Francisco",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rai_event_country",
+            "label": "Country",
+            "name": "event_country",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_rai_event_format",
+                        "operator": "!=",
+                        "value": "virtual"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "e.g., United States",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rai_event_virtual_link",
+            "label": "Virtual Event Link",
+            "name": "event_virtual_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Zoom, Teams, or other virtual meeting link",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_rai_event_format",
+                        "operator": "!=",
+                        "value": "in-person"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://zoom.us/j/123456789"
+        },
+        {
+            "key": "field_rai_registration_tab",
+            "label": "Registration",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rai_event_registration_url",
+            "label": "Registration URL",
+            "name": "event_registration_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Link to event registration page (Eventbrite, custom form, etc.)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "https://eventbrite.com/event/123456"
+        },
+        {
+            "key": "field_rai_event_registration_deadline",
+            "label": "Registration Deadline",
+            "name": "event_registration_deadline",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "Last day to register for this event",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "Y-m-d",
+            "first_day": 0
+        },
+        {
+            "key": "field_rai_event_capacity",
+            "label": "Event Capacity",
+            "name": "event_capacity",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Maximum number of attendees (leave empty for unlimited)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "min": 1,
+            "max": "",
+            "placeholder": "e.g., 100",
+            "step": 1,
+            "prepend": "",
+            "append": "attendees"
+        },
+        {
+            "key": "field_rai_event_price",
+            "label": "Event Price",
+            "name": "event_price",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Display price (e.g., \"Free\", \"$199\", \"€50\")",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Free",
+            "maxlength": "",
+            "placeholder": "Free",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_rai_event_is_featured",
+            "label": "Featured Event",
+            "name": "event_is_featured",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Mark this event as featured to highlight it on the events page",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "message": "Feature this event",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        },
+        {
+            "key": "field_rai_speakers_tab",
+            "label": "Speakers",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_rai_event_speakers",
+            "label": "Event Speakers",
+            "name": "event_speakers",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add speakers for this event",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_rai_speaker_name",
+            "button_label": "Add Speaker",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_rai_speaker_name",
+                    "label": "Speaker Name",
+                    "name": "speaker_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g., Dr. Jane Smith",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rai_event_speakers"
+                },
+                {
+                    "key": "field_rai_speaker_title",
+                    "label": "Title/Role",
+                    "name": "speaker_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g., Lead AI Researcher",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rai_event_speakers"
+                },
+                {
+                    "key": "field_rai_speaker_company",
+                    "label": "Company/Organization",
+                    "name": "speaker_company",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "e.g., OpenAI",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_rai_event_speakers"
+                },
+                {
+                    "key": "field_rai_speaker_photo",
+                    "label": "Speaker Photo",
+                    "name": "speaker_photo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Upload a professional headshot",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "jpg,jpeg,png,webp",
+                    "preview_size": "thumbnail",
+                    "parent_repeater": "field_rai_event_speakers"
+                },
+                {
+                    "key": "field_rai_speaker_bio",
+                    "label": "Speaker Bio",
+                    "name": "speaker_bio",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Brief biography of the speaker",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 4,
+                    "placeholder": "Brief speaker biography...",
+                    "new_lines": "br",
+                    "parent_repeater": "field_rai_event_speakers"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "rai_event"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Custom fields for the Responsible AI Events post type",
+    "show_in_rest": 0,
+    "modified": 1732599600
+}
